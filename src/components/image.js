@@ -13,7 +13,7 @@ import Img from "gatsby-image"
  * - `StaticQuery`: https://gatsby.dev/staticquery
  */
 
-const Image = () => (
+const Image = React.forwardRef((props, ref) => (
   <StaticQuery
     query={graphql`
       query {
@@ -26,7 +26,8 @@ const Image = () => (
         }
       }
     `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={data => <Img {...props} ref={ref} fluid={data.placeholderImage.childImageSharp.fluid} />}
   />
-)
+))
+
 export default Image
