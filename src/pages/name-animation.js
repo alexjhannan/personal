@@ -1,48 +1,52 @@
 import React from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled from 'styled-components'
+import anime from "animejs"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const SVG = styled.svg`
-  & > * {
-    pointer-events: none;
-  }
-  & > text {
-    color: black;
-    stroke: currentColor;
-    fill: currentColor;
-  }
+const NAME_TO_RENDER = 'alex hannan'
+
+const Span = styled.span`
+  pointer-events: none;
+  display: inline-block;
 `
 
-const DURATION = 300
-
-class IndexPage extends React.Component {
+class NameAnimation extends React.Component {
   constructor(props) {
     super(props)
-    this.animations = []
+
+    this.spannedName = (
+      <>
+        {
+          NAME_TO_RENDER.split('').map(
+            (char, i) =>
+              char !== ' '
+                ? <Span key={`char-${i}`}>{char}</Span>
+                : ' '
+          )
+        }
+      </>
+    )
   }
 
-  onClick = ({ target: svgElement }) => {
-    this.animations.push(svgElement.animate([
-      { background: 'white' },
-      { background: '#ccc' },
-    ], {
-      duration: DURATION,
-      easing: 'ease-in-out',
+  onClick = ({ target: parentElement }) => {
+    anime({
+      targets: parentElement,
+      translateX: 50,
       direction: 'alternate',
-      iterations: 4,
-    }))
-    Object.values(svgElement.children).map((child, i) => {
-      return child.animate([
-        { color: '#000' },
-        { color: 'indianred' },
-      ], {
-        duration: DURATION / 2,
-        timing: 'steps',
+      iterations: 2,
+      easing: 'easeInOutSine',
+    })
+
+    Object.values(parentElement.children).forEach((child, i) => {
+      anime({
+        targets: child,
+        translateY: 20 * i,
         direction: 'alternate',
-        iterations: 8,
+        iterations: 2,
+        easing: 'easeInOutSine',
       })
     })
   }
@@ -51,15 +55,10 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title="Name Animation" />
-        <div style={{ maxWidth: '300px', overflow: 'none' }}>
-          <SVG onClick={this.onClick} viewBox="0 0 100 100">
-            <text x="30" y="50" strokeWidth="1" stroke="#000">
-              <tspan>a</tspan>
-              <tspan>l</tspan>
-              <tspan>e</tspan>
-              <tspan>x</tspan>
-            </text>
-          </SVG>
+        <div style={{ maxWidth: "300px", overflow: "none" }}>
+          <h3 onClick={this.onClick}>
+            {this.spannedName}
+          </h3>
         </div>
         <Link to="/">Home</Link>
       </Layout>
@@ -67,4 +66,4 @@ class IndexPage extends React.Component {
   }
 }
 
-export default IndexPage
+export default NameAnimation
