@@ -1,25 +1,28 @@
 import React from "react"
 import styled from "styled-components"
+import { TweenMax, TimelineMax } from "gsap";
 
 const SVG = styled.svg`
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100vh;
   background: purple;
-  cursor: pointer;
   user-select: none;
 `
 
 class NameAnimationV2 extends React.Component {
-  counter = 0
-  onClick = () => {
-    if (this.counter === 10) {
-      this.counter = 0
-    } else {
-      this.counter += 1
-    }
-    const offset = 8000 * (this.counter / 10)
-    const dimension = 10000 - (this.counter * 900)
-    this.svg.setAttribute('viewBox', `${offset} ${offset} ${dimension} ${dimension}`)
+  componentDidMount() {
+    requestAnimationFrame(() => {
+      const timeline = new TimelineMax({
+        yoyo: true,
+        yoyoEase: true,
+        repeat: 1,
+        repeatDelay: 10,
+        delay: 1,
+        ease: 'Strong',
+      })
+      const svg = this.svg
+      timeline.to(svg, 1.5, { attr: { viewBox: `8500 8500 100 100` } } )
+    })
   }
 
   render() {
@@ -30,7 +33,6 @@ class NameAnimationV2 extends React.Component {
           viewBox="0 0 10000 10000"
           aria-labelledby="title"
           ref={(el) => this.svg = el}
-          onClick={this.onClick}
         >
           <title id="name" lang="en">
             Name Animation
@@ -43,8 +45,8 @@ class NameAnimationV2 extends React.Component {
           <line x1="6000" y1="6000" x2="9000" y2="6000" strokeWidth="300" stroke="#e8e8e8" strokeLinecap="round" />
           <line x1="6000" y1="6500" x2="7500" y2="6500" strokeWidth="300" stroke="#e8e8e8" strokeLinecap="round" />
           <rect x="8000" y="7000" width="1100" height="500" rx="100" fill="#e8e8e8" />
-          <text textAnchor="middle" x="8500" y="8500" fontSize="50" fill="#e8e8e8">
-            Alex Hannan, Web Developer
+          <text textAnchor="middle" x="8550" y="8550" fontSize="5" fill="#e8e8e8">
+            Web Dev by Alex Hannan
           </text>
         </SVG>
       </div>
