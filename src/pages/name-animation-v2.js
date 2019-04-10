@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { TweenMax, TimelineMax } from "gsap";
+import { TimelineMax } from "gsap";
 
 const SVG = styled.svg`
   width: 100%;
