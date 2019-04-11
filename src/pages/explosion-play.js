@@ -1,16 +1,34 @@
 import React from "react"
 import styled from "styled-components"
-import { TimelineMax, Bounce, Expo } from "gsap";
+import { TimelineMax, TweenMax, Bounce, Expo, Draggable } from "gsap/all"
 
-const SVG = styled.svg`
+const ExplosionSVG = styled.svg`
   width: 300px;
   height: 300px;
   color: black;
   border-radius: 50%;
 `
 
+const GearSVG = styled.svg`
+  width: 300px;
+  height: 300px;
+`
+
 class ExplosionPlay extends React.Component {
   componentDidMount() {
+    TweenMax.set('#gear > .widget', { transformOrigin: '50% 50%' })
+    Draggable.create('#gear > .widget', {
+      type: 'rotation',
+      onDragStart: function() {
+        tl.pause()
+      },
+      onDrag: function() {
+        tl.seek(this.rotation / 360)
+      },
+      onDragEnd: function() {
+        tl.play()
+      }
+    })
     const tl = new TimelineMax({ repeat: -1, yoyo: true })
     tl.add('init')
       .to('.circle-inside', 1, { fill: 'orange', attr: { r: 5 }, ease: Bounce.easeOut }, 'init')
@@ -30,10 +48,10 @@ class ExplosionPlay extends React.Component {
       .to('.line', 0.1, { opacity: 1 })
       .to(
         '#explosion',
-        0.375,
+        0.25,
         {
           attr: { viewBox: '49 49 2 2' },
-          ease: Expo.easeIn,
+          ease: Expo.easeOut,
         },
       )
       .to('#explosion', 0.3, { opacity: 0 })
@@ -41,7 +59,8 @@ class ExplosionPlay extends React.Component {
 
   render() {
     return (
-      <SVG
+      <div>
+      <ExplosionSVG
         id="explosion"
         viewBox="0 0 100 100"
         aria-labelledby="title"
@@ -58,7 +77,23 @@ class ExplosionPlay extends React.Component {
         </g>
         <circle className="circle-inside" cx="50" cy="50" r="30" fill="currentColor" />
         <circle className="circle-outline" cx="50" cy="50" r="30" fill="none" stroke="currentColor" />
-      </SVG>
+      </ExplosionSVG>
+      <GearSVG
+        id="gear"
+        viewBox="0 0 100 100"
+        aria-labelledby="title"
+      >
+        <title id="gear" lang="en">
+          Gear
+        </title>
+        <text x="50" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
+        <g className="widget">
+          <circle cx="50" cy="50" r="20" fill="#e8e8e8" stroke="black" />
+          <path d="M50,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
+          <circle cx="50" cy="50" r="2.5" fill="black" />
+        </g>
+      </GearSVG>
+      </div>
     )
   }
 }

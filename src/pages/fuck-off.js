@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { TimelineMax, Bounce, Expo } from "gsap";
+import { TimelineMax } from "gsap";
 
 const SVG = styled.svg`
   width: 300px;
@@ -12,6 +12,7 @@ const SVG = styled.svg`
 class FuckOff extends React.Component {
   componentDidMount() {
     const tl = new TimelineMax()
+    tl.play()
   }
 
   render() {
