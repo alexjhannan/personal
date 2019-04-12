@@ -13,6 +13,7 @@ module.exports = {
         alias: {
           "@components": "src/components",
           "@utilities": "src/utilities",
+          "@state": "src/state",
         },
         extensions: ["js"]
       }

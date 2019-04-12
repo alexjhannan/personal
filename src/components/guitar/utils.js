@@ -27,25 +27,21 @@ export const TUNING_STD = {
   6: 'E',
 }
 
-// WARNING!!!! frets and strings are 1-INDEXED! musicians use 1-indexing,
-// and it seemed wiser to not have to translate fret and string numbers back and forth.
-
 const slowFretPosition = (fretIndex) => {
-  let result
-  if (fretIndex === 1) {
-    result =  Math.round(SCALE_LENGTH / 17.817)
-  } else if (fretIndex === 0) {
-    return 30
-  } else {
-    const previousFretPosition = fretPosition(fretIndex - 1)
-    const newFretOffset = Math.round((SCALE_LENGTH - previousFretPosition) / 17.817)
-    result = previousFretPosition + newFretOffset
+  if (fretIndex === 0) {
+    return 5
+  } else if (fretIndex === 1) {
+    return Math.round(SCALE_LENGTH / 17.817)
   }
-  return result
+   
+  const previousFretPosition = fretPosition(fretIndex - 1)
+  const newFretOffset = Math.round((SCALE_LENGTH - previousFretPosition) / 17.817)
+  return previousFretPosition + newFretOffset
 }
 
+// WARNING - strings are based off of INDEX 1
+// annnnd strings count "bottom" to "top", because guitar
 const slowStringPosition = (stringIndex) => {
-  // annnnd strings map bottom to top, because guitar
   const stringOffset = 17
   const stringSpan = FB_HEIGHT - stringOffset * 2
   return FB_HEIGHT - stringOffset - ((stringIndex - 1) * stringSpan / 5)
@@ -53,7 +49,6 @@ const slowStringPosition = (stringIndex) => {
 
 const semitoneUp = (rootNote, semitones) => {
   const rootIndex = NOTES.indexOf(rootNote)
-  console.log(NOTES[(rootIndex + semitones) % 13])
   return NOTES[(rootIndex + semitones) % 13]
 }
 
