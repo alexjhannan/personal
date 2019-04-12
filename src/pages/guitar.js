@@ -7,6 +7,7 @@ const SVG = styled.svg`
   display: block;
   margin: 40px auto;
   visibility: hidden;
+  user-select: none;
 `
 
 const Fretboard = styled.rect`
@@ -25,6 +26,10 @@ const String = styled.path`
   stroke-linecap: round
 `
 
+const SCALE_LENGTH = 2550
+const FB_WIDTH = 1780
+const FB_HEIGHT = 200
+
 function memoize(fn) {
   const cache = {}
   return function(...args) {
@@ -39,24 +44,27 @@ function memoize(fn) {
   }
 }
 
-const fPos = (fretboardWidth, fretIndex) => {
+const slowFretPosition = (fretIndex) => {
   let result
   if (fretIndex === 0) {
-    result =  Math.round(fretboardWidth / 17.817)
+    result =  Math.round(SCALE_LENGTH / 17.817)
   } else {
-    const previousFretPosition = fretPosition(fretboardWidth, fretIndex - 1)
-    const newFretOffset = Math.round((fretboardWidth - previousFretPosition) / 17.817)
+    const previousFretPosition = fretPosition(fretIndex - 1)
+    const newFretOffset = Math.round((SCALE_LENGTH - previousFretPosition) / 17.817)
     result = previousFretPosition + newFretOffset
   }
   return result
 }
 
-const fretPosition = memoize(fPos)
+const slowStringPosition = (stringIndex) => {
+  const stringOffset = 17
+  const stringSpan = FB_HEIGHT - stringOffset * 2
+  return (stringIndex) * (stringSpan / 5) + stringOffset
+}
 
-const SCALE_LENGTH = 2550
-const FB_WIDTH = 1780
-const FB_HEIGHT = 200
+const fretPosition = memoize(slowFretPosition)
 
+const stringPosition = memoize(slowStringPosition)
 
 class Guitar extends React.Component {
   componentDidMount() {
@@ -69,17 +77,21 @@ class Guitar extends React.Component {
   initFretboard = () => {
     const tl = new TimelineMax({})
     tl.add('initFretboard')
-      .set('.fret, .string', { x: '-100%', opacity: 0 })
+      .set('.fret, .string, .note', { x: '-100%', opacity: 0 })
       .set('#fretboard', { opacity: 0 })
       .to('#fretboard', 0.5, { opacity: 1, ease: Power2.easeOut }, 'initFretboard')
       .staggerTo('.fret', 0.3, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.05, 'initFretboard+=0.2')
       .staggerTo('.string', 0.3, { x: '0%', opacity: 0.7, ease: Power2.easeOut }, 0.1, 'initFretboard+=0.3')
+      .staggerTo('.note', 0.3, { x: '0%', opacity: 1, ease: Power2.easeOut }, 0.1, 'initFretboard+=0.3')
     return tl
   }
 
   render() {
     const nutOffset = 10
     const indicatorOffset = 50
+    const NOTES = [
+      { string: 0, fret: 0, name: 'A' }
+    ]
     return (
       <div>
         <SVG
@@ -102,15 +114,35 @@ class Guitar extends React.Component {
             <Fret
               key={`fret-${i}`}
               className="fret"
-              d={`M${fretPosition(SCALE_LENGTH, i)},0 V${FB_HEIGHT}`}
+              d={`M${fretPosition(i)},0 V${FB_HEIGHT}`}
             />
           ))}
           {' '.repeat(6).split('').map((_, i) => (
             <String
               key={`string-${i}`}
               className="string"
-              d={`M0,${(i * 30) + 30} H${FB_WIDTH}`}
+              d={`M0,${stringPosition(i)} H${FB_WIDTH}`}
             />
+          ))}
+          {NOTES.map((note, i) => (
+            <g key={`note-${i}`} className="note">
+              <circle
+                cx={fretPosition(i) - 30}
+                cy={stringPosition(i)}
+                r="20"
+                fill="indianred"
+              />
+              <text
+                fill="white"
+                fontWeight="bold"
+                fontSize="23"
+                textAnchor="middle"
+                x={fretPosition(i) - 30}
+                y={stringPosition(i) + 6}
+              >
+                {note.name}
+              </text>
+            </g>
           ))}
         </SVG>
       </div>
