@@ -1,5 +1,5 @@
 import React from "react"
-import { fretPosition, stringPosition } from './utils'
+import { fretPosition, stringPosition, calculateNoteName } from './utils'
 
 class NoteBlip extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class NoteBlip extends React.Component {
           x={fretPosition(note.fret) - 30}
           y={stringPosition(note.string) + 7.5}
         >
-          {note.name}
+          {calculateNoteName(note.string, note.fret)}
         </text>
       </g>
     )

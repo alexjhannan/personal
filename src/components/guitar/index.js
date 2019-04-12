@@ -48,9 +48,17 @@ class Guitar extends React.Component {
 
   render() {
     const NOTES = [
-      { string: 1, fret: 1, name: 'A' },
-      { string: 3, fret: 2, name: 'B', root: true }
     ]
+
+    let string = 1
+    while (string < 7) {
+      let fret = 0
+      while (fret < 21) {
+        NOTES.push({ string, fret })
+        fret += 1
+      }
+      string += 1
+    }
 
     return (
       <SVG
