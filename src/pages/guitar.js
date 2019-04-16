@@ -1,2 +1,2 @@
-import Guitar from "@components/guitar"
+import Guitar from "@components/Guitar"
 export default Guitar

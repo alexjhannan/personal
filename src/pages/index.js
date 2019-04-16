@@ -2,8 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "@components/Layout"
+import SEO from "@components/SEO"
 
 const List = styled.ul`
   list-style: none;

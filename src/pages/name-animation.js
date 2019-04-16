@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import styled from 'styled-components'
 import anime from "animejs"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "@components/Layout"
+import SEO from "@components/SEO"
 
 const NAME_TO_RENDER = 'alex hannan'
 
