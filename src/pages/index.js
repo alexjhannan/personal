@@ -23,7 +23,7 @@ const LINKS = [
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`react`, `developer`, `brooklyn`]} />
-    <h1>Hey</h1>
+    <h1>alex hannan</h1>
     <List>
       {LINKS.map(({ to, title }) => (
         <ListItem key={title}>
