@@ -2,11 +2,21 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  background: indianred;
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: whitesmoke;
+  font-family: 'Open Sans', georgia, serif;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
 }
 article,
 aside,
@@ -194,24 +204,13 @@ html {
 *:after {
   box-sizing: inherit;
 }
-body {
-  color: hsla(0, 0%, 0%, 0.8);
-  font-family: Roboto, georgia, serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
-  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
-  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-  font-feature-settings: "kern", "liga", "clig", "calt";
-}
 img {
   max-width: 100%;
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
   color: inherit;
   font-family: BioRhyme, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -239,66 +238,66 @@ h6 {
   font-size: 0.78405rem;
 }
 hgroup {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 ul, ol {
-  margin: 0 0 1.5rem 1.5rem;
+  margin: 0 0 1.45rem 1.45rem;
   padding: 0;
   list-style-position: outside;
   list-style-image: none;
 }
 dl, dd, p, figure {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 pre {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   font-size: 0.85rem;
   line-height: 1.42;
   background: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
   overflow: auto;
   word-wrap: normal;
-  padding: 1.5rem;
+  padding: 1.45rem;
 }
 table {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.45rem;
   border-collapse: collapse;
   width: 100%;
 }
 fieldset {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 blockquote {
-  margin: 0 1.5rem 1.5rem;
+  margin: 0 1.45rem 1.45rem;
   padding: 0;
 }
 form {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 noscript {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 iframe {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 hr {
-  margin: 0 0 calc(1.5rem - 1px) 0;
+  margin: 0 0 calc(1.45rem - 1px) 0;
   padding: 0;
   background: hsla(0, 0%, 0%, 0.2);
   border: none;
   height: 1px;
 }
 address {
-  margin: 0 0 1.5rem 0;
+  margin: 0;
   padding: 0;
 }
 b {
@@ -314,7 +313,7 @@ th {
   font-weight: bold;
 }
 li {
-  margin-bottom: calc(1.5rem / 2);
+  margin-bottom: calc(1.45rem / 2);
 }
 ol li {
   padding-left: 0;
@@ -323,14 +322,14 @@ ul li {
   padding-left: 0;
 }
 li > ol {
-  margin-left: 1.5rem;
-  margin-bottom: calc(1.5rem / 2);
-  margin-top: calc(1.5rem / 2);
+  margin-left: 1.45rem;
+  margin-bottom: calc(1.45rem / 2);
+  margin-top: calc(1.45rem / 2);
 }
 li > ul {
-  margin-left: 1.5rem;
-  margin-bottom: calc(1.5rem / 2);
-  margin-top: calc(1.5rem / 2);
+  margin-left: 1.45rem;
+  margin-bottom: calc(1.45rem / 2);
+  margin-top: calc(1.45rem / 2);
 }
 blockquote *:last-child {
   margin-bottom: 0;
@@ -342,19 +341,19 @@ p *:last-child {
   margin-bottom: 0;
 }
 li > p {
-  margin-bottom: calc(1.5rem / 2);
+  margin-bottom: calc(1.45rem / 2);
 }
 code {
   font-size: 0.85rem;
-  line-height: 1.5rem;
+  line-height: 1.45rem;
 }
 kbd {
   font-size: 0.85rem;
-  line-height: 1.5rem;
+  line-height: 1.45rem;
 }
 samp {
   font-size: 0.85rem;
-  line-height: 1.5rem;
+  line-height: 1.45rem;
 }
 abbr {
   border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);

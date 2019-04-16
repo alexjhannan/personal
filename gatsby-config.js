@@ -15,7 +15,7 @@ module.exports = {
             family: `BioRhyme`,
           },
           {
-            family: `Roboto`,
+            family: `Open Sans`,
           },
         ],
       },
