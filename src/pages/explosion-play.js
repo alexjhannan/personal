@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { TimelineMax, TweenMax, Bounce, Expo, Draggable } from "gsap/all"
+import Layout from "@components/Layout"
 
 const ExplosionSVG = styled.svg`
   width: 300px;
@@ -12,6 +13,7 @@ const ExplosionSVG = styled.svg`
 const GearSVG = styled.svg`
   width: 300px;
   height: 300px;
+  cursor: pointer;
 `
 
 class ExplosionPlay extends React.Component {
@@ -59,41 +61,41 @@ class ExplosionPlay extends React.Component {
 
   render() {
     return (
-      <div>
-      <ExplosionSVG
-        id="explosion"
-        viewBox="0 0 100 100"
-        aria-labelledby="title"
-      >
-        <title id="explosion" lang="en">
-          Explosion
-        </title>
-        <g className="lines" stroke="currentColor" strokeLinecap="round" strokeDasharray="2.4">
-          {
-            ' '.repeat(10).split('').map((_, i) => (
-              <path key={i} className="line" d="M50,50 v10" opacity="0" />
-            ))
-          }
-        </g>
-        <circle className="circle-inside" cx="50" cy="50" r="30" fill="currentColor" />
-        <circle className="circle-outline" cx="50" cy="50" r="30" fill="none" stroke="currentColor" />
-      </ExplosionSVG>
-      <GearSVG
-        id="gear"
-        viewBox="0 0 100 100"
-        aria-labelledby="title"
-      >
-        <title id="gear" lang="en">
-          Gear
-        </title>
-        <text x="50" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
-        <g className="widget">
-          <circle cx="50" cy="50" r="20" fill="#e8e8e8" stroke="black" />
-          <path d="M50,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
-          <circle cx="50" cy="50" r="2.5" fill="black" />
-        </g>
-      </GearSVG>
-      </div>
+      <Layout>
+        <ExplosionSVG
+          id="explosion"
+          viewBox="0 0 100 100"
+          aria-labelledby="title"
+        >
+          <title id="explosion" lang="en">
+            Explosion
+          </title>
+          <g className="lines" stroke="currentColor" strokeLinecap="round" strokeDasharray="2.4">
+            {
+              ' '.repeat(10).split('').map((_, i) => (
+                <path key={i} className="line" d="M50,50 v10" opacity="0" />
+              ))
+            }
+          </g>
+          <circle className="circle-inside" cx="50" cy="50" r="30" fill="currentColor" />
+          <circle className="circle-outline" cx="50" cy="50" r="30" fill="none" stroke="currentColor" />
+        </ExplosionSVG>
+        <GearSVG
+          id="gear"
+          viewBox="0 0 100 100"
+          aria-labelledby="title"
+        >
+          <title id="gear" lang="en">
+            Gear
+          </title>
+          <text x="50" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
+          <g className="widget">
+            <circle cx="50" cy="50" r="20" fill="#e8e8e8" stroke="black" />
+            <path d="M50,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
+            <circle cx="50" cy="50" r="2.5" fill="black" />
+          </g>
+        </GearSVG>
+      </Layout>
     )
   }
 }

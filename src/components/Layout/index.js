@@ -4,9 +4,6 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import "./reset.css"
 
-const LAYOUT_WIDTH = '960px'
-const LAYOUT_PADDING = '0px 1.0875rem'
-
 const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +13,6 @@ const AppWrapper = styled.div`
 const StyledHeader = styled.header`
   filter: invert(100%);
   background: indianred;
-  margin-bottom: 1.45rem;
   padding: 0.5rem 0;
   display: flex;
   justify-content: center;
@@ -36,14 +32,19 @@ const StyledFooter = styled.footer`
   text-align: center;
 `
 
-const ContentWrapper = styled.div`
-  max-width: ${LAYOUT_WIDTH};
-  padding: ${LAYOUT_PADDING};
+const BodyWrapper = styled.div`
+  max-width: 80vw;
   margin: 0 auto;
-`
-
-const BodyWrapper = styled(ContentWrapper)`
-  padding-bottom: 1.45rem;
+  padding: 2rem 0;
+  @media (max-width: 600px) {
+    max-width: 90vw;
+  }
+  @media (max-width: 1080px) {
+    max-width: 80vw;
+  }
+  @media (min-width: 1081px) {
+    max-width: 65vw;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -68,9 +69,7 @@ const Layout = ({ children }) => (
       </BodyWrapper>
     </StyledMain>
     <StyledFooter>
-      <ContentWrapper>
-        <h5>Built with love in BK</h5>
-      </ContentWrapper>
+      <h5>Built with love in BK</h5>
     </StyledFooter>
   </AppWrapper>
 )
