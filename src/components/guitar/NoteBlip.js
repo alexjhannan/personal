@@ -8,7 +8,7 @@ const G = styled.g`
   visibility: ${(props) => (props.theme === 'hidden' ? 'hidden' : 'visible')}
 `
 
-const NoteBlip = ({ note }) => {
+const NoteBlip = React.memo(({ note }) => {
   const groupEl = useRef(null)
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const NoteBlip = ({ note }) => {
       }
     </G>
   )
-}
+}, (prevProps, nextProps) => prevProps.theme !== nextProps.theme)
 
 NoteBlip.propTypes = {
   note: shape({
