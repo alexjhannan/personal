@@ -1,6 +1,11 @@
 import React from "react"
 import { TimelineMax } from "gsap"
+import styled from "styled-components"
 import { fretPosition, stringPosition, calculateNoteName } from './utils'
+
+const G = styled.g`
+  visibility: ${props => props.theme === 'hidden' ? 'hidden' : 'visible'}
+`
 
 class NoteBlip extends React.Component {
   componentDidMount() {
@@ -11,10 +16,18 @@ class NoteBlip extends React.Component {
     tl.set(this.group, { x: cx, y: cy })
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.theme !== this.props.theme
+  }
+
   render() {
     const { note } = this.props
     return (
-      <g className="note" ref={(el) => this.group = el}>
+      <G
+        className="note"
+        ref={(el) => this.group = el}
+        theme={note.theme}
+      >
         <circle
           cx={0}
           cy={0}
@@ -38,8 +51,7 @@ class NoteBlip extends React.Component {
             )
           )
         }
-
-      </g>
+      </G>
     )
   }
 }

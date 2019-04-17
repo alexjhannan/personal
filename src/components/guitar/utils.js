@@ -3,7 +3,7 @@ import { memoize } from "@utilities"
 export const SCALE_LENGTH = 2550
 export const FB_WIDTH = 1780
 export const FB_HEIGHT = 200
-export const NOTES = [
+export const NOTE_NAMES = [
   'A',
   'A#',
   'B',
@@ -19,12 +19,12 @@ export const NOTES = [
   'G#',
 ]
 export const TUNING_STD = {
-  1: 'E',
-  2: 'B',
-  3: 'G',
-  4: 'D',
-  5: 'A',
-  6: 'E',
+  0: 'E',
+  1: 'B',
+  2: 'G',
+  3: 'D',
+  4: 'A',
+  5: 'E',
 }
 
 const slowFretPosition = (fretIndex) => {
@@ -39,17 +39,15 @@ const slowFretPosition = (fretIndex) => {
   return previousFretPosition + newFretOffset
 }
 
-// WARNING - strings are based off of INDEX 1
-// annnnd strings count "bottom" to "top", because guitar
 const slowStringPosition = (stringIndex) => {
   const stringOffset = 17
   const stringSpan = FB_HEIGHT - stringOffset * 2
-  return FB_HEIGHT - stringOffset - ((stringIndex - 1) * stringSpan / 5)
+  return FB_HEIGHT - stringOffset - ((stringIndex) * stringSpan / 5)
 }
 
 const semitoneUp = (rootNote, semitones) => {
-  const rootIndex = NOTES.indexOf(rootNote)
-  return NOTES[(rootIndex + semitones) % 13]
+  const rootIndex = NOTE_NAMES.indexOf(rootNote)
+  return NOTE_NAMES[(rootIndex + semitones) % 13]
 }
 
 const slowCalculateNoteName = (stringNumber, fretNumber) => {

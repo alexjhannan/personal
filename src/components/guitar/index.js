@@ -49,21 +49,8 @@ class Guitar extends React.Component {
     return tl
   }
 
-  showAllNotes = () => {
-    this.notes = []
-    let string = 1
-    while (string < 7) {
-      let fret = 0
-      while (fret < 21) {
-        this.notes.push({ string, fret })
-        fret += 1
-      }
-      string += 1
-    }
-  }
-
   render() {
-    const { notes } = this.props
+    const { noteMap } = this.props
     return (
       <div>
         <SVG
@@ -93,14 +80,21 @@ class Guitar extends React.Component {
             <String
               key={`string-${i}`}
               className="string"
-              d={`M0,${stringPosition(i + 1)} H${FB_WIDTH}`}
+              d={`M0,${stringPosition(i)} H${FB_WIDTH}`}
               strokeWidth={3 + (i / 2)}
               stroke={ i < 2 ? 'grey' : 'silver'}
             />
           ))}
           <g id="notes">
-            {notes.map((note, i) => (
-              <NoteBlip key={`note-${i}`} note={note} />
+            {noteMap.map((string, i) => (
+              <React.Fragment key={`string-${i}`}>
+                {string.map((note, j) => (
+                  <NoteBlip
+                    key={`note-${j}`}
+                    note={note}
+                  />
+                ))}
+              </React.Fragment>
             ))}
           </g>
         </SVG>
@@ -110,4 +104,4 @@ class Guitar extends React.Component {
   }
 }
 
-export default connect(({ guitar: { notes } }) => ({ notes }))(Guitar)
+export default connect(({ guitar: { noteMap } }) => ({ noteMap }))(Guitar)

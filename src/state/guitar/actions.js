@@ -6,7 +6,9 @@ export const removeAllNotes = () =>
 export const addNotes = (payload) =>
   ({ type: ADD_NOTES, payload })
 
-export const addAllNotes = () => {
+export const addAllNotes = (dispatch, getState) => () => {
+  const state = getState()
+  console.log(state)
   const payload = []
   let string = 1
   while (string < 7) {
