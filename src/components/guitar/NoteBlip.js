@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { TimelineMax } from 'gsap'
 import styled from 'styled-components'
 import { string, shape, number } from 'prop-types'
-import { fretPosition, stringPosition, calculateNoteName } from './utils'
+import { fretPosition, stringPosition } from './utils'
 
 const G = styled.g`
   visibility: ${(props) => (props.theme === 'hidden' ? 'hidden' : 'visible')}

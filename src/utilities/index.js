@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export function memoize(fn) {
   const cache = {}
   // eslint-disable-next-line func-names
@@ -12,4 +11,10 @@ export function memoize(fn) {
 
     return result
   }
+}
+
+export function map2d(fn, grandparent) {
+  return grandparent.map(
+    (parent) => parent.map((child) => fn(child)),
+  )
 }

@@ -1,9 +1,10 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { TimelineMax, Power2 } from 'gsap'
 import {
-  FB_HEIGHT, FB_WIDTH, stringPosition, fretPosition, initializeNoteMap,
+  FB_HEIGHT, FB_WIDTH, stringPosition, fretPosition,
 } from './utils'
+import { ADD_ALL_NOTES, REMOVE_ALL_NOTES, useGuitarReducer } from './state'
 import NoteBlip from './NoteBlip'
 import Controls from './Controls'
 
@@ -28,40 +29,9 @@ const Fret = styled.path`
 const String = styled.path`
   stroke-linecap: round
 `
-
-function map2d(fn, grandparent) {
-  return grandparent.map(
-    (parent) => parent.map((child) => fn(child)),
-  )
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'add_all_notes':
-      return {
-        noteMap: map2d((note) => ({
-          ...note,
-          theme: 'none',
-        }), state.noteMap),
-      }
-    case 'remove_all_notes':
-      return {
-        noteMap: map2d((note) => ({
-          ...note,
-          theme: 'hidden',
-        }), state.noteMap),
-      }
-    default:
-      throw new Error()
-  }
-}
-
 const Guitar = () => {
-  const [{ noteMap }, dispatch] = useReducer(
-    reducer,
-    { noteMap: initializeNoteMap() },
-  )
-
+  const [state, dispatch] = useGuitarReducer()
+  const { noteMap } = state
 
   useEffect(() => {
     const tl = new TimelineMax({})
@@ -122,8 +92,8 @@ const Guitar = () => {
         </g>
       </SVG>
       <Controls
-        addAllNotes={() => dispatch({ type: 'add_all_notes' })}
-        removeAllNotes={() => dispatch({ type: 'remove_all_notes' })}
+        addAllNotes={() => dispatch({ type: ADD_ALL_NOTES })}
+        removeAllNotes={() => dispatch({ type: REMOVE_ALL_NOTES })}
       />
     </div>
   )
