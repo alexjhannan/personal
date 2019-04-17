@@ -60,7 +60,7 @@ function calculateNoteName(stringNumber, fretNumber) {
 export const fretPosition = memoize(slowFretPosition)
 export const stringPosition = memoize(slowStringPosition)
 
-export function initializeNoteMap() {
+export function initializeNoteMap(initialTheme = 'hidden') {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
   const initialNoteMap = []
   let string = 0
@@ -71,7 +71,7 @@ export function initializeNoteMap() {
       stringArray.push({
         string,
         fret,
-        theme: 'none',
+        theme: initialTheme,
         name: calculateNoteName(string, fret),
       })
       fret += 1
