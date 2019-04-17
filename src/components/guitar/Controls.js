@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addAllNotes, removeAllNotes } from '~state/guitar/actions'
+import { func } from 'prop-types'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -20,4 +19,9 @@ const Controls = ({ addAllNotes, removeAllNotes }) => (
   </Container>
 )
 
-export default connect(null, { addAllNotes, removeAllNotes })(Controls)
+Controls.propTypes = {
+  addAllNotes: func.isRequired,
+  removeAllNotes: func.isRequired,
+}
+
+export default Controls
