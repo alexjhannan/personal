@@ -1,7 +1,7 @@
-import React from "react"
-import { connect } from "react-redux"
-import { addAllNotes, removeAllNotes } from "@state/guitar/actions"
-import styled from "styled-components"
+import React from 'react'
+import { connect } from 'react-redux'
+import { addAllNotes, removeAllNotes } from '~state/guitar/actions'
+import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;

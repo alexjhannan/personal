@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { TimelineMax } from "gsap"
-import Layout from "@components/Layout"
+import React from 'react'
+import styled from 'styled-components'
+import { TimelineMax } from 'gsap'
+import Layout from '~components/Layout'
 
 const Container = styled.div`
   display: flex;
@@ -19,18 +19,15 @@ const SVG = styled.svg`
 
 class NameAnimationV2 extends React.Component {
   componentDidMount() {
-    requestAnimationFrame(() => {
-      const timeline = new TimelineMax({
-        yoyo: true,
-        yoyoEase: true,
-        repeat: -1,
-        repeatDelay: 3,
-        delay: 1,
-        ease: 'Strong',
-      })
-      const svg = this.svg
-      timeline.to(svg, 1.5, { attr: { viewBox: `8500 8500 100 100` } } )
+    const timeline = new TimelineMax({
+      yoyo: true,
+      yoyoEase: true,
+      repeat: -1,
+      repeatDelay: 3,
+      delay: 1,
+      ease: 'Strong',
     })
+    timeline.to(this.svg, 1.5, { attr: { viewBox: '8500 8500 100 100' } })
   }
 
   render() {
@@ -41,7 +38,7 @@ class NameAnimationV2 extends React.Component {
             id="name"
             viewBox="0 0 10000 10000"
             aria-labelledby="title"
-            ref={(el) => this.svg = el}
+            ref={(el) => { this.svg = el }}
           >
             <title id="name" lang="en">
               Name Animation

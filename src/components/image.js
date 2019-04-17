@@ -1,6 +1,6 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 const Image = React.forwardRef((props, ref) => (
   <StaticQuery
@@ -15,7 +15,7 @@ const Image = React.forwardRef((props, ref) => (
         }
       }
     `}
-    render={data => <Img {...props} ref={ref} fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={(data) => <Img {...props} ref={ref} fluid={data.placeholderImage.childImageSharp.fluid} />}
   />
 ))
 

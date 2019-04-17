@@ -1,10 +1,10 @@
-import React from "react"
-import { TimelineMax } from "gsap"
-import styled from "styled-components"
+import React from 'react'
+import { TimelineMax } from 'gsap'
+import styled from 'styled-components'
 import { fretPosition, stringPosition, calculateNoteName } from './utils'
 
 const G = styled.g`
-  visibility: ${props => props.theme === 'hidden' ? 'hidden' : 'visible'}
+  visibility: ${(props) => (props.theme === 'hidden' ? 'hidden' : 'visible')}
 `
 
 class NoteBlip extends React.Component {
@@ -48,7 +48,7 @@ class NoteBlip extends React.Component {
               >
                 {char}
               </text>
-            )
+            ),
           )
         }
       </G>

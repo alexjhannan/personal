@@ -1,6 +1,8 @@
+/* eslint-disable import/prefer-default-export */
 export function memoize(fn) {
   const cache = {}
-  return function(...args) {
+  // eslint-disable-next-line func-names
+  return function (...args) {
     if (cache[args]) {
       return cache[args]
     }

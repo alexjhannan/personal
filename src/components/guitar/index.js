@@ -29,8 +29,6 @@ const String = styled.path`
 `
 
 class Guitar extends React.Component {
-  notes = []
-  
   componentDidMount() {
     this.masterTimeline = new TimelineMax({})
     this.masterTimeline
@@ -85,7 +83,7 @@ class Guitar extends React.Component {
               stroke={ i < 2 ? 'grey' : 'silver'}
             />
           ))}
-          <g id="notes">
+          <g>
             {noteMap.map((string, i) => (
               <React.Fragment key={`string-${i}`}>
                 {string.map((note, j) => (

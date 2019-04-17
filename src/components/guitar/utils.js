@@ -1,4 +1,4 @@
-import { memoize } from "@utilities"
+import { memoize } from '~utilities'
 
 export const SCALE_LENGTH = 2550
 export const FB_WIDTH = 1780
@@ -27,14 +27,16 @@ export const TUNING_STD = {
   5: 'E',
 }
 
+
 const slowFretPosition = (fretIndex) => {
   if (fretIndex === 0) {
     return 5
-  } else if (fretIndex === 1) {
+  } if (fretIndex === 1) {
     return Math.round(SCALE_LENGTH / 17.817)
   }
-   
-  const previousFretPosition = fretPosition(fretIndex - 1)
+
+  // LINTER DISABLED - this is a recursive call to a memoized self
+  const previousFretPosition = fretPosition(fretIndex - 1) // eslint-disable-line
   const newFretOffset = Math.round((SCALE_LENGTH - previousFretPosition) / 17.817)
   return previousFretPosition + newFretOffset
 }

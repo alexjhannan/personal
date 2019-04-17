@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import { TimelineMax } from "gsap";
+import React from 'react'
+import styled from 'styled-components'
+import { TimelineMax } from 'gsap'
 
 const SVG = styled.svg`
   width: 300px;
@@ -25,7 +25,7 @@ class FuckOff extends React.Component {
         <title id="fuck-off" lang="en">
           Fuck Off
         </title>
-        <g id="fuck-off__f"></g>
+        <g id="fuck-off__f" />
         <path d="M20,20 v60" stroke="black" strokeWidth="5" />
       </SVG>
     )

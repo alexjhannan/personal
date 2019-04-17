@@ -1,9 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-import Layout from "@components/Layout"
-import SEO from "@components/SEO"
+import Layout from '~components/Layout'
+import SEO from '~components/SEO'
 
 const SECTIONS = [
   {
@@ -43,8 +44,10 @@ const ListItem = styled.li`
 
 const LinkList = ({ header, links }) => (
   <>
-    <ListHeader>{header}:</ListHeader>
-      <List>
+    <ListHeader>
+      {header}
+    </ListHeader>
+    <List>
       {links.map(({ to, title }) => (
         <ListItem key={title}>
           {/^http/.test(to) ? (
@@ -58,9 +61,19 @@ const LinkList = ({ header, links }) => (
   </>
 )
 
+LinkList.propTypes = {
+  header: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      to: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+}
+
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" keywords={[`react`, `developer`, `brooklyn`]} />
+    <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
     { SECTIONS.map((sectionProps) => (
       <LinkList {...sectionProps} />
     ))}

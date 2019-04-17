@@ -1,7 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import { TimelineMax, TweenMax, Bounce, Expo, Draggable } from "gsap/all"
-import Layout from "@components/Layout"
+import React from 'react'
+import styled from 'styled-components'
+import {
+  TimelineMax, TweenMax, Bounce, Expo, Draggable,
+} from 'gsap/all'
+import Layout from '~components/Layout'
 
 const ExplosionSVG = styled.svg`
   width: 300px;
@@ -19,18 +21,6 @@ const GearSVG = styled.svg`
 class ExplosionPlay extends React.Component {
   componentDidMount() {
     TweenMax.set('#gear > .widget', { transformOrigin: '50% 50%' })
-    Draggable.create('#gear > .widget', {
-      type: 'rotation',
-      onDragStart: function() {
-        tl.pause()
-      },
-      onDrag: function() {
-        tl.seek(this.rotation / 360)
-      },
-      onDragEnd: function() {
-        tl.play()
-      }
-    })
     const tl = new TimelineMax({ repeat: -1, yoyo: true })
     tl.add('init')
       .to('.circle-inside', 1, { fill: 'orange', attr: { r: 5 }, ease: Bounce.easeOut }, 'init')
@@ -57,6 +47,19 @@ class ExplosionPlay extends React.Component {
         },
       )
       .to('#explosion', 0.3, { opacity: 0 })
+
+    Draggable.create('#gear > .widget', {
+      type: 'rotation',
+      onDragStart() {
+        tl.pause()
+      },
+      onDrag() {
+        tl.seek(this.rotation / 360)
+      },
+      onDragEnd() {
+        tl.play()
+      },
+    })
   }
 
   render() {

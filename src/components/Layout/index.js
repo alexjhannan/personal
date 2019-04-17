@@ -1,9 +1,9 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 import { Location } from '@reach/router'
-import "./reset.css"
+import './reset.css'
 
 const AppWrapper = styled.div`
 `
@@ -69,7 +69,7 @@ const Layout = ({ children }) => (
       <h3>alex hannan</h3>
       <h6>(.com)</h6>
       <Location>
-        {({ location, navigate }) => (
+        {({ location }) => (
           <>
             { location.pathname !== '/' && (
               <StyledLink to="/">

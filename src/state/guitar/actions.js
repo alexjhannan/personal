@@ -1,4 +1,4 @@
-import { REMOVE_ALL_NOTES, ADD_NOTES } from '@state/actionTypes'
+import { REMOVE_ALL_NOTES, ADD_NOTES } from '~state/actionTypes'
 
 export const removeAllNotes = () =>
   ({ type: REMOVE_ALL_NOTES })

@@ -1,11 +1,11 @@
-import { REMOVE_ALL_NOTES, ADD_NOTES } from '@state/actionTypes'
+import { REMOVE_ALL_NOTES, ADD_NOTES } from '~state/actionTypes'
 
 const prepNoteMap = () => {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
   const initialNoteMap = []
   let string = 0
   while (string < 6) {
-    let stringArray = []
+    const stringArray = []
     let fret = 0
     while (fret < 21) {
       stringArray.push({ string, fret, theme: 'none' })
@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
       ...state,
       notes: [],
     })
-  } else if (action.type === ADD_NOTES) {
+  } if (action.type === ADD_NOTES) {
     return ({
       ...state,
       notes: [
