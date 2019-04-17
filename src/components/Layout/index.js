@@ -2,34 +2,40 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import { Location } from '@reach/router'
 import "./reset.css"
 
 const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 `
 
 const StyledHeader = styled.header`
   filter: invert(100%);
-  background: indianred;
-  padding: 0.5rem 0;
+  background: var(--color-primary);
+  color: var(--color-offblack);
   display: flex;
-  justify-content: center;
-  color: inherit;
-  box-shadow: 0 0 8px 2px black;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  margin-bottom: 100px;
+  height: 40px;
+
+  & > * {
+    position: relative;
+    top: 60px;
+  }
+`
+
+const HeaderDivider = styled.svg`
+  z-index: -1;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 100%;
 `
 
 const StyledMain = styled.main`
   flex: 1;
-`
-
-const StyledFooter = styled.footer`
-  padding: 1rem;
-  filter: invert(100%);
-  background-color: indianred;
-  box-shadow: 0 -12px 8px 2px black;
-  text-align: center;
 `
 
 const BodyWrapper = styled.div`
@@ -48,6 +54,7 @@ const BodyWrapper = styled.div`
 `
 
 const StyledLink = styled(Link)`
+  margin-top: 1rem;
   text-decoration: none;
   transition: transform 0.5s ease-out;
   will-change: transform;
@@ -59,18 +66,33 @@ const StyledLink = styled(Link)`
 const Layout = ({ children }) => (
   <AppWrapper>
     <StyledHeader>
-      <StyledLink to="/">
-        <h6>back to home</h6>
-      </StyledLink>
+      <h3>alex hannan</h3>
+      <h6>(.com)</h6>
+      <Location>
+        {({ location, navigate }) => (
+          <>
+            { location.pathname !== '/' && (
+              <StyledLink to="/">
+                <h6>back to home</h6>
+              </StyledLink>
+            )}
+          </>
+        )}
+      </Location>
+      <HeaderDivider
+        viewBox="0 0 100 100"
+        width="100vw"
+        height="200px"
+        preserveAspectRatio="none"
+      >
+        <path d="M0,0 L50,100 L100,0" fill="var(--color-primary)" />
+      </HeaderDivider>
     </StyledHeader>
     <StyledMain>
       <BodyWrapper>
         {children}
       </BodyWrapper>
     </StyledMain>
-    <StyledFooter>
-      <h5>Built with love in BK</h5>
-    </StyledFooter>
   </AppWrapper>
 )
 

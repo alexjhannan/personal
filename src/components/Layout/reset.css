@@ -1,15 +1,18 @@
 html {
+  --color-primary: indianred;
+  --color-offwhite: whitesmoke;
+  --color-offblack: #222;
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background: indianred;
   height: 100%;
+  background: var(--color-primary);
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: whitesmoke;
+  color: var(--color-offwhite);
   font-family: 'Open Sans', georgia, serif;
   font-weight: normal;
   word-wrap: break-word;

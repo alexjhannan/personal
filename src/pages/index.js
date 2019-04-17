@@ -5,10 +5,6 @@ import styled from "styled-components"
 import Layout from "@components/Layout"
 import SEO from "@components/SEO"
 
-const Header = styled.h1`
-  margin: 1.45rem 0;
-`
-
 const ListHeader = styled.h3`
   margin: 1.45rem 0 0;
 `
@@ -31,10 +27,14 @@ const TOOL_LINKS = [
   { to: '/guitar', title: 'Guitar' },
 ]
 
+const PROFESSIONAL_LINKS = [
+  { to: 'https://www.github.com/alexjhannan', title: 'Github' },
+  { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
+]
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`react`, `developer`, `brooklyn`]} />
-    <Header>alex hannan</Header>
     <ListHeader>Animations:</ListHeader>
     <List>
       {ANIMATION_LINKS.map(({ to, title }) => (
@@ -47,7 +47,23 @@ const IndexPage = () => (
     <List>
       {TOOL_LINKS.map(({ to, title }) => (
         <ListItem key={title}>
-          <Link to={to}>{title}</Link>
+          {to.match(/^http/) ? (
+            <Link to={to}>{title}</Link>
+          ) : (
+            <a href={to}>{title}</a>
+          )}
+        </ListItem>
+      ))}
+    </List>
+    <ListHeader>Professional Stuff:</ListHeader>
+    <List>
+      {PROFESSIONAL_LINKS.map(({ to, title }) => (
+        <ListItem key={title}>
+          {/^http/.test(to) ? (
+            <a href={to} target="_blank" rel="noopener noreferrer">{title}</a>
+          ) : (
+            <Link to={to}>{title}</Link>
+          )}
         </ListItem>
       ))}
     </List>
