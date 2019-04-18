@@ -6,7 +6,7 @@ import SEO from '~components/SEO'
 import Guitar from '~components/Guitar'
 
 const IndexPage = () => (
-  <Layout>
+  <Layout theme="fullwidth">
     <SEO title="Guitar Tool" keywords={['react', 'guitar']} />
     <Guitar />
   </Layout>

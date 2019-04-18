@@ -5,9 +5,6 @@ import styled from 'styled-components'
 import { Location } from '@reach/router'
 import './reset.css'
 
-const AppWrapper = styled.div`
-`
-
 const StyledHeader = styled.header`
   filter: invert(100%);
   background: var(--color-primary);
@@ -42,15 +39,22 @@ const BodyWrapper = styled.div`
   max-width: 80vw;
   margin: 0 auto;
   padding: 2rem 0;
-  @media (max-width: 600px) {
-    max-width: 90vw;
-  }
-  @media (max-width: 1080px) {
-    max-width: 80vw;
-  }
-  @media (min-width: 1081px) {
-    max-width: 65vw;
-  }
+  ${(props) => {
+    if (props.theme !== 'fullwidth') {
+      return `
+        @media (max-width: 600px) {
+          max-width: 90vw;
+        }
+        @media (max-width: 1080px) {
+          max-width: 80vw;
+        }
+        @media (min-width: 1081px) {
+          max-width: 65vw;
+        }
+      `
+    }
+    return ''
+  }}
 `
 
 const StyledLink = styled(Link)`
@@ -63,8 +67,8 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Layout = ({ children }) => (
-  <AppWrapper>
+const Layout = ({ children, theme }) => (
+  <>
     <StyledHeader>
       <h3>alex hannan</h3>
       <h6>(.com)</h6>
@@ -89,11 +93,11 @@ const Layout = ({ children }) => (
       </HeaderDivider>
     </StyledHeader>
     <StyledMain>
-      <BodyWrapper>
+      <BodyWrapper theme={theme}>
         {children}
       </BodyWrapper>
     </StyledMain>
-  </AppWrapper>
+  </>
 )
 
 Layout.propTypes = {

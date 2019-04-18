@@ -7,7 +7,6 @@ export const NOTE_NAMES = [
   'A',
   'A#',
   'B',
-  'B#',
   'C',
   'C#',
   'D',
@@ -49,7 +48,7 @@ function slowStringPosition(stringIndex) {
 
 function semitoneUp(rootNote, semitones) {
   const rootIndex = NOTE_NAMES.indexOf(rootNote)
-  return NOTE_NAMES[(rootIndex + semitones) % 13]
+  return NOTE_NAMES[(rootIndex + semitones) % 12]
 }
 
 function calculateNoteName(stringNumber, fretNumber) {
@@ -57,8 +56,17 @@ function calculateNoteName(stringNumber, fretNumber) {
   return semitoneUp(stringRoot, fretNumber)
 }
 
-export const fretPosition = memoize(slowFretPosition)
-export const stringPosition = memoize(slowStringPosition)
+function slowCalculateMajorScaleNotes(scaleRoot) {
+  return [
+    scaleRoot,
+    semitoneUp(scaleRoot, 2),
+    semitoneUp(scaleRoot, 4),
+    semitoneUp(scaleRoot, 5),
+    semitoneUp(scaleRoot, 7),
+    semitoneUp(scaleRoot, 9),
+    semitoneUp(scaleRoot, 11),
+  ]
+}
 
 export function initializeNoteMap(initialTheme = 'hidden') {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
@@ -81,3 +89,7 @@ export function initializeNoteMap(initialTheme = 'hidden') {
   }
   return initialNoteMap
 }
+
+export const fretPosition = memoize(slowFretPosition)
+export const stringPosition = memoize(slowStringPosition)
+export const calculateMajorScaleNotes = memoize(slowCalculateMajorScaleNotes)

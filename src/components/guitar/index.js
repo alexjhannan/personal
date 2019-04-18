@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { TimelineMax, Power2 } from 'gsap'
+import { TimelineMax } from 'gsap'
 import { FB_HEIGHT, FB_WIDTH } from './utils'
-import { ADD_ALL_NOTES, REMOVE_ALL_NOTES, useGuitarReducer } from './state'
+import {
+  useGuitarReducer,
+  ADD_ALL_NOTES,
+  REMOVE_ALL_NOTES,
+  TRIGGER_MAJOR_SCALE,
+} from './state'
 import FretsAndStrings from './FretsAndStrings'
 import NoteDisplay from './NoteDisplay'
-import NoteBlip from './NoteBlip'
 import Controls from './Controls'
 
 const GuitarContainer = styled.svg`
-  width: 95%;
+  width: 100%;
   display: block;
   margin: 40px auto;
   visibility: hidden;
@@ -46,6 +50,7 @@ const Guitar = () => {
       <Controls
         addAllNotes={() => dispatch({ type: ADD_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: REMOVE_ALL_NOTES })}
+        triggerMajorScaleCurry={(payload) => () => dispatch({ type: TRIGGER_MAJOR_SCALE, payload })}
       />
     </div>
   )
