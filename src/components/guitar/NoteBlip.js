@@ -29,8 +29,14 @@ const NoteBlip = React.memo(({ note }) => {
         tl.to(groupEl.current, 0.5, { opacity: 0 }, 'start')
       } else {
         tl.to(groupEl.current, 0.5, { opacity: 1 }, 'start')
-        if (note.theme !== 'root') {
-          tl.to(groupEl.current, 0.5, { fill: '#FFD700' }, 'start')
+        if (note.theme === 'root') {
+          tl.to(groupEl.current, 0.5, { fill: '#ffa500' }, 'start')
+        } else if (note.theme === 'third') {
+          tl.to(groupEl.current, 0.5, { fill: '#4CA64C' }, 'start')
+        } else if (note.theme === 'fifth') {
+          tl.to(groupEl.current, 0.5, { fill: '#800080' }, 'start')
+        } else {
+          tl.to(groupEl.current, 0.5, { fill: '#222 ' }, 'start')
         }
       }
     }
