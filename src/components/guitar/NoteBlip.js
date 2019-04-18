@@ -5,7 +5,7 @@ import { string, shape, number } from 'prop-types'
 import { fretPosition, stringPosition } from './utils'
 
 const G = styled.g`
-  visibility: ${(props) => (props.theme === 'hidden' ? 'hidden' : 'visible')}
+  opacity: 0;
 `
 
 const NoteBlip = React.memo(({ note }) => {
@@ -14,24 +14,36 @@ const NoteBlip = React.memo(({ note }) => {
   useEffect(() => {
     if (groupEl.current) {
       const tl = new TimelineMax({})
-      const cx = fretPosition(note.fret) - 24
-      const cy = stringPosition(note.string)
-      tl.set(groupEl.current, { x: cx, y: cy })
+      tl.set(groupEl.current, {
+        x: fretPosition(note.fret) - 24,
+        y: stringPosition(note.string),
+      })
     }
   }, [note.fret, note.string])
+
+  useEffect(() => {
+    if (groupEl.current) {
+      const tl = new TimelineMax({})
+      tl.add('start')
+      if (note.theme === 'hidden') {
+        tl.to(groupEl.current, 0.5, { opacity: 0 }, 'start')
+      } else {
+        tl.to(groupEl.current, 0.5, { opacity: 1 }, 'start')
+        if (note.theme !== 'root') {
+          tl.to(groupEl.current, 0.5, { fill: '#FFD700' }, 'start')
+        }
+      }
+    }
+  }, [note.theme])
 
   return (
     <G
       className="note"
       ref={groupEl}
       theme={note.theme}
+      fill="none"
     >
-      <circle
-        cx={0}
-        cy={0}
-        r="20"
-        fill={note.root ? 'indianred' : 'black'}
-      />
+      <circle cx={0} cy={0} r="20" />
       {
         note.name.split('').map(
           (char, i) => (
