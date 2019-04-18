@@ -27,6 +27,51 @@ const SECTIONS = [
       { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
     ],
   },
+  {
+    header: 'Miscellaneous Inspiration',
+    links: [
+      {
+        title: 'Cracked After Hours: Which Ninja Turtle Are You?',
+        to: 'https://www.youtube.com/embed/dtsmluPK7Ug',
+      },
+      {
+        title: 'Simon Sinek: Start With Why',
+        to: 'https://www.youtube.com/embed/sioZd3AxmnE',
+      },
+      {
+        title: 'That one time Prince was way better at guitar than everyone else',
+        to: 'https://www.youtube.com/embed/6SFNW5F8K9Y',
+      },
+      {
+        title: 'The Kuhn Cycle of Scientific Revolutions',
+        to: 'http://www.thwink.org/sustain/glossary/KuhnCycle.htm',
+      },
+      {
+        title: 'Carol Dweck: Fixed / Growth Mindsets',
+        to: 'https://www.brainpickings.org/2014/01/29/carol-dweck-mindset/',
+      },
+      {
+        title: 'Frontend Masters',
+        to: 'https://www.frontendmasters.com',
+      },
+      {
+        title: 'FunFunFunction',
+        to: 'https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q',
+      },
+      {
+        title: 'Kurt Vonnegut on the Shape of Stories',
+        to: 'https://www.youtube.com/embed/oP3c1h8v2ZQ',
+      },
+      {
+        title: 'Everything is a Remix',
+        to: 'https://www.youtube.com/watch?v=NmwwjikTHxw',
+      },
+      {
+        title: 'Jimquisition: The Perfect Pasta Sauce',
+        to: 'https://www.youtube.com/embed/irZ-159xsZY',
+      },
+    ],
+  },
 ]
 
 const ListHeader = styled.h3`
