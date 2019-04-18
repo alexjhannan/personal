@@ -36,9 +36,9 @@ const StyledMain = styled.main`
 `
 
 const BodyWrapper = styled.div`
-  max-width: 80vw;
   margin: 0 auto;
   padding: 2rem 0;
+  max-width: 95vw;
   ${(props) => {
     if (props.theme !== 'fullwidth') {
       return `

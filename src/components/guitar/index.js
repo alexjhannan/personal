@@ -18,6 +18,7 @@ const GuitarContainer = styled.svg`
   margin: 40px auto;
   visibility: hidden;
   user-select: none;
+  background: var(--color-offblack);
 `
 
 const Guitar = () => {
@@ -37,7 +38,7 @@ const Guitar = () => {
           -50
           -50
           ${FB_WIDTH + 50}
-          ${FB_HEIGHT + 50}
+          ${FB_HEIGHT + 100}
         `}
         aria-labelledby="title"
       >

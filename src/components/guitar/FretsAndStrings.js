@@ -11,7 +11,7 @@ const Fingerboard = styled.rect`
 `
 
 const Fret = styled.path`
-  stroke-width: 6px;
+  stroke-width: 3px;
   stroke: gold;
 `
 
@@ -46,8 +46,8 @@ const FretsAndStrings = React.memo(() => {
         <String
           key={`string-${i}`}
           className="string"
-          d={`M0,${stringPosition(i)} H${FB_WIDTH}`}
-          strokeWidth={3 + (i / 2)}
+          d={`M-50,${stringPosition(i)} H${FB_WIDTH}`}
+          strokeWidth={1 + (i / 2)}
           stroke={i < 2 ? 'grey' : 'silver'}
         />
       ))}

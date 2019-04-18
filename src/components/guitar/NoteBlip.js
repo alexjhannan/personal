@@ -49,22 +49,39 @@ const NoteBlip = React.memo(({ note }) => {
       theme={note.theme}
       fill="none"
     >
-      <circle cx={0} cy={0} r="20" />
+      <circle cx={0} cy={0} r="20" stroke="var(--color-offwhite)" />
       {
-        note.name.split('').map(
-          (char, i) => (
-            <text
-              key={`string-${note.string}--fret-${note.fret}--${i}`}
-              fill="white"
-              fontWeight="bold"
-              fontSize={i === 0 ? 23 : 17}
-              textAnchor="middle"
-              x={-2 + (i * 12)}
-              y={6 + (i * 5)}
-            >
-              {char}
-            </text>
-          ),
+        note.name.length === 1 ? (
+          <text
+            fill="var(--color-offwhite)"
+            fontWeight="bold"
+            fontSize={23}
+            textAnchor="middle"
+            x={0}
+            y={7}
+          >
+            {note.name}
+          </text>
+        ) : (
+          <>
+            {
+              note.name.split('').map(
+                (char, i) => (
+                  <text
+                    key={i} // eslint-disable-line
+                    fill="var(--color-offwhite)"
+                    fontWeight="bold"
+                    fontSize={i === 0 ? 23 : 17}
+                    textAnchor="middle"
+                    x={-2 + (i * 12)}
+                    y={6 + (i * 5)}
+                  >
+                    {char}
+                  </text>
+                ),
+              )
+            }
+          </>
         )
       }
     </G>
