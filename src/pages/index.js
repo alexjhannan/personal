@@ -31,7 +31,11 @@ const SECTIONS = [
     header: 'Miscellaneous Inspiration',
     links: [
       {
-        title: 'Cracked After Hours: Which Ninja Turtle Are You?',
+        title: 'Broiled Chocolate Chip Cookies',
+        to: 'https://www.youtube.com/watch?v=OnGrHD1hRkk',
+      },
+      {
+        title: 'Cracked After Hours: TMNT and Temperamentalism',
         to: 'https://www.youtube.com/embed/dtsmluPK7Ug',
       },
       {
@@ -39,7 +43,7 @@ const SECTIONS = [
         to: 'https://www.youtube.com/embed/sioZd3AxmnE',
       },
       {
-        title: 'That one time Prince was way better at guitar than everyone else',
+        title: 'This Particularly Epic Prince Solo',
         to: 'https://www.youtube.com/embed/6SFNW5F8K9Y',
       },
       {
@@ -51,20 +55,12 @@ const SECTIONS = [
         to: 'https://www.brainpickings.org/2014/01/29/carol-dweck-mindset/',
       },
       {
-        title: 'Frontend Masters',
+        title: 'Frontend Masters - Web Workshops to get behind',
         to: 'https://www.frontendmasters.com',
-      },
-      {
-        title: 'FunFunFunction',
-        to: 'https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q',
       },
       {
         title: 'Kurt Vonnegut on the Shape of Stories',
         to: 'https://www.youtube.com/embed/oP3c1h8v2ZQ',
-      },
-      {
-        title: 'Everything is a Remix',
-        to: 'https://www.youtube.com/watch?v=NmwwjikTHxw',
       },
       {
         title: 'Jimquisition: The Perfect Pasta Sauce',
