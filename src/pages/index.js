@@ -74,8 +74,8 @@ LinkList.propTypes = {
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
-    { SECTIONS.map((sectionProps) => (
-      <LinkList {...sectionProps} />
+    { SECTIONS.map(sectionProps => (
+      <LinkList key={sectionProps.header} {...sectionProps} />
     ))}
   </Layout>
 )
