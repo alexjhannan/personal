@@ -68,6 +68,18 @@ function slowCalculateMajorScaleNotes(scaleRoot) {
   ]
 }
 
+function slowCalculateMinorScaleNotes(scaleRoot) {
+  return [
+    scaleRoot,
+    semitoneUp(scaleRoot, 2),
+    semitoneUp(scaleRoot, 3),
+    semitoneUp(scaleRoot, 5),
+    semitoneUp(scaleRoot, 7),
+    semitoneUp(scaleRoot, 9),
+    semitoneUp(scaleRoot, 11),
+  ]
+}
+
 export function initializeNoteMap(initialTheme = 'hidden') {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
   const initialNoteMap = []
@@ -93,3 +105,4 @@ export function initializeNoteMap(initialTheme = 'hidden') {
 export const fretPosition = memoize(slowFretPosition)
 export const stringPosition = memoize(slowStringPosition)
 export const calculateMajorScaleNotes = memoize(slowCalculateMajorScaleNotes)
+export const calculateMinorScaleNotes = memoize(slowCalculateMinorScaleNotes)

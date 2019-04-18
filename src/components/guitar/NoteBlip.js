@@ -1,55 +1,43 @@
-import React, { useRef, useEffect } from 'react'
-import { TimelineMax } from 'gsap'
+import React from 'react'
 import styled from 'styled-components'
 import { string, shape, number } from 'prop-types'
+import cx from 'classnames'
 import { fretPosition, stringPosition } from './utils'
 
+const BG_MAP = {
+  root: '#ffa500',
+  third: '#4ca64c',
+  fifth: '#800080',
+  default: '#222',
+}
+
 const G = styled.g`
+  transform: translate(${props => `${props.x}px, ${props.y}`}px);
   opacity: 0;
 `
 
 const NoteBlip = React.memo(({ note }) => {
-  const groupEl = useRef(null)
+  const groupClasses = cx({
+    'note-active': note.theme !== 'hidden',
+    'note-hidden': note.theme === 'hidden',
+  })
 
-  useEffect(() => {
-    if (groupEl.current) {
-      const tl = new TimelineMax({})
-      tl.set(groupEl.current, {
-        x: fretPosition(note.fret) - 24,
-        y: stringPosition(note.string),
-      })
-    }
-  }, [note.fret, note.string])
-
-  useEffect(() => {
-    if (groupEl.current) {
-      const tl = new TimelineMax({})
-      tl.add('start')
-      if (note.theme === 'hidden') {
-        tl.to(groupEl.current, 0.5, { opacity: 0 }, 'start')
-      } else {
-        tl.to(groupEl.current, 0.5, { opacity: 1 }, 'start')
-        if (note.theme === 'root') {
-          tl.to(groupEl.current, 0.5, { fill: '#ffa500' }, 'start')
-        } else if (note.theme === 'third') {
-          tl.to(groupEl.current, 0.5, { fill: '#4CA64C' }, 'start')
-        } else if (note.theme === 'fifth') {
-          tl.to(groupEl.current, 0.5, { fill: '#800080' }, 'start')
-        } else {
-          tl.to(groupEl.current, 0.5, { fill: '#222 ' }, 'start')
-        }
-      }
-    }
-  }, [note.theme])
+  const noteBackground = BG_MAP[note.theme] || BG_MAP.default
 
   return (
     <G
-      className="note"
-      ref={groupEl}
-      theme={note.theme}
+      className={groupClasses}
       fill="none"
+      x={fretPosition(note.fret) - 24}
+      y={stringPosition(note.string)}
     >
-      <circle cx={0} cy={0} r="20" stroke="var(--color-offwhite)" />
+      <circle
+        cx={0}
+        cy={0}
+        r="20"
+        stroke="var(--color-offwhite)"
+        fill={noteBackground}
+      />
       {
         note.name.length === 1 ? (
           <text

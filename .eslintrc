@@ -14,7 +14,6 @@
   },
   "rules": {
     "semi": ["error" , "never"],
-    "arrow-parens": ["error", "always"],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"

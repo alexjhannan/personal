@@ -7,6 +7,7 @@ import {
   ADD_ALL_NOTES,
   REMOVE_ALL_NOTES,
   TRIGGER_MAJOR_SCALE,
+  TRIGGER_MINOR_SCALE,
 } from './state'
 import FretsAndStrings from './FretsAndStrings'
 import NoteDisplay from './NoteDisplay'
@@ -51,7 +52,8 @@ const Guitar = () => {
       <Controls
         addAllNotes={() => dispatch({ type: ADD_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: REMOVE_ALL_NOTES })}
-        triggerMajorScaleCurry={(payload) => () => dispatch({ type: TRIGGER_MAJOR_SCALE, payload })}
+        triggerMajorScaleCurry={payload => () => dispatch({ type: TRIGGER_MAJOR_SCALE, payload })}
+        triggerMinorScaleCurry={payload => () => dispatch({ type: TRIGGER_MINOR_SCALE, payload })}
       />
     </div>
   )

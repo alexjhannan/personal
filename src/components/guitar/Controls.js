@@ -5,13 +5,12 @@ import { NOTE_NAMES } from './utils'
 
 const ControlGroup = styled.div`
   display: grid;
-  grid-template: 1fr / 1fr 1fr 1fr;
+  grid-template: 1fr / ${'1fr '.repeat(5)};
   grid-gap: 10px;
   margin: 40px 0;
 `
 
 const Button = styled.button`
-  margin-right: 2rem;
   border: 1px solid var(--color-offwhite);
   background: var(--color-offwhite);
   color: var(--color-primary);
@@ -25,7 +24,12 @@ const Button = styled.button`
   }
 `
 
-const Controls = ({ addAllNotes, removeAllNotes, triggerMajorScaleCurry }) => (
+const Controls = ({
+  addAllNotes,
+  removeAllNotes,
+  triggerMajorScaleCurry,
+  triggerMinorScaleCurry,
+}) => (
   <>
     <ControlGroup>
       { NOTE_NAMES.map((noteName) => (
@@ -34,6 +38,16 @@ const Controls = ({ addAllNotes, removeAllNotes, triggerMajorScaleCurry }) => (
           onClick={triggerMajorScaleCurry(noteName)}
         >
           {`${noteName} Major Scale`}
+        </Button>
+      ))}
+    </ControlGroup>
+    <ControlGroup>
+      { NOTE_NAMES.map((noteName) => (
+        <Button
+          key={`${noteName}-scale-button`}
+          onClick={triggerMinorScaleCurry(noteName)}
+        >
+          {`${noteName} Minor Scale`}
         </Button>
       ))}
     </ControlGroup>
@@ -50,6 +64,7 @@ Controls.propTypes = {
   addAllNotes: func.isRequired,
   removeAllNotes: func.isRequired,
   triggerMajorScaleCurry: func.isRequired,
+  triggerMinorScaleCurry: func.isRequired,
 }
 
 export default Controls
