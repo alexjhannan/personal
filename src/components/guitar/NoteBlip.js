@@ -18,7 +18,7 @@ const NoteBlip = React.memo(({ note }) => {
       const cy = stringPosition(note.string)
       tl.set(groupEl.current, { x: cx, y: cy })
     }
-  })
+  }, [note.fret, note.string])
 
   return (
     <G
