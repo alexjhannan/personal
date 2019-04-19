@@ -16,6 +16,7 @@
     "semi": ["error" , "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-closing-bracket-location": [1, "after-props"]
   }
 }

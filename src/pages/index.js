@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import Layout from '~components/Layout'
 import SEO from '~components/SEO'
+import UnderConstruction from '~components/Graphics/UnderConstruction'
 
 const SECTIONS = [
   {
@@ -115,6 +116,7 @@ LinkList.propTypes = {
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
+    <UnderConstruction />
     { SECTIONS.map(sectionProps => (
       <LinkList key={sectionProps.header} {...sectionProps} />
     ))}
