@@ -75,8 +75,8 @@ class ExplosionPlay extends React.Component {
           </title>
           <g className="lines" stroke="currentColor" strokeLinecap="round" strokeDasharray="2.4">
             {
-              ' '.repeat(10).split('').map((_, i) => (
-                <path key={i} className="line" d="M50,50 v10" opacity="0" />
+              'abcdefghij'.repeat(10).split('').map(keyChar => (
+                <path key={keyChar} className="line" d="M50,50 v10" opacity="0" />
               ))
             }
           </g>

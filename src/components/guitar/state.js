@@ -11,7 +11,7 @@ function reducer(state, action) {
   let nextNoteMap = {}
   switch (action.type) {
     case ADD_ALL_NOTES:
-      nextNoteMap = map2d((note) => ({
+      nextNoteMap = map2d(note => ({
         ...note,
         theme: 'none',
       }), state.noteMap)
@@ -20,7 +20,7 @@ function reducer(state, action) {
         noteMap: nextNoteMap,
       }
     case REMOVE_ALL_NOTES:
-      nextNoteMap = map2d((note) => ({
+      nextNoteMap = map2d(note => ({
         ...note,
         theme: 'hidden',
       }), state.noteMap)

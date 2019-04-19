@@ -32,7 +32,7 @@ const Controls = ({
 }) => (
   <>
     <ControlGroup>
-      { NOTE_NAMES.map((noteName) => (
+      { NOTE_NAMES.map(noteName => (
         <Button
           key={`${noteName}-scale-button`}
           onClick={triggerMajorScaleCurry(noteName)}
@@ -42,7 +42,7 @@ const Controls = ({
       ))}
     </ControlGroup>
     <ControlGroup>
-      { NOTE_NAMES.map((noteName) => (
+      { NOTE_NAMES.map(noteName => (
         <Button
           key={`${noteName}-scale-button`}
           onClick={triggerMinorScaleCurry(noteName)}
