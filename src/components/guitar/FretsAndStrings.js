@@ -34,17 +34,16 @@ const FretsAndStrings = React.memo(() => {
     <>
       <Fingerboard id="fingerboard" x="0" y="0" width={FB_WIDTH} height={FB_HEIGHT} />
       <Fret className="fret" d={`M3,0 V${FB_HEIGHT}`} />
-      {' '.repeat(20).split('').map((_, i) => (
-        /* eslint-disable react/no-array-index-key */
+      {'abcdef'.repeat(20).split('').map((keyChar, i) => (
         <Fret
-          key={`fret-${i}`}
+          key={`fret-${keyChar}`}
           className="fret"
           d={`M${fretPosition(i + 1)},0 V${FB_HEIGHT}`}
         />
       ))}
-      {' '.repeat(6).split('').map((_, i) => (
+      {'abcdef'.repeat(6).split('').map((keyChar, i) => (
         <String
-          key={`string-${i}`}
+          key={`string-${keyChar}`}
           className="string"
           d={`M-50,${stringPosition(i)} H${FB_WIDTH}`}
           strokeWidth={1 + (i / 2)}
