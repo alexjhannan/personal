@@ -8,6 +8,7 @@ const SVG = styled(BaseSVG)`
   z-index: -1;
   margin: 0 auto;
   display: block;
+  max-height: 75vh;
 `
 
 const QUOTES = [
@@ -27,7 +28,7 @@ const UnderConstruction = () => {
   })
 
   return (
-    <SVG id="under-construction" title="Under Construction" viewBox="0 0 100 100" preserveAspectRatio="none" width="100%">
+    <SVG id="under-construction" title="Under Construction" viewBox="0 0 100 100" width="100%">
       <g fill="var(--color-iGrey1)" r="20">
         {Array(30).fill(1).map((_, i) => (
           <circle key={i} className="uc-circle" cx={0 + (Math.floor(i / 5) * 20)} cy="-60" r="20" />
