@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Layout from '~components/Layout'
+import Layout, { BodyWrapper } from '~components/Layout'
 import SEO from '~components/SEO'
 import UnderConstruction from '~components/Graphics/UnderConstruction'
 
@@ -114,12 +114,14 @@ LinkList.propTypes = {
 }
 
 const IndexPage = () => (
-  <Layout>
+  <Layout theme="fullwidth">
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
     <UnderConstruction />
-    { SECTIONS.map(sectionProps => (
-      <LinkList key={sectionProps.header} {...sectionProps} />
-    ))}
+    <BodyWrapper>
+      { SECTIONS.map(sectionProps => (
+        <LinkList key={sectionProps.header} {...sectionProps} />
+      ))}
+    </BodyWrapper>
   </Layout>
 )
 

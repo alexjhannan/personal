@@ -1,7 +1,21 @@
 html {
-  --color-primary: indianred;
-  --color-offwhite: whitesmoke;
-  --color-offblack: #222;
+  --color-primary: #cd5c5c;
+  --color-inverse: #2ca2a2;
+  --color-offwhite: whitesmoke; /* deprecate */
+  --color-offblack: #222; /* deprecate */
+
+  --color-pGrey0: #faf9f9;
+  --color-pGrey1: #e6dfdf;
+  --color-pGrey2: #cec0c0;
+  --color-pGrey3: #b19a9a;
+  --color-pGrey4: #7b6767;
+
+  --color-iGrey0: #f8f9f9;
+  --color-iGrey1: #dce1e1;
+  --color-iGrey2: #bbc5c5;
+  --color-iGrey3: #91a3a3;
+  --color-iGrey4: #577070;
+
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

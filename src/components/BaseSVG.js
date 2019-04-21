@@ -10,6 +10,7 @@ const BaseSVG = ({
   <svg
     aria-labelledby="title"
     xlmns="http://www.w3.org/2000/svg"
+    id={id}
     {...rest}>
     <title id={id} lang="en">
       {title}

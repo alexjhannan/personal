@@ -13,8 +13,7 @@ const StyledHeader = styled.header`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
-  margin-bottom: 100px;
+  position: reative;
   height: 40px;
 
   & > * {
@@ -35,10 +34,9 @@ const StyledMain = styled.main`
   flex: 1;
 `
 
-const BodyWrapper = styled.div`
+export const BodyWrapper = styled.div`
   margin: 0 auto;
   padding: 2rem 0;
-  max-width: 95vw;
   ${(props) => {
     if (props.theme !== 'fullwidth') {
       return `
@@ -100,9 +98,13 @@ const Layout = ({ children, theme }) => (
   </>
 )
 
+Layout.defaultProps = {
+  theme: '',
+}
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  theme: PropTypes.string.isRequired,
+  theme: PropTypes.string,
 }
 
 export default Layout
