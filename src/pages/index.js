@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import Layout, { BodyWrapper } from '~components/layout'
 import SEO from '~components/seo'
-import UnderConstruction from '~components/Graphics/under-construction'
+import UnderConstruction from '~components/graphics/under-construction'
 
 const SECTIONS = [
   {

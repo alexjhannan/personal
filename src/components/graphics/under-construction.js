@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { TimelineMax, Bounce } from 'gsap'
 import styled from 'styled-components'
-import BaseSVG from '~components/BaseSVG'
+import BaseSVG from '~components/base-svg'
 
 const SVG = styled(BaseSVG)`
   background: indianred;
