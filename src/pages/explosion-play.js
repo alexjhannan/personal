@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {
   TimelineMax, TweenMax, Bounce, Expo, Draggable,
 } from 'gsap/all'
-import Layout from '~components/Layout'
+import Layout from '~components/layout'
 
 const ExplosionSVG = styled.svg`
   width: 300px;

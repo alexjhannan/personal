@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { TimelineMax } from 'gsap'
 import { arrayOf, shape } from 'prop-types'
-import NoteBlip from './NoteBlip'
+import NoteBlip from './note-blip'
 
 const NoteDisplay = ({ noteMap }) => {
   useEffect(() => {

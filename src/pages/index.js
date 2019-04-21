@@ -3,9 +3,9 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Layout, { BodyWrapper } from '~components/Layout'
-import SEO from '~components/SEO'
-import UnderConstruction from '~components/Graphics/UnderConstruction'
+import Layout, { BodyWrapper } from '~components/layout'
+import SEO from '~components/seo'
+import UnderConstruction from '~components/Graphics/under-construction'
 
 const SECTIONS = [
   {

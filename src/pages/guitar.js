@@ -1,9 +1,9 @@
 
 import React from 'react'
 
-import Layout from '~components/Layout'
-import SEO from '~components/SEO'
-import Guitar from '~components/Guitar'
+import Layout from '~components/layout'
+import SEO from '~components/seo'
+import Guitar from '~components/guitar'
 
 const IndexPage = () => (
   <Layout theme="fullwidth">

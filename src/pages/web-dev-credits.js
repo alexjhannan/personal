@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { TimelineMax } from 'gsap'
-import Layout from '~components/Layout'
+import Layout from '~components/layout'
 
 const Container = styled.div`
   display: flex;

@@ -9,9 +9,9 @@ import {
   TRIGGER_MAJOR_SCALE,
   TRIGGER_MINOR_SCALE,
 } from './state'
-import FretsAndStrings from './FretsAndStrings'
-import NoteDisplay from './NoteDisplay'
-import Controls from './Controls'
+import FretsAndStrings from './frets-and-strings'
+import NoteDisplay from './note-display'
+import Controls from './controls'
 
 const GuitarContainer = styled.svg`
   width: 100%;
