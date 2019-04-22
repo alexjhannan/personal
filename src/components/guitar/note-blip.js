@@ -35,13 +35,13 @@ const NoteBlip = React.memo(({ note }) => {
         cx={0}
         cy={0}
         r="20"
-        stroke="var(--color-offwhite)"
+        stroke="var(--color-iGrey0)"
         fill={noteBackground}
       />
       {
         note.name.length === 1 ? (
           <text
-            fill="var(--color-offwhite)"
+            fill="var(--color-iGrey0)"
             fontWeight="bold"
             fontSize={23}
             textAnchor="middle"
@@ -57,7 +57,7 @@ const NoteBlip = React.memo(({ note }) => {
                 (char, i) => (
                   <text
                     key={i} // eslint-disable-line
-                    fill="var(--color-offwhite)"
+                    fill="var(--color-iGrey0)"
                     fontWeight="bold"
                     fontSize={i === 0 ? 23 : 17}
                     textAnchor="middle"

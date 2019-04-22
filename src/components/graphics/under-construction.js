@@ -33,7 +33,7 @@ const UnderConstruction = () => {
     <SVG id="under-construction" title="Under Construction" viewBox="0 0 100 100" width="100%">
       <defs>
         <mask id="uc--mask">
-          <circle id="uc--mask-circle" cx="50%" cy="50%" r="100" fill="white" />
+          <circle id="uc--mask-circle" cx="50%" cy="50%" r="60" fill="white" />
         </mask>
       </defs>
       <g mask="url(#uc--mask)" textAnchor="middle" fill="var(--color-pGrey4)" fontWeight="bold">

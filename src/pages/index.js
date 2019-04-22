@@ -10,27 +10,27 @@ import UnderConstruction from '~components/graphics/under-construction'
 
 const SECTIONS = [
   {
-    header: 'Animations',
+    header: 'Tools and Concepts',
+    links: [
+      { to: '/guitar', title: 'Guitar Scale Map' },
+    ],
+  },
+  {
+    header: 'Animation Playground',
     links: [
       { to: '/explosion-play', title: 'Explosion' },
       { to: '/web-dev-credits', title: 'Web Dev Credits' },
     ],
   },
   {
-    header: 'Tools',
-    links: [
-      { to: '/guitar', title: 'Guitar' },
-    ],
-  },
-  {
-    header: 'Other Profiles',
+    header: 'More Profiles of Alex',
     links: [
       { to: 'https://www.github.com/alexjhannan', title: 'Github' },
       { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
     ],
   },
   {
-    header: 'Miscellaneous Inspiration',
+    header: 'Misc. Inspirations',
     links: [
       {
         title: 'Broiled Chocolate Chip Cookies',
@@ -38,15 +38,15 @@ const SECTIONS = [
       },
       {
         title: 'Cracked After Hours: TMNT and Temperamentalism',
-        to: 'https://www.youtube.com/embed/dtsmluPK7Ug',
+        to: 'https://www.youtube.com/watch?v=dtsmluPK7Ug',
       },
       {
         title: 'Simon Sinek: Start With Why',
-        to: 'https://www.youtube.com/embed/sioZd3AxmnE',
+        to: 'https://www.youtube.com/watch?v=sioZd3AxmnE',
       },
       {
         title: 'This Particularly Epic Prince Solo',
-        to: 'https://www.youtube.com/embed/6SFNW5F8K9Y',
+        to: 'https://www.youtube.com/watch?v=6SFNW5F8K9Y',
       },
       {
         title: 'The Kuhn Cycle of Scientific Revolutions',
@@ -57,16 +57,16 @@ const SECTIONS = [
         to: 'https://www.brainpickings.org/2014/01/29/carol-dweck-mindset/',
       },
       {
-        title: 'Frontend Masters - Web Workshops to get behind',
+        title: 'Frontend Masters - JS Workshops',
         to: 'https://www.frontendmasters.com',
       },
       {
         title: 'Kurt Vonnegut on the Shape of Stories',
-        to: 'https://www.youtube.com/embed/oP3c1h8v2ZQ',
+        to: 'https://www.youtube.com/watch?v=GOGru_4z1Vc',
       },
       {
         title: 'Jimquisition: The Perfect Pasta Sauce',
-        to: 'https://www.youtube.com/embed/irZ-159xsZY',
+        to: 'https://www.youtube.com/watch?v=irZ-159xsZY',
       },
     ],
   },
@@ -91,6 +91,7 @@ const EntryOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1000;
 `
 
 const LinkList = ({ header, links }) => (

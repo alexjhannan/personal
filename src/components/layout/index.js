@@ -4,29 +4,33 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { Location } from '@reach/router'
 import { getRandomElement } from '~utilities'
+import BaseSVG from '~components/base-svg'
 import './reset.css'
 
-const StyledHeader = styled.header`
-  filter: invert(100%);
-  background: var(--color-primary);
-  color: var(--color-offblack);
+const Container = styled.div`
+  min-height: 100vh;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+`
+
+const StyledHeader = styled.header`
+  background: var(--color-inverse);
+  color: var(--color-iGrey0);
+  display: flex;
+  justify-content: center;
   align-items: center;
   height: 60px;
   margin-bottom: -24px;
-
-  & > * {
-    position: relative;
-  }
+  padding-top: 12px;
+  position: relative;
 `
 
-const HeaderDivider = styled.svg`
-  z-index: -1;
+const HeaderDivider = styled(BaseSVG)`
   width: 100%;
   height: 24px;
   position: absolute;
   top: 100%;
+  fill: var(--color-inverse);
 `
 
 const HeaderColumn = styled.div`
@@ -36,7 +40,7 @@ const HeaderColumn = styled.div`
 `
 
 
-const StyledMain = styled.main`
+const StyledMain = styled.div`
   flex: 1;
 `
 
@@ -66,6 +70,8 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   transition: transform 0.5s ease-out;
   will-change: transform;
+  color: var(--color-iGrey0);
+  margin-left: 5rem;
   &:hover {
     transform: scale(1.1);
   }
@@ -79,7 +85,7 @@ const HEADER_DIVIDER_SHAPES = [
 ]
 
 const Layout = ({ children, theme }) => (
-  <>
+  <Container>
     <StyledHeader>
       <HeaderColumn>
         <h3>alex hannan</h3>
@@ -97,11 +103,13 @@ const Layout = ({ children, theme }) => (
         )}
       </Location>
       <HeaderDivider
+        id="header-divider"
+        title="Header Divider"
         viewBox="0 0 100 100"
         width="100vw"
         height="200px"
         preserveAspectRatio="none">
-        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-primary)" />
+        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-inverse)" />
       </HeaderDivider>
     </StyledHeader>
     <StyledMain>
@@ -109,7 +117,7 @@ const Layout = ({ children, theme }) => (
         {children}
       </BodyWrapper>
     </StyledMain>
-  </>
+  </Container>
 )
 
 Layout.defaultProps = {

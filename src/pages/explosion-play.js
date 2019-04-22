@@ -1,28 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import {
-  TimelineMax, TweenMax, Bounce, Expo, Draggable,
+  TimelineMax, Bounce, Expo, Draggable,
 } from 'gsap/all'
 import Layout from '~components/layout'
+import BaseSVG from '~components/base-svg'
 
-const ExplosionSVG = styled.svg`
-  width: 300px;
-  height: 300px;
+const Container = styled.div`
+  height: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const ExplosionSVG = styled(BaseSVG)`
+  width: 100%;
   color: black;
   border-radius: 50%;
 `
 
-const GearSVG = styled.svg`
-  width: 300px;
-  height: 300px;
+const GearSVG = styled(BaseSVG)`
+  width: 100%;
+`
+
+const GearWidget = styled.g`
   cursor: pointer;
 `
 
-class ExplosionPlay extends React.Component {
-  componentDidMount() {
-    TweenMax.set('#gear > .widget', { transformOrigin: '50% 50%' })
+const ExplosionPlay = () => {
+  useEffect(() => {
     const tl = new TimelineMax({ repeat: -1, yoyo: true })
-    tl.add('init')
+    tl.set('#gear > .widget', { transformOrigin: '50% 50%' })
+      .add('init')
       .to('.circle-inside', 1, { fill: 'orange', attr: { r: 5 }, ease: Bounce.easeOut }, 'init')
       .to('.circle-outline', 1, { stroke: 'red' }, 'init+=0.5')
       .to('.circle-inside', 0.3, { fill: 'red', attr: { r: 0.5 }, ease: Bounce.easeInOut })
@@ -60,22 +71,21 @@ class ExplosionPlay extends React.Component {
         tl.play()
       },
     })
-  }
 
-  render() {
-    return (
-      <Layout>
+    return () => tl.kill()
+  }, [])
+
+  return (
+    <Layout>
+      <Container>
         <ExplosionSVG
           id="explosion"
           viewBox="0 0 100 100"
           aria-labelledby="title"
-        >
-          <title id="explosion" lang="en">
-            Explosion
-          </title>
+          title="Explosion Animation">
           <g className="lines" stroke="currentColor" strokeLinecap="round" strokeDasharray="2.4">
             {
-              'abcdefghij'.repeat(10).split('').map(keyChar => (
+              'abcdefghij'.split('').map(keyChar => (
                 <path key={keyChar} className="line" d="M50,50 v10" opacity="0" />
               ))
             }
@@ -87,20 +97,17 @@ class ExplosionPlay extends React.Component {
           id="gear"
           viewBox="0 0 100 100"
           aria-labelledby="title"
-        >
-          <title id="gear" lang="en">
-            Gear
-          </title>
+          title="Explosion Wind-Up Gear">
           <text x="50" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
-          <g className="widget">
+          <GearWidget className="widget">
             <circle cx="50" cy="50" r="20" fill="#e8e8e8" stroke="black" />
             <path d="M50,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
             <circle cx="50" cy="50" r="2.5" fill="black" />
-          </g>
+          </GearWidget>
         </GearSVG>
-      </Layout>
-    )
-  }
+      </Container>
+    </Layout>
+  )
 }
 
 export default ExplosionPlay

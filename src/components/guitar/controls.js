@@ -11,16 +11,17 @@ const ControlGroup = styled.div`
 `
 
 const Button = styled.button`
-  border: 1px solid var(--color-offwhite);
-  background: var(--color-offwhite);
+  border: 1px solid var(--color-iGrey0);
+  background: var(--color-iGrey0);
   color: var(--color-primary);
   border-radius: 2px;
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.25s ease-out;
+  font-weight: bold;
   &:hover {
     background: var(--color-primary);
-    color: var(--color-offwhite);
+    color: var(--color-iGrey0);
   }
 `
 

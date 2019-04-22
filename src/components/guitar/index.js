@@ -18,7 +18,7 @@ const GuitarContainer = styled.svg`
   display: block;
   visibility: hidden;
   user-select: none;
-  background: var(--color-offblack);
+  background: var(--color-pGrey4);
 `
 
 const Guitar = () => {
