@@ -15,6 +15,10 @@ export function memoize(fn) {
 
 export function map2d(fn, grandparent) {
   return grandparent.map(
-    (parent) => parent.map((child) => fn(child)),
+    parent => parent.map(child => fn(child)),
   )
+}
+
+export function getRandomElement(array) {
+  return array[Math.floor(Math.random() * array.length)]
 }

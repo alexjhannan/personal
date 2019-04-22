@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { Location } from '@reach/router'
+import { getRandomElement } from '~utilities'
 import './reset.css'
 
 const StyledHeader = styled.header`
@@ -11,21 +12,20 @@ const StyledHeader = styled.header`
   color: var(--color-offblack);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   position: reative;
-  height: 40px;
+  height: 60px;
 
   & > * {
     position: relative;
-    top: 60px;
   }
 `
 
 const HeaderDivider = styled.svg`
   z-index: -1;
   width: 100%;
-  height: 100px;
+  height: 25px;
   position: absolute;
   top: 100%;
 `
@@ -65,6 +65,13 @@ const StyledLink = styled(Link)`
   }
 `
 
+const HEADER_DIVIDER_SHAPES = [
+  // 'M0,0 L50,100 L100,0',
+  // 'M0,0 L12.5,100, L25,0, L37.5,100, L50,0 L62.5,100, L75,0, L87.5,100, L100,0',
+  'M0,0 C0 100,100 100,100 0',
+  'M0,0 C25 50,75 50, 100 0',
+]
+
 const Layout = ({ children, theme }) => (
   <>
     <StyledHeader>
@@ -87,7 +94,7 @@ const Layout = ({ children, theme }) => (
         height="200px"
         preserveAspectRatio="none"
       >
-        <path d="M0,0 L50,100 L100,0" fill="var(--color-primary)" />
+        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-primary)" strokeLinjoin="round" />
       </HeaderDivider>
     </StyledHeader>
     <StyledMain>

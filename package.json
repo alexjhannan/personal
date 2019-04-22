@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "ajh-personal",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A personal site built with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Alex Hannan <alex.j.hannan@gmail.com>",
   "dependencies": {
     "@reach/router": "1.2.1",
     "babel-plugin-styled-components": "1.10.0",
