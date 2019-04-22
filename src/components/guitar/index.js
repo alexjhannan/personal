@@ -16,7 +16,6 @@ import Controls from './controls'
 const GuitarContainer = styled.svg`
   width: 100%;
   display: block;
-  margin: 40px auto;
   visibility: hidden;
   user-select: none;
   background: var(--color-offblack);

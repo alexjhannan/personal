@@ -11,11 +11,10 @@ const StyledHeader = styled.header`
   background: var(--color-primary);
   color: var(--color-offblack);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  position: reative;
   height: 60px;
+  margin-bottom: -24px;
 
   & > * {
     position: relative;
@@ -25,10 +24,17 @@ const StyledHeader = styled.header`
 const HeaderDivider = styled.svg`
   z-index: -1;
   width: 100%;
-  height: 25px;
+  height: 24px;
   position: absolute;
   top: 100%;
 `
+
+const HeaderColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 
 const StyledMain = styled.main`
   flex: 1;
@@ -36,10 +42,10 @@ const StyledMain = styled.main`
 
 export const BodyWrapper = styled.div`
   margin: 0 auto;
-  padding: 2rem 0;
   ${(props) => {
     if (props.theme !== 'fullwidth') {
       return `
+        padding: 48px 0 24px;
         @media (max-width: 600px) {
           max-width: 90vw;
         }
@@ -56,7 +62,7 @@ export const BodyWrapper = styled.div`
 `
 
 const StyledLink = styled(Link)`
-  margin-top: 1rem;
+  margin-top: 0.25rem;
   text-decoration: none;
   transition: transform 0.5s ease-out;
   will-change: transform;
@@ -66,8 +72,8 @@ const StyledLink = styled(Link)`
 `
 
 const HEADER_DIVIDER_SHAPES = [
-  // 'M0,0 L50,100 L100,0',
-  // 'M0,0 L12.5,100, L25,0, L37.5,100, L50,0 L62.5,100, L75,0, L87.5,100, L100,0',
+  'M0,0 L50,75 L100,0',
+  'M0,0 L12.5,75, L25,50, L37.5,75, L50,50 L62.5,75, L75,50, L87.5,75, L100,0',
   'M0,0 C0 100,100 100,100 0',
   'M0,0 C25 50,75 50, 100 0',
 ]
@@ -75,8 +81,10 @@ const HEADER_DIVIDER_SHAPES = [
 const Layout = ({ children, theme }) => (
   <>
     <StyledHeader>
-      <h3>alex hannan</h3>
-      <h6>(.com)</h6>
+      <HeaderColumn>
+        <h3>alex hannan</h3>
+        <h6>(.com)</h6>
+      </HeaderColumn>
       <Location>
         {({ location }) => (
           <>
@@ -92,9 +100,8 @@ const Layout = ({ children, theme }) => (
         viewBox="0 0 100 100"
         width="100vw"
         height="200px"
-        preserveAspectRatio="none"
-      >
-        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-primary)" strokeLinjoin="round" />
+        preserveAspectRatio="none">
+        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-primary)" />
       </HeaderDivider>
     </StyledHeader>
     <StyledMain>

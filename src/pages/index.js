@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import { TimelineMax } from 'gsap'
 
 import Layout, { BodyWrapper } from '~components/layout'
 import SEO from '~components/seo'
@@ -84,6 +85,14 @@ const ListItem = styled.li`
   margin: 0;
 `
 
+const EntryOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
+
 const LinkList = ({ header, links }) => (
   <>
     <ListHeader>
@@ -113,16 +122,25 @@ LinkList.propTypes = {
   ).isRequired,
 }
 
-const IndexPage = () => (
-  <Layout theme="fullwidth">
-    <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
-    <UnderConstruction />
-    <BodyWrapper>
-      { SECTIONS.map(sectionProps => (
-        <LinkList key={sectionProps.header} {...sectionProps} />
-      ))}
-    </BodyWrapper>
-  </Layout>
-)
+const IndexPage = () => {
+  useEffect(() => {
+    const tl = new TimelineMax({})
+    tl.set('#entry-overlay', { pointerEvents: 'none' }, 1)
+    return () => tl.kill()
+  })
+  return (
+    <Layout theme="fullwidth">
+      <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
+      <EntryOverlay id="entry-overlay">
+        <UnderConstruction />
+      </EntryOverlay>
+      <BodyWrapper>
+        { SECTIONS.map(sectionProps => (
+          <LinkList key={sectionProps.header} {...sectionProps} />
+        ))}
+      </BodyWrapper>
+    </Layout>
+  )
+}
 
 export default IndexPage
