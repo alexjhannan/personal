@@ -6,8 +6,9 @@ import NoteBlip from './note-blip'
 const NoteDisplay = ({ noteMap }) => {
   useEffect(() => {
     const tl = new TimelineMax({})
-    tl.to('.note-hidden', 0.5, { opacity: 0 })
-      .to('.note-active', 0.5, { opacity: 1 })
+    tl.add('start')
+      .to('.note-hidden', 0.5, { opacity: 0 }, 'start')
+      .to('.note-active', 0.5, { opacity: 1 }, 'start')
     return () => tl.kill()
   })
 
