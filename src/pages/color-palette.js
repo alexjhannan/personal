@@ -12,13 +12,22 @@ const ParentGrid = styled.div`
   grid-template-rows: 1fr 3fr;
   grid-gap: 24px;
   margin: 1rem 0 0;
+
+  @media (max-width: 900px) {
+    height: 100vh;
+  }
 `
 
 const MainColors = styled.div`
   display: grid;
-  grid-template-columns: ${'1fr '.repeat(3)};
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 128px;
   grid-gap: 24px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 64px)
+  }
 `
 
 const ColorSwatch = styled.div`
@@ -48,6 +57,10 @@ const GrayScales = styled.div`
   grid-gap: 24px;
   grid-template-columns: 1fr 1fr;
   height: 100%;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const GrayScaleGrid = styled.div`
@@ -62,7 +75,7 @@ const GrayScale = ({ baseColor }) => (
         key={i} // eslint-disable-line
         style={{
           background: `var(--color-${baseColor}${i})`,
-          color: i > 1 ? '#eee' : '#222',
+          color: '#000012',
         }}>
         {`--color-pGrey${i}`}
       </ColorSwatch>
