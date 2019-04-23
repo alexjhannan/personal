@@ -1,7 +1,23 @@
 html {
-  --color-primary: #cd5c5c;
-  --color-inverse: #2ca2a2;
-  --color-highlight: #ffd811;
+  --color-saturation: 53%;
+  --color-lightness: 58%;
+  --color-primary-hue: 0;
+
+  --color-primary: hsl(
+    var(--color-primary-hue),
+    var(--color-saturation),
+    var(--color-lightness)
+  );
+  --color-inverse: hsl(
+    calc(var(--color-primary-hue) + 180),
+    calc(var(--color-saturation) + 4%),
+    calc(var(--color-lightness) - 18%)
+  );
+  --color-highlight: hsl(
+    50,
+    100%,
+    53%
+  );
 
   --color-pGrey0: #faf9f9;
   --color-pGrey1: #e6dfdf;
