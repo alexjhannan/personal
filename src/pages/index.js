@@ -13,6 +13,7 @@ const SECTIONS = [
     header: 'Tools and Concepts',
     links: [
       { to: '/guitar', title: 'Guitar Scale Map' },
+      { to: '/color-palette', title: 'Site Color Palette' },
     ],
   },
   {
