@@ -48,7 +48,7 @@ const NameAnimationV2 = () => {
           <line x1="6000" y1="6500" x2="7500" y2="6500" strokeWidth="300" stroke="#e8e8e8" strokeLinecap="round" />
           <rect x="8000" y="7000" width="1100" height="500" rx="100" fill="#e8e8e8" />
           <text textAnchor="middle" x="8550" y="8550" fontSize="5" fill="#e8e8e8">
-            Web Dev by Alex Hannan
+            Hello There
           </text>
         </SVG>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { TimelineMax, Bounce } from 'gsap'
 import styled from 'styled-components'
 import BaseSVG from '~components/base-svg'
@@ -21,9 +21,11 @@ const QUOTES = [
 ]
 
 const UnderConstruction = () => {
+  const quote = useMemo(() => QUOTES[Math.floor(Math.random() * QUOTES.length)], [])
+
   useEffect(() => {
     const tl = new TimelineMax()
-      .to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
+    tl.to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
       .to('#under-construction', 0.5, { opacity: 0 }, 1)
       .set('#under-construction', { height: 0, width: 0 })
     return () => tl.kill()
@@ -40,7 +42,7 @@ const UnderConstruction = () => {
         <rect x="-100" y="-100" width="400" height="400" fill="var(--color-inverse)" />
         <text x="50" y="50" fontSize="8">UNDER CONSTRUCTION</text>
         <text x="13" y="41" fontSize="3">(always)</text>
-        <text x="50" y="60" fontSize="4">{QUOTES[Math.floor(Math.random() * QUOTES.length)]}</text>
+        <text x="50" y="60" fontSize="4">{quote}</text>
       </g>
     </SVG>
   )
