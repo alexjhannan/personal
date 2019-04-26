@@ -58,7 +58,7 @@ const ScaleButton = ({ scaleName, scaleActionCurry }) => {
 
   useEffect(() => {
     const tl = new TimelineMax({})
-    const initialAngle = Math.PI / 2
+    const initialAngle = 0
     tl.add('start')
       .staggerTo(noteGroupRef.current.children, 0.3, {
         cycle: {
