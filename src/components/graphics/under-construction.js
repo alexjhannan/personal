@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TimelineMax, Bounce } from 'gsap'
 import styled from 'styled-components'
 import BaseSVG from '~components/base-svg'
@@ -11,19 +11,37 @@ const SVG = styled(BaseSVG)`
   width: 100%;
 `
 
+const Group = styled.g`
+  cursor: pointer;
+  user-select: none;
+`
+
 const QUOTES = [
   'Built with love in Brooklyn',
+  '50% more colors than bargain-brand sites',
+  'Not a substitute for human interaction',
+  'Made from 100% recycled pixels',
+  'Put on 2D glasses now',
   'Presented in double vision (where drunk)',
-  'There will be a test',
-  '50% More Colors Than Bargain-Brand Sites',
-  'Put On 2-D Glasses Now',
+  '\\ [T] /',
 ]
 
 const UnderConstruction = () => {
+  const [quoteCounter, setQuoteCounter] = useState(0)
+
   useEffect(() => {
     const tl = new TimelineMax()
     tl.to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 0.1)
     return () => tl.kill()
+  })
+
+  useEffect(() => { // eslint-disable-line
+    if (quoteCounter === QUOTES.length - 1) {
+      const tl = new TimelineMax()
+      tl.to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
+        .to('#under-construction', 0.5, { height: 0, width: 0 })
+      return () => tl.kill()
+    }
   })
 
   return (
@@ -33,7 +51,16 @@ const UnderConstruction = () => {
           <circle id="uc--mask-circle" cx="50%" cy="50%" r="0" fill="white" />
         </mask>
       </defs>
-      <g mask="url(#uc--mask)" textAnchor="middle" fill="var(--color-pGrey0)" fontWeight="bold">
+      <Group
+        mask="url(#uc--mask)"
+        textAnchor="middle"
+        fill="var(--color-pGrey0)"
+        fontWeight="bold"
+        onClick={() => {
+          if (quoteCounter < QUOTES.length - 1) {
+            setQuoteCounter((quoteCounter + 1))
+          }
+        }}>
         <rect x="-100" y="-100" width="400" height="400" fill="var(--color-inverse)" />
         <text x="50" y="40" fontSize="10">
           <tspan>UNDER</tspan>
@@ -41,9 +68,9 @@ const UnderConstruction = () => {
         </text>
         <text x="35" y="25" fontSize="5" transform="rotate(-22.5 50 50)">(always)</text>
         <text x="50" y="65" fontSize="4" className="uc-quote">
-          {QUOTES[Math.floor(Math.random() * QUOTES.length)]}
+          {QUOTES[quoteCounter]}
         </text>
-      </g>
+      </Group>
     </SVG>
   )
 }

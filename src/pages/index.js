@@ -20,6 +20,7 @@ const SECTIONS = [
     links: [
       { to: '/explosion-play', title: 'Explosion' },
       { to: '/web-dev-credits', title: 'Web Dev Credits' },
+      { to: '/gooey-radial-button', title: 'Gooey Radial Button' },
     ],
   },
   {

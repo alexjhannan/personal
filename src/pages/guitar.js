@@ -6,7 +6,7 @@ import SEO from '~components/seo'
 import Guitar from '~components/guitar'
 
 const Container = styled.div`
-  margin-top: 48px;
+  margin-top: 64px;
 `
 
 const IndexPage = () => (
