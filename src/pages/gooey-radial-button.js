@@ -4,7 +4,7 @@ import Layout from '~components/layout'
 
 const GooeyRadialButton = () => (
   <Layout>
-    <ScaleButton scaleName="Major" scaleActionCurry={() => {}} />
+    <ScaleButton scaleName="click" scaleActionCurry={() => {}} />
   </Layout>
 )
 
