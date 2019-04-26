@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { TimelineMax } from 'gsap'
 
 import Layout, { BodyWrapper } from '~components/layout'
 import SEO from '~components/seo'
@@ -21,13 +20,6 @@ const SECTIONS = [
     links: [
       { to: '/explosion-play', title: 'Explosion' },
       { to: '/web-dev-credits', title: 'Web Dev Credits' },
-    ],
-  },
-  {
-    header: 'More Profiles of Alex',
-    links: [
-      { to: 'https://www.github.com/alexjhannan', title: 'Github' },
-      { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
     ],
   },
   {
@@ -71,7 +63,29 @@ const SECTIONS = [
       },
     ],
   },
+  {
+    header: 'More Profiles of Alex',
+    links: [
+      { to: 'https://www.github.com/alexjhannan', title: 'Github' },
+      { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
+    ],
+  },
 ]
+
+const GraphicContainer = styled.div`
+  max-width: 250px;
+  margin: 60px auto -40px;
+`
+
+const SectionsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-tempalte-rows: 1fr;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+`
 
 const ListHeader = styled.h3`
   margin: 1.45rem 0 0;
@@ -86,17 +100,8 @@ const ListItem = styled.li`
   margin: 0;
 `
 
-const EntryOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-`
-
 const LinkList = ({ header, links }) => (
-  <>
+  <div>
     <ListHeader>
       {header}
     </ListHeader>
@@ -111,7 +116,7 @@ const LinkList = ({ header, links }) => (
         </ListItem>
       ))}
     </List>
-  </>
+  </div>
 )
 
 LinkList.propTypes = {
@@ -124,25 +129,20 @@ LinkList.propTypes = {
   ).isRequired,
 }
 
-const IndexPage = () => {
-  useEffect(() => {
-    const tl = new TimelineMax({})
-    tl.set('#entry-overlay', { pointerEvents: 'none' }, 1)
-    return () => tl.kill()
-  })
-  return (
-    <Layout theme="fullwidth">
-      <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
-      <EntryOverlay id="entry-overlay">
-        <UnderConstruction />
-      </EntryOverlay>
-      <BodyWrapper>
+const IndexPage = () => (
+  <Layout theme="fullwidth">
+    <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
+    <GraphicContainer>
+      <UnderConstruction />
+    </GraphicContainer>
+    <BodyWrapper>
+      <SectionsContainer>
         { SECTIONS.map(sectionProps => (
           <LinkList key={sectionProps.header} {...sectionProps} />
         ))}
-      </BodyWrapper>
-    </Layout>
-  )
-}
+      </SectionsContainer>
+    </BodyWrapper>
+  </Layout>
+)
 
 export default IndexPage
