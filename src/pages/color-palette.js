@@ -37,7 +37,7 @@ const ColorSwatch = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-family: BioRhyme;
+  font-family: Arvo;
 `
 
 const PrimarySwatch = styled(ColorSwatch)`

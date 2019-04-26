@@ -12,7 +12,7 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: 'BioRhyme',
+            family: 'Arvo',
           },
           {
             family: 'Open Sans',

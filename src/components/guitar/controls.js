@@ -1,13 +1,13 @@
 import React from 'react'
 import { func } from 'prop-types'
 import styled from 'styled-components'
-import { NOTE_NAMES } from './utils'
+import ScaleButton from './scale-button'
 
 const ControlGroup = styled.div`
   display: grid;
-  grid-template: 1fr / ${'1fr '.repeat(5)};
+  grid-template: 1fr / repeat(2, 1fr);
   grid-gap: 10px;
-  margin: 40px 0;
+  margin: 40px;
 `
 
 const Button = styled.button`
@@ -19,6 +19,8 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.25s ease-out;
   font-weight: bold;
+  max-width: 180px;
+  margin: 0 auto;
   &:hover {
     background: var(--color-primary);
     color: var(--color-iGrey0);
@@ -33,24 +35,8 @@ const Controls = ({
 }) => (
   <>
     <ControlGroup>
-      { NOTE_NAMES.map(noteName => (
-        <Button
-          key={`${noteName}-scale-button`}
-          onClick={triggerMajorScaleCurry(noteName)}
-        >
-          {`${noteName} Major Scale`}
-        </Button>
-      ))}
-    </ControlGroup>
-    <ControlGroup>
-      { NOTE_NAMES.map(noteName => (
-        <Button
-          key={`${noteName}-scale-button`}
-          onClick={triggerMinorScaleCurry(noteName)}
-        >
-          {`${noteName} Minor Scale`}
-        </Button>
-      ))}
+      <ScaleButton scaleName="Major" scaleActionCurry={triggerMajorScaleCurry} />
+      <ScaleButton scaleName="Minor" scaleActionCurry={triggerMinorScaleCurry} />
     </ControlGroup>
     <ControlGroup>
       <Button onClick={addAllNotes}>Add All Notes</Button>

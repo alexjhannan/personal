@@ -29,15 +29,12 @@ const NoteBlip = React.memo(({ note }) => {
       className={groupClasses}
       fill="none"
       x={fretPosition(note.fret) - 24}
-      y={stringPosition(note.string)}
-    >
+      y={stringPosition(note.string)}>
       <circle
         cx={0}
         cy={0}
         r="20"
-        stroke="var(--color-iGrey0)"
-        fill={noteBackground}
-      />
+        fill={noteBackground}/>
       {
         note.name.length === 1 ? (
           <text
@@ -46,8 +43,7 @@ const NoteBlip = React.memo(({ note }) => {
             fontSize={23}
             textAnchor="middle"
             x={0}
-            y={7}
-          >
+            y={7}>
             {note.name}
           </text>
         ) : (
@@ -62,8 +58,7 @@ const NoteBlip = React.memo(({ note }) => {
                     fontSize={i === 0 ? 23 : 17}
                     textAnchor="middle"
                     x={-2 + (i * 12)}
-                    y={6 + (i * 5)}
-                  >
+                    y={6 + (i * 5)}>
                     {char}
                   </text>
                 ),

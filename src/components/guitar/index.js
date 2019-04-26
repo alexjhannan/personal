@@ -40,8 +40,7 @@ const Guitar = () => {
           ${FB_WIDTH + 50}
           ${FB_HEIGHT + 100}
         `}
-        aria-labelledby="title"
-      >
+        aria-labelledby="title">
         <title id="guitar" lang="en">
           Guitar Note Mapper
         </title>
@@ -52,8 +51,7 @@ const Guitar = () => {
         addAllNotes={() => dispatch({ type: ADD_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: REMOVE_ALL_NOTES })}
         triggerMajorScaleCurry={payload => () => dispatch({ type: TRIGGER_MAJOR_SCALE, payload })}
-        triggerMinorScaleCurry={payload => () => dispatch({ type: TRIGGER_MINOR_SCALE, payload })}
-      />
+        triggerMinorScaleCurry={payload => () => dispatch({ type: TRIGGER_MINOR_SCALE, payload })}/>
     </div>
   )
 }
