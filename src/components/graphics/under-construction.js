@@ -12,12 +12,23 @@ const SVG = styled(BaseSVG)`
 `
 
 const Group = styled.g`
-  cursor: pointer;
   user-select: none;
 `
 
+const Circle = styled.circle`
+  cursor: pointer;
+  transition: r 0.3s ease-in;
+  cx: 50;
+  cy: 50;
+  r: 50;
+  fill: var(--color-inverse);
+  &:hover {
+    r: 55;
+  }
+`
+
 const QUOTES = [
-  'Built with love in Brooklyn',
+  'Cilcking may enhance your experience',
   '50% more colors than bargain-brand sites',
   'Not a substitute for human interaction',
   'Made from 100% recycled pixels',
@@ -31,7 +42,7 @@ const UnderConstruction = () => {
 
   useEffect(() => {
     const tl = new TimelineMax()
-    tl.to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 0.1)
+    tl.to('#uc--mask-circle', 1, { attr: { r: 100 }, ease: Bounce.easeOut }, 0.1)
     return () => tl.kill()
   })
 
@@ -61,7 +72,7 @@ const UnderConstruction = () => {
             setQuoteCounter((quoteCounter + 1))
           }
         }}>
-        <rect x="-100" y="-100" width="400" height="400" fill="var(--color-inverse)" />
+        <Circle />
         <text x="50" y="40" fontSize="10">
           <tspan>UNDER</tspan>
           <tspan x="50" dy="10">CONSTRUCTION</tspan>
