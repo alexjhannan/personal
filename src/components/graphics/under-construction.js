@@ -11,24 +11,26 @@ const SVG = styled(BaseSVG)`
   width: 100%;
 `
 
-const Group = styled.g`
-  user-select: none;
-`
-
 const Circle = styled.circle`
-  cursor: pointer;
   transition: r 0.3s ease-in;
   cx: 50;
   cy: 50;
   r: 50;
   fill: var(--color-inverse);
+`
+
+const Group = styled.g`
+  user-select: none;
+  cursor: pointer;
   &:hover {
-    r: 55;
+    ${Circle} {
+      r: 55;
+    }
   }
 `
 
 const QUOTES = [
-  'Cilcking may enhance your experience',
+  'Cilcking may improve your experience',
   '50% more colors than bargain-brand sites',
   'Not a substitute for human interaction',
   'Made from 100% recycled pixels',

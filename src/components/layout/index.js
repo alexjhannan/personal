@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
@@ -31,6 +31,9 @@ const HeaderDivider = styled(BaseSVG)`
   position: absolute;
   top: 100%;
   fill: var(--color-inverse);
+  > path {
+    transition: opacity 0.3s ease-in;
+  }
 `
 
 const HeaderColumn = styled.div`
@@ -85,7 +88,7 @@ const HEADER_DIVIDER_SHAPES = [
 ]
 
 const Layout = ({ children, theme }) => {
-  const dividerShape = useMemo(() => getRandomElement(HEADER_DIVIDER_SHAPES), [])
+  const dividerIndex = Math.floor(Math.random() * HEADER_DIVIDER_SHAPES.length)
   return (
     <Container>
       <StyledHeader>
@@ -111,7 +114,13 @@ const Layout = ({ children, theme }) => {
           width="100vw"
           height="200px"
           preserveAspectRatio="none">
-          <path d={dividerShape} fill="var(--color-inverse)" />
+          {HEADER_DIVIDER_SHAPES.map((shapePath, i) => (
+            <path
+              key={shapePath.slice(10)}
+              d={shapePath}
+              fill="var(--color-inverse)"
+              opacity={i === dividerIndex ? 1 : 0} />
+          ))}
         </HeaderDivider>
       </StyledHeader>
       <StyledMain>
