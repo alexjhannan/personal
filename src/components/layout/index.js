@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
@@ -84,41 +84,44 @@ const HEADER_DIVIDER_SHAPES = [
   'M0,0 C25 50,75 50, 100 0',
 ]
 
-const Layout = ({ children, theme }) => (
-  <Container>
-    <StyledHeader>
-      <HeaderColumn>
-        <h3>alex hannan</h3>
-        <h6>(.com)</h6>
-      </HeaderColumn>
-      <Location>
-        {({ location }) => (
-          <>
-            { location.pathname !== '/' && (
+const Layout = ({ children, theme }) => {
+  const dividerShape = useMemo(() => getRandomElement(HEADER_DIVIDER_SHAPES), [])
+  return (
+    <Container>
+      <StyledHeader>
+        <HeaderColumn>
+          <h3>alex hannan</h3>
+          <h6>(.com)</h6>
+        </HeaderColumn>
+        <Location>
+          {({ location }) => (
+            <>
+              { location.pathname !== '/' && (
               <StyledLink to="/">
                 <h6>back to home</h6>
               </StyledLink>
-            )}
-          </>
-        )}
-      </Location>
-      <HeaderDivider
-        id="header-divider"
-        title="Header Divider"
-        viewBox="0 0 100 100"
-        width="100vw"
-        height="200px"
-        preserveAspectRatio="none">
-        <path d={getRandomElement(HEADER_DIVIDER_SHAPES)} fill="var(--color-inverse)" />
-      </HeaderDivider>
-    </StyledHeader>
-    <StyledMain>
-      <BodyWrapper theme={theme}>
-        {children}
-      </BodyWrapper>
-    </StyledMain>
-  </Container>
-)
+              )}
+            </>
+          )}
+        </Location>
+        <HeaderDivider
+          id="header-divider"
+          title="Header Divider"
+          viewBox="0 0 100 100"
+          width="100vw"
+          height="200px"
+          preserveAspectRatio="none">
+          <path d={dividerShape} fill="var(--color-inverse)" />
+        </HeaderDivider>
+      </StyledHeader>
+      <StyledMain>
+        <BodyWrapper theme={theme}>
+          {children}
+        </BodyWrapper>
+      </StyledMain>
+    </Container>
+  )
+}
 
 Layout.defaultProps = {
   theme: '',
