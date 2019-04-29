@@ -22,3 +22,12 @@ export function map2d(fn, grandparent) {
 export function getRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)]
 }
+
+export function gcd(a, b) {
+  return (b ? gcd(b, a % b) : a)
+}
+
+export function reduceFraction([numerator, denominator]) {
+  const factor = gcd(numerator, denominator)
+  return [numerator / factor, denominator / factor]
+}

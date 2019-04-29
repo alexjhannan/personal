@@ -1,7 +1,8 @@
 import React from 'react'
 import { func } from 'prop-types'
 import styled from 'styled-components'
-import ScaleButton from './scale-button'
+import GooeyRadialButton from '~components/gooey-radial-button'
+import { NOTE_NAMES } from './utils'
 
 const ControlGroup = styled.div`
   display: grid;
@@ -35,8 +36,22 @@ const Controls = ({
 }) => (
   <>
     <ControlGroup>
-      <ScaleButton scaleName="Major" scaleActionCurry={triggerMajorScaleCurry} />
-      <ScaleButton scaleName="Minor" scaleActionCurry={triggerMinorScaleCurry} />
+      <GooeyRadialButton
+        centerLabel="Major"
+        buttonDuples={
+          NOTE_NAMES.map(noteName => ({
+            label: noteName,
+            onClick: triggerMajorScaleCurry(noteName),
+          }))
+        } />
+      <GooeyRadialButton
+        centerLabel="Minor"
+        buttonDuples={
+          NOTE_NAMES.map(noteName => ({
+            label: noteName,
+            onClick: triggerMinorScaleCurry(noteName),
+          }))
+        } />
     </ControlGroup>
     <ControlGroup>
       <Button onClick={addAllNotes}>Add All Notes</Button>

@@ -1,20 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { func, number, string } from 'prop-types'
+import {
+  shape, string, arrayOf, func, number,
+} from 'prop-types'
 import { TimelineMax } from 'gsap'
 import BaseSVG from '~components/base-svg'
-import { NOTE_NAMES } from './utils'
 
 const SVG = styled(BaseSVG)`
   margin: 0 auto;
   display: block;
-  width: 150px;
+  width: 200px;
   font-family: Arvo;
 `
 
 const Circle = styled.circle`
   cursor: pointer;
-  transition: filter 0.3s ease-in;
+  transition: fill 0.3s ease-in;
   z-index: 10;
   &:hover {
     fill: var(--color-iGrey3);
@@ -27,9 +28,9 @@ const Text = styled.text`
 `
 
 const CircleButton = ({
-  onClick, x, y, text, r, className,
+  onClick, x, y, text, r, className, id,
 }) => (
-  <g transform={`translate(${x}, ${y})`} className={className}>
+  <g transform={`translate(${x}, ${y})`} className={className} id={id}>
     <Circle cx="0" cy="0" r={r} fill="var(--color-inverse)" onClick={onClick} />
     <Text x="0" y="25" textAnchor="middle" fill="white" fontSize="75">
       {text}
@@ -44,40 +45,51 @@ CircleButton.propTypes = {
   text: string.isRequired,
   r: number,
   className: string,
+  id: string,
 }
 
 CircleButton.defaultProps = {
   r: 80,
   className: '',
+  id: '',
 }
 
-const ScaleButton = ({ scaleName, scaleActionCurry }) => {
+const GooeyRadialButton = ({ centerLabel, buttonDuples, initialAngle }) => {
   const [isOpen, setOpen] = useState(false)
   const [timeline, setTimeline] = useState(null)
-  const noteGroupRef = useRef(null)
+  const parentRef = useRef(null)
 
   useEffect(() => {
     const tl = new TimelineMax({})
-    const initialAngle = 0
+    const duration = 0.3
+    const staggerOffset = 0.025
+    const centerButton = parentRef.current.children[1]
+    const radialButtons = parentRef.current.children[0].children
     tl.add('start')
-      .staggerTo(noteGroupRef.current.children, 0.3, {
+      .fromTo(
+        centerButton,
+        ((staggerOffset * buttonDuples.length) + (duration / 2)),
+        { scale: 1 },
+        { scale: 0.75, transformOrigin: '50% 50%' },
+        'start',
+      )
+      .staggerFromTo(radialButtons, duration, { x: 500, y: 500 }, {
         cycle: {
           x: (i) => {
-            const angleOffset = 2 * Math.PI * (i / 12)
+            const angleOffset = 2 * Math.PI * (i / buttonDuples.length)
             const netAngle = initialAngle + angleOffset
-            return (500 - (350 * Math.cos(netAngle)))
+            return (500 + (350 * Math.cos(netAngle)))
           },
           y: (i) => {
-            const angleOffset = 2 * Math.PI * (i / 12)
+            const angleOffset = 2 * Math.PI * (i / buttonDuples.length)
             const netAngle = initialAngle + angleOffset
-            return (500 - (350 * Math.sin(netAngle)))
+            return (500 + (350 * Math.sin(netAngle)))
           },
         },
-      }, '0.025')
-      .add('end')
+      }, '0.025', 'start')
     setTimeline(tl)
     return () => tl.kill()
-  }, [])
+  }, [buttonDuples.length, initialAngle])
 
   useEffect(() => {
     if (timeline) {
@@ -99,27 +111,34 @@ const ScaleButton = ({ scaleName, scaleActionCurry }) => {
         <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 17 -7" result="goo" />
         <feBlend in="SourceGraphic" in2="goo" />
       </filter>
-      <g filter="url(#goo)">
-        <g ref={noteGroupRef}>
-          {NOTE_NAMES.map(noteName => (
+      <g filter="url(#goo)" ref={parentRef}>
+        <g>
+          {buttonDuples.map(({ label, onClick }) => (
             <CircleButton
-              key={noteName}
-              text={noteName}
-              className="note-button"
+              key={label}
+              text={label}
               x={500}
               y={500}
-              onClick={scaleActionCurry(noteName)} />
+              onClick={onClick} />
           ))}
         </g>
-        <CircleButton x={500} y={500} onClick={() => setOpen(!isOpen)} r={150} text={scaleName} />
+        <CircleButton x={500} y={500} onClick={() => setOpen(!isOpen)} r={150} text={centerLabel} id="center-button" />
       </g>
     </SVG>
   )
 }
 
-ScaleButton.propTypes = {
-  scaleName: string.isRequired,
-  scaleActionCurry: func.isRequired,
+GooeyRadialButton.propTypes = {
+  centerLabel: string.isRequired,
+  buttonDuples: arrayOf(shape({
+    label: string.isRequired,
+    onClick: func.isRequired,
+  })).isRequired,
+  initialAngle: number,
 }
 
-export default ScaleButton
+GooeyRadialButton.defaultProps = {
+  initialAngle: Math.PI,
+}
+
+export default GooeyRadialButton
