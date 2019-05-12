@@ -2,93 +2,90 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import { Location } from '@reach/router'
-import BaseSVG from '~components/base-svg'
 import './reset.css'
+import { string } from 'prop-types'
 
 const StyledHeader = styled.header`
   background: var(--color-inverse);
   color: var(--color-iGrey0);
+  display: grid;
+  padding: 0 calc( var(--layout-gutter-width) / 2);
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+  }
+`
+
+const LeftColumn = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 60px;
-  margin-bottom: -24px;
-  padding-top: 12px;
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
+`
+
+const RightColumn = styled(LeftColumn)`
+  justify-content: flex-end;
+  @media (max-width: 600px) {
+    align-items: flex-start;
+  }
+`
+
+const NavLink = styled(Link)`
+  margin-right: 32px;
   position: relative;
-`
-
-const HeaderDivider = styled(BaseSVG)`
-  width: 100%;
-  height: 24px;
-  position: absolute;
-  top: 100%;
-  fill: var(--color-inverse);
-  > path {
-    transition: opacity 0.3s ease-in;
+  &:not(:last-of-type) {
+    &::after {
+      content: '*';
+      position: absolute;
+      right: -12px;
+      top: 67%;
+      width: 0;
+      line-height: 0;
+      pointer-events: none;
+      opacity: 0.7;
+    }
   }
 `
 
-const HeaderColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const StyledLink = styled(Link)`
-  margin-top: 0.25rem;
-  text-decoration: none;
-  transition: transform 0.5s ease-out;
-  will-change: transform;
-  color: var(--color-iGrey0);
-  margin-left: 5rem;
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
-const HEADER_DIVIDER_SHAPES = [
-  'M0,0 L50,75 L100,0',
-  'M0,0 L12.5,75, L25,50, L37.5,75, L50,50 L62.5,75, L75,50, L87.5,75, L100,0',
-  'M0,0 C0 100,100 100,100 0',
-  'M0,0 C25 50,75 50, 100 0',
-]
-
-const Header = () => {
-  const dividerIndex = Math.floor(Math.random() * HEADER_DIVIDER_SHAPES.length)
-  return (
-    <StyledHeader>
-      <HeaderColumn>
-        <h3>alex hannan</h3>
-        <h6>(.com)</h6>
-      </HeaderColumn>
+const Header = ({ className }) => (
+  <StyledHeader className={className}>
+    <LeftColumn>
       <Location>
         {({ location }) => (
           <>
-            { location.pathname !== '/' && (
-            <StyledLink to="/">
-              <h6>back to home</h6>
-            </StyledLink>
+            { location.pathname === '/' ? (
+              <h3>Alex Hannan</h3>
+            ) : (
+              <Link to="/">
+                <h3>Alex Hannan</h3>
+              </Link>
             )}
           </>
         )}
       </Location>
-      <HeaderDivider
-        id="header-divider"
-        title="Header Divider"
-        viewBox="0 0 100 100"
-        width="100vw"
-        height="200px"
-        preserveAspectRatio="none">
-        {HEADER_DIVIDER_SHAPES.map((shapePath, i) => (
-          <path
-            key={shapePath.slice(10)}
-            d={shapePath}
-            fill="var(--color-inverse)"
-            opacity={i === dividerIndex ? 1 : 0} />
-        ))}
-      </HeaderDivider>
-    </StyledHeader>
-  )
+    </LeftColumn>
+    <RightColumn>
+      <NavLink to="/tools">
+        <h4>Tools</h4>
+      </NavLink>
+      <NavLink to="/playground">
+        <h4>Playground</h4>
+      </NavLink>
+      <NavLink to="/concepts">
+        <h4>Concepts</h4>
+      </NavLink>
+    </RightColumn>
+  </StyledHeader>
+)
+
+Header.propTypes = {
+  className: string,
+}
+
+Header.defaultProps = {
+  className: '',
 }
 
 export default Header

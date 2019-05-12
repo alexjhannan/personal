@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Layout, { BodyWrapper } from '~components/layout'
+import Layout from '~components/layout'
 import SEO from '~components/seo'
 import UnderConstruction from '~components/graphics/under-construction'
 
@@ -75,7 +75,7 @@ const SECTIONS = [
 
 const GraphicContainer = styled.div`
   max-width: 250px;
-  margin: 60px auto -40px;
+  margin: 0 0 0 auto;
 `
 
 const SectionsContainer = styled.div`
@@ -131,18 +131,16 @@ LinkList.propTypes = {
 }
 
 const IndexPage = () => (
-  <Layout theme="fullwidth">
+  <Layout>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
+    <SectionsContainer>
+      { SECTIONS.map(sectionProps => (
+        <LinkList key={sectionProps.header} {...sectionProps} />
+      ))}
+    </SectionsContainer>
     <GraphicContainer>
       <UnderConstruction />
     </GraphicContainer>
-    <BodyWrapper>
-      <SectionsContainer>
-        { SECTIONS.map(sectionProps => (
-          <LinkList key={sectionProps.header} {...sectionProps} />
-        ))}
-      </SectionsContainer>
-    </BodyWrapper>
   </Layout>
 )
 
