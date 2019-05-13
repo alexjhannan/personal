@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
-import { Grid, Card } from '~components/card-grid'
+import { Grid, Card, CardTitle } from '~components/card-grid'
 
 const Heading = styled.h1`
   margin: 24px 0;
@@ -19,16 +19,24 @@ const FakeImg = styled.div`
 
 const TOYS = [{
   path: '/explosion',
-  title: 'Time-Traveling Explosion',
-  desc: 'Yadda yadda',
+  title: 'Time-Bound Explosion',
+  desc: `
+    A simple SVG animation hooked up to a timeline controller.
+  `,
 }, {
   path: '/web-dev-credits',
   title: 'Zoom-In Credits',
-  desc: 'Yadda yadda',
+  desc: `
+    Some play around the idea of animating an SVG's viewbox.
+  `,
 }, {
   path: '/gooey-radial-button',
   title: 'SVG Radial Button',
-  desc: 'Yadda yadda',
+  desc: `
+    The goeey SVG technique combines a blur filter and a contrast filter
+    for a unique web UI effect. I used this to create a radial button
+    out of SVGs that goop into each other. Play around with it here.
+  `,
 }]
 
 const Playground = () => (
@@ -42,7 +50,7 @@ const Playground = () => (
             <FakeImg />
           </Link>
           <div>
-            <h5>{toy.title}</h5>
+            <CardTitle>{toy.title}</CardTitle>
             <p>{toy.desc}</p>
           </div>
         </Card>

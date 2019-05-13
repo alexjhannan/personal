@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
-import { Grid, Card } from '~components/card-grid'
+import { Grid, Card, CardTitle } from '~components/card-grid'
 
 const Heading = styled.h1`
   margin: 24px 0;
@@ -19,12 +19,21 @@ const FakeImg = styled.div`
 
 const TOOLS = [{
   path: '/guitar',
-  title: 'Guitar',
-  desc: 'Yadda yadda',
+  title: 'Guitar Notes',
+  desc: `
+    I was looking for a reference tool that mapped out
+    notes on a guitar fretboard in a given scale. I couldn't find one
+    online that fit what I wanted — so I built one.
+    This tool is coded with hand-written SVGs
+    that are fully responsive across all viewports.
+    I also had a bit of fun adding a radial menu button
+    to handle the two-tier UI interaction of selecting a scale and a key.`,
 }, {
   path: '/color-palette',
   title: 'Color Palette',
-  desc: 'Yadda yadda',
+  desc: `
+    Every site needs a color palette.
+  `,
 }]
 
 const Tools = () => (
@@ -38,7 +47,7 @@ const Tools = () => (
             <FakeImg />
           </Link>
           <div>
-            <h5>{tool.title}</h5>
+            <CardTitle>{tool.title}</CardTitle>
             <p>{tool.desc}</p>
           </div>
         </Card>

@@ -1,119 +1,53 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
 import UnderConstruction from '~components/graphics/under-construction'
-
-const SECTIONS = [
-  {
-    header: 'Misc. Inspirations',
-    links: [
-      {
-        title: 'Broiled Chocolate Chip Cookies',
-        to: 'https://www.youtube.com/watch?v=OnGrHD1hRkk',
-      },
-      {
-        title: 'Cracked After Hours: TMNT and Temperamentalism',
-        to: 'https://www.youtube.com/watch?v=dtsmluPK7Ug',
-      },
-      {
-        title: 'Simon Sinek: Start With Why',
-        to: 'https://www.youtube.com/watch?v=sioZd3AxmnE',
-      },
-      {
-        title: 'This Particularly Epic Prince Solo',
-        to: 'https://www.youtube.com/watch?v=6SFNW5F8K9Y',
-      },
-      {
-        title: 'The Kuhn Cycle of Scientific Revolutions',
-        to: 'http://www.thwink.org/sustain/glossary/KuhnCycle.htm',
-      },
-      {
-        title: 'Carol Dweck: Fixed / Growth Mindsets',
-        to: 'https://www.brainpickings.org/2014/01/29/carol-dweck-mindset/',
-      },
-      {
-        title: 'Frontend Masters - JS Workshops',
-        to: 'https://www.frontendmasters.com',
-      },
-      {
-        title: 'Kurt Vonnegut on the Shape of Stories',
-        to: 'https://www.youtube.com/watch?v=GOGru_4z1Vc',
-      },
-      {
-        title: 'Jimquisition: The Perfect Pasta Sauce',
-        to: 'https://www.youtube.com/watch?v=irZ-159xsZY',
-      },
-    ],
-  },
-  {
-    header: 'More Profiles of Alex',
-    links: [
-      { to: 'https://www.github.com/alexjhannan', title: 'Github' },
-      { to: 'https://www.linkedin.com/in/alexjhannan', title: 'LinkedIn' },
-    ],
-  },
-]
+import LinkList from '~components/link-list'
 
 const GraphicContainer = styled.div`
-  max-width: 250px;
-  margin: 48px auto;
+  background: black;
 `
 
-const ListHeader = styled.h3`
-  margin: 1.45rem 0 0;
+const GraphicWrapper = styled.div`
+  max-width: 50vw;
+  margin: 0 auto;
+  padding: 48px 0;
 `
 
-const List = styled.ul`
-  list-style: none;
-  margin: 0;
+const AboutHeader = styled.h3`
+  margin: 1rem 0 0.5rem;
 `
 
-const ListItem = styled.li`
-  margin: 0;
+const BodyWrapper = styled.div`
+  padding: 0 var(--layout-gutter-width);
 `
-
-const LinkList = ({ header, links }) => (
-  <div>
-    <ListHeader>
-      {header}
-    </ListHeader>
-    <List>
-      {links.map(({ to, title }) => (
-        <ListItem key={title}>
-          {/^http/.test(to) ? (
-            <a href={to} target="_blank" rel="noopener noreferrer">{title}</a>
-          ) : (
-            <Link to={to}>{title}</Link>
-          )}
-        </ListItem>
-      ))}
-    </List>
-  </div>
-)
-
-LinkList.propTypes = {
-  header: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      to: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-}
 
 const IndexPage = () => (
-  <Layout>
+  <Layout theme="fullwidth">
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
     <GraphicContainer>
-      <UnderConstruction />
+      <GraphicWrapper>
+        <UnderConstruction />
+      </GraphicWrapper>
     </GraphicContainer>
-    { SECTIONS.map(sectionProps => (
-      <LinkList key={sectionProps.header} {...sectionProps} />
-    ))}
+    <BodyWrapper>
+      <AboutHeader>About Me</AboutHeader>
+      <p>
+        Alex is a web developer living in Brooklyn. Trained as a natural scientist,
+        he taught himself how to code, bootstrapped himself into a career in technology,
+        and has been building cutting-edge React applications for NY startups for the past
+        three years. From JavaScript to Ruby, yoga to kickboxing, or transcendental meditation
+        to self-relational psychology, Alex is into a bit of just about anything.
+      </p>
+      <LinkList
+        header="Looking for more of me?"
+        links={[
+          { to: 'https://www.github.com/alexjhannan', title: 'My Github' },
+          { to: 'https://www.linkedin.com/in/alexjhannan', title: 'My LinkedIn' },
+        ]} />
+    </BodyWrapper>
   </Layout>
 )
 

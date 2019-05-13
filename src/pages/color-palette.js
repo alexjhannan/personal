@@ -76,7 +76,7 @@ const GrayScale = ({ baseColor }) => (
           background: `var(--color-${baseColor}${i})`,
           color: '#000012',
         }}>
-        {`--color-pGrey${i}`}
+        {`--color-${baseColor}${i}`}
       </ColorSwatch>
     ))}
   </GrayScaleGrid>

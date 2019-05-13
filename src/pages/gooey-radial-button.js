@@ -31,7 +31,7 @@ const GooeyRadialPage = () => {
   return (
     <Layout>
       <GooeyRadialButton
-        centerLabel="click"
+        centerLabel="Boop"
         buttonDuples={
           ' '.repeat(buttonCount).split('').map((_, i) => ({
             label: (i + 1).toString(),

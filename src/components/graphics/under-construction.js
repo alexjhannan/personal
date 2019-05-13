@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { TimelineMax, Bounce } from 'gsap'
 import styled from 'styled-components'
+import { string } from 'prop-types'
 import BaseSVG from '~components/base-svg'
 
 const SVG = styled(BaseSVG)`
@@ -39,26 +40,28 @@ const QUOTES = [
   '\\ [T] /',
 ]
 
-const UnderConstruction = () => {
+const UnderConstruction = ({ width }) => {
   const [quoteCounter, setQuoteCounter] = useState(0)
 
   useEffect(() => {
     const tl = new TimelineMax()
-    tl.to('#uc--mask-circle', 1, { attr: { r: 100 }, ease: Bounce.easeOut }, 0.1)
+    tl.to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 0.1)
     return () => tl.kill()
   })
 
   useEffect(() => { // eslint-disable-line
     if (quoteCounter === QUOTES.length - 1) {
       const tl = new TimelineMax()
-      tl.to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
-        .to('#under-construction', 0.5, { height: 0, width: 0 })
+      tl.set('#under-construction', { pointerEvents: 'none' })
+        .to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
+        .set('#under-construction', { pointerEvents: 'all', onComplete: () => { setQuoteCounter(0) } })
+        .to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 3)
       return () => tl.kill()
     }
   })
 
   return (
-    <SVG id="under-construction" title="Under Construction" viewBox="0 0 100 100" width="100%">
+    <SVG id="under-construction" title="Under Construction" viewBox="0 0 100 100" width={width}>
       <defs>
         <mask id="uc--mask">
           <circle id="uc--mask-circle" cx="50%" cy="50%" r="0" fill="white" />
@@ -86,6 +89,15 @@ const UnderConstruction = () => {
       </Group>
     </SVG>
   )
+}
+
+
+UnderConstruction.propTypes = {
+  width: string,
+}
+
+UnderConstruction.defaultProps = {
+  width: '100px',
 }
 
 export default UnderConstruction

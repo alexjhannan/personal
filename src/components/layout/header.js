@@ -72,13 +72,13 @@ const Header = ({ className }) => (
     </LeftColumn>
     <RightColumn>
       <NavLink to="/tools">
-        <h3>Tools</h3>
+        <h4>Tools</h4>
       </NavLink>
       <NavLink to="/playground">
-        <h3>Playground</h3>
+        <h4>Playground</h4>
       </NavLink>
       <NavLink to="/concepts">
-        <h3>Concepts</h3>
+        <h4>Concepts</h4>
       </NavLink>
     </RightColumn>
   </StyledHeader>
