@@ -9,21 +9,6 @@ import UnderConstruction from '~components/graphics/under-construction'
 
 const SECTIONS = [
   {
-    header: 'Tools and Concepts',
-    links: [
-      { to: '/guitar', title: 'Guitar Scale Map' },
-      { to: '/color-palette', title: 'Site Color Palette' },
-    ],
-  },
-  {
-    header: 'Animation Playground',
-    links: [
-      { to: '/explosion-play', title: 'Explosion' },
-      { to: '/web-dev-credits', title: 'Web Dev Credits' },
-      { to: '/gooey-radial-button', title: 'Gooey Radial Button' },
-    ],
-  },
-  {
     header: 'Misc. Inspirations',
     links: [
       {
@@ -75,17 +60,7 @@ const SECTIONS = [
 
 const GraphicContainer = styled.div`
   max-width: 250px;
-  margin: 0 0 0 auto;
-`
-
-const SectionsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-tempalte-rows: 1fr;
-
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-  }
+  margin: 48px auto;
 `
 
 const ListHeader = styled.h3`
@@ -133,14 +108,12 @@ LinkList.propTypes = {
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
-    <SectionsContainer>
-      { SECTIONS.map(sectionProps => (
-        <LinkList key={sectionProps.header} {...sectionProps} />
-      ))}
-    </SectionsContainer>
     <GraphicContainer>
       <UnderConstruction />
     </GraphicContainer>
+    { SECTIONS.map(sectionProps => (
+      <LinkList key={sectionProps.header} {...sectionProps} />
+    ))}
   </Layout>
 )
 

@@ -12,6 +12,9 @@ module.exports = {
       options: {
         fonts: [
           {
+            family: 'Dancing Script',
+          },
+          {
             family: 'Arvo',
           },
           {

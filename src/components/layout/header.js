@@ -49,6 +49,10 @@ const NavLink = styled(Link)`
   }
 `
 
+const DisplayText = styled.h1`
+  font-family: var(--display-font-stack);
+`
+
 const Header = ({ className }) => (
   <StyledHeader className={className}>
     <LeftColumn>
@@ -56,10 +60,10 @@ const Header = ({ className }) => (
         {({ location }) => (
           <>
             { location.pathname === '/' ? (
-              <h3>Alex Hannan</h3>
+              <DisplayText>Alex Hannan</DisplayText>
             ) : (
               <Link to="/">
-                <h3>Alex Hannan</h3>
+                <DisplayText>Alex Hannan</DisplayText>
               </Link>
             )}
           </>
@@ -68,13 +72,13 @@ const Header = ({ className }) => (
     </LeftColumn>
     <RightColumn>
       <NavLink to="/tools">
-        <h4>Tools</h4>
+        <h3>Tools</h3>
       </NavLink>
       <NavLink to="/playground">
-        <h4>Playground</h4>
+        <h3>Playground</h3>
       </NavLink>
       <NavLink to="/concepts">
-        <h4>Concepts</h4>
+        <h3>Concepts</h3>
       </NavLink>
     </RightColumn>
   </StyledHeader>

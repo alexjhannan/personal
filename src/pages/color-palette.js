@@ -37,7 +37,6 @@ const ColorSwatch = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-family: Arvo;
 `
 
 const PrimarySwatch = styled(ColorSwatch)`

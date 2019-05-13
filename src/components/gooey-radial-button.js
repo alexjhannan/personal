@@ -10,7 +10,8 @@ const SVG = styled(BaseSVG)`
   margin: 0 auto;
   display: block;
   width: 200px;
-  font-family: Arvo;
+  font-family: var(--display-font-stack);
+  font-weight: bold;
 `
 
 const Circle = styled.circle`

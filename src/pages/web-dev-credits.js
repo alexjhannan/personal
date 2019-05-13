@@ -13,11 +13,11 @@ const Container = styled.div`
 `
 
 const SVG = styled(BaseSVG)`
-  width: 100%;
   display: block;
   background: var(--color-primary);
   user-select: none;
-  max-height: calc(100vh - (60px));
+  width: 100%;
+  max-height: calc(100vh - 384px);
 `
 
 const NameAnimationV2 = () => {
