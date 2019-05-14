@@ -80,7 +80,7 @@ function slowCalculateMinorScaleNotes(scaleRoot) {
   ]
 }
 
-export function initializeNoteMap(initialTheme = 'hidden') {
+export function initializeNoteMap() {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
   const initialNoteMap = []
   let string = 0
@@ -91,7 +91,7 @@ export function initializeNoteMap(initialTheme = 'hidden') {
       stringArray.push({
         string,
         fret,
-        theme: initialTheme,
+        scaleIndex: -1,
         name: calculateNoteName(string, fret),
       })
       fret += 1

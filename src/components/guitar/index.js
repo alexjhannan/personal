@@ -4,10 +4,10 @@ import { TimelineMax } from 'gsap'
 import { FB_HEIGHT, FB_WIDTH } from './utils'
 import {
   useGuitarReducer,
+  GuitarContext,
   ADD_ALL_NOTES,
   REMOVE_ALL_NOTES,
-  TRIGGER_MAJOR_SCALE,
-  TRIGGER_MINOR_SCALE,
+  TRIGGER_SCALE,
 } from './state'
 import FretsAndStrings from './frets-and-strings'
 import NoteDisplay from './note-display'
@@ -19,11 +19,18 @@ const GuitarContainer = styled.svg`
   visibility: hidden;
   user-select: none;
   background: var(--color-pGrey4);
+  padding: 24px 0;
 `
 
 const Guitar = () => {
   const [state, dispatch] = useGuitarReducer()
-  const { noteMap } = state
+  const {
+    noteMap,
+    scaleType,
+    scaleKey,
+    scaleNotes,
+    scaleColors,
+  } = state
 
   useEffect(() => {
     const tl = new TimelineMax({})
@@ -31,7 +38,9 @@ const Guitar = () => {
   })
 
   return (
-    <div>
+    <GuitarContext.Provider value={{
+      scaleType, scaleKey, scaleNotes, scaleColors,
+    }}>
       <GuitarContainer
         id="guitar"
         viewBox={`
@@ -50,9 +59,8 @@ const Guitar = () => {
       <Controls
         addAllNotes={() => dispatch({ type: ADD_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: REMOVE_ALL_NOTES })}
-        triggerMajorScaleCurry={payload => () => dispatch({ type: TRIGGER_MAJOR_SCALE, payload })}
-        triggerMinorScaleCurry={payload => () => dispatch({ type: TRIGGER_MINOR_SCALE, payload })}/>
-    </div>
+        triggerScaleCurry={payload => () => dispatch({ type: TRIGGER_SCALE, payload })} />
+    </GuitarContext.Provider>
   )
 }
 

@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { TimelineMax } from 'gsap'
 import { arrayOf, shape } from 'prop-types'
+import { GuitarContext } from './state'
 import NoteBlip from './note-blip'
 
 const NoteDisplay = ({ noteMap }) => {
+  const { scaleColors } = useContext(GuitarContext)
   useEffect(() => {
     const tl = new TimelineMax({})
     tl.add('start')
@@ -20,7 +22,7 @@ const NoteDisplay = ({ noteMap }) => {
             <NoteBlip
               key={`note-${j}`} // eslint-disable-line
               note={note}
-            />
+              fill={scaleColors[note.scaleIndex] || 'black'} />
           ))}
         </React.Fragment>
       ))}

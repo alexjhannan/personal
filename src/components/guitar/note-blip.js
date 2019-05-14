@@ -1,28 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { string, shape, number } from 'prop-types'
 import cx from 'classnames'
 import { fretPosition, stringPosition } from './utils'
-
-const BG_MAP = {
-  root: '#ffa500',
-  third: '#4ca64c',
-  fifth: '#800080',
-  default: '#222',
-}
 
 const G = styled.g`
   transform: translate(${props => `${props.x}px, ${props.y}`}px);
   opacity: 0;
 `
 
-const NoteBlip = React.memo(({ note }) => {
+const NoteBlip = ({ note, fill }) => {
   const groupClasses = cx({
-    'note-active': note.theme !== 'hidden',
-    'note-hidden': note.theme === 'hidden',
+    'note-active': note.scaleIndex !== -1,
+    'note-hidden': note.scaleIndex === -1,
   })
-
-  const noteBackground = BG_MAP[note.theme] || BG_MAP.default
 
   return (
     <G
@@ -34,7 +25,7 @@ const NoteBlip = React.memo(({ note }) => {
         cx={0}
         cy={0}
         r="20"
-        fill={noteBackground}/>
+        fill={fill} />
       {
         note.name.length === 1 ? (
           <text
@@ -69,14 +60,14 @@ const NoteBlip = React.memo(({ note }) => {
       }
     </G>
   )
-}, (prevProps, nextProps) => prevProps.theme !== nextProps.theme)
+}
 
 NoteBlip.propTypes = {
   note: shape({
     string: number,
     fret: number,
-    theme: string,
   }).isRequired,
+  fill: string.isRequired,
 }
 
 export default NoteBlip

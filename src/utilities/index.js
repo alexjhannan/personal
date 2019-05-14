@@ -31,3 +31,9 @@ export function reduceFraction([numerator, denominator]) {
   const factor = gcd(numerator, denominator)
   return [numerator / factor, denominator / factor]
 }
+
+function slowGenerateColorArray(length, saturation, lightness) {
+  return ' '.repeat(length).split('').map((_, i) => `hsl(${Math.round((i / length) * 360)},${saturation},${lightness})`)
+}
+
+export const generateColorArray = memoize(slowGenerateColorArray)

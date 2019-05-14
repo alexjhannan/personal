@@ -31,8 +31,7 @@ const Button = styled.button`
 const Controls = ({
   addAllNotes,
   removeAllNotes,
-  triggerMajorScaleCurry,
-  triggerMinorScaleCurry,
+  triggerScaleCurry,
 }) => (
   <>
     <ControlGroup>
@@ -41,7 +40,7 @@ const Controls = ({
         buttonDuples={
           NOTE_NAMES.map(noteName => ({
             label: noteName,
-            onClick: triggerMajorScaleCurry(noteName),
+            onClick: triggerScaleCurry({ key: noteName, scale: 'major' }),
           }))
         } />
       <GooeyRadialButton
@@ -49,7 +48,7 @@ const Controls = ({
         buttonDuples={
           NOTE_NAMES.map(noteName => ({
             label: noteName,
-            onClick: triggerMinorScaleCurry(noteName),
+            onClick: triggerScaleCurry({ key: noteName, scale: 'minor' }),
           }))
         } />
     </ControlGroup>
@@ -65,8 +64,7 @@ const Controls = ({
 Controls.propTypes = {
   addAllNotes: func.isRequired,
   removeAllNotes: func.isRequired,
-  triggerMajorScaleCurry: func.isRequired,
-  triggerMinorScaleCurry: func.isRequired,
+  triggerScaleCurry: func.isRequired,
 }
 
 export default Controls

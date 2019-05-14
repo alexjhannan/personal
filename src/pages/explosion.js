@@ -21,10 +21,6 @@ const ExplosionSVG = styled(BaseSVG)`
   border-radius: 50%;
 `
 
-const GearSVG = styled(BaseSVG)`
-  width: 100%;
-`
-
 const GearWidget = styled.g`
   cursor: pointer;
 `
@@ -32,7 +28,7 @@ const GearWidget = styled.g`
 const ExplosionPlay = () => {
   useEffect(() => {
     const tl = new TimelineMax({ repeat: -1, yoyo: true })
-    tl.set('#gear > .widget', { transformOrigin: '50% 50%' })
+    tl.set('#explosion--control', { transformOrigin: '50% 50%' })
       .add('init')
       .to('.circle-inside', 1, { fill: 'orange', attr: { r: 5 }, ease: Bounce.easeOut }, 'init')
       .to('.circle-outline', 1, { stroke: 'red' }, 'init+=0.5')
@@ -50,16 +46,17 @@ const ExplosionPlay = () => {
       )
       .to('.line', 0.1, { opacity: 1 })
       .to(
-        '#explosion',
+        '.line',
         0.25,
         {
-          attr: { viewBox: '49 49 2 2' },
+          strokeWidth: 2,
+          scale: 3,
           ease: Expo.easeOut,
         },
       )
-      .to('#explosion', 0.3, { opacity: 0 })
+      .to('.lines, .circle-inside, .circle-outside', 0.3, { opacity: 0 })
 
-    Draggable.create('#gear > .widget', {
+    Draggable.create('#explosion--control', {
       type: 'rotation',
       onDragStart() {
         tl.pause()
@@ -80,9 +77,16 @@ const ExplosionPlay = () => {
       <Container>
         <ExplosionSVG
           id="explosion"
-          viewBox="0 0 100 100"
+          viewBox="0 0 200 100"
           aria-labelledby="title"
           title="Explosion Animation">
+          <path
+            className="connecting-wire"
+            stroke="currentColor"
+            fill="none"
+            strokeLinejoin="round"
+            d="M150,50 C148.13,64.26 139.30,70.48 123.52,68.62 C99.84,65.83 85.51,74.83 83.02,70.17 C80.53,65.52 91.43,62.41 93.93,65.52 C96.42,68.62 93.30,79.79 50,70.17" />
+          <circle className="circle-outline" cx="50" cy="50" r="30" fill="#e8e8e8" stroke="currentColor" />
           <g className="lines" stroke="currentColor" strokeLinecap="round" strokeDasharray="2.4">
             {
               'abcdefghij'.split('').map(keyChar => (
@@ -91,20 +95,13 @@ const ExplosionPlay = () => {
             }
           </g>
           <circle className="circle-inside" cx="50" cy="50" r="30" fill="currentColor" />
-          <circle className="circle-outline" cx="50" cy="50" r="30" fill="none" stroke="currentColor" />
-        </ExplosionSVG>
-        <GearSVG
-          id="gear"
-          viewBox="0 0 100 100"
-          aria-labelledby="title"
-          title="Explosion Wind-Up Gear">
-          <text x="50" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
-          <GearWidget className="widget">
-            <circle cx="50" cy="50" r="20" fill="#e8e8e8" stroke="black" />
-            <path d="M50,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
-            <circle cx="50" cy="50" r="2.5" fill="black" />
+          <text x="150" y="25" textAnchor="middle" fontSize="5">Spin me!</text>
+          <GearWidget id="explosion--control">
+            <circle cx="150" cy="50" r="20" fill="#e8e8e8" stroke="black" />
+            <path d="M150,50 v-10 m1.5,0 h-3" stroke="black" strokeWidth="1" strokeLinecap="round" />
+            <circle cx="150" cy="50" r="2.5" fill="black" />
           </GearWidget>
-        </GearSVG>
+        </ExplosionSVG>
       </Container>
     </Layout>
   )
