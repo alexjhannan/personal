@@ -3,6 +3,7 @@ import { memoize } from '~utilities'
 export const SCALE_LENGTH = 2550
 export const FB_WIDTH = 1780
 export const FB_HEIGHT = 200
+
 export const NOTE_NAMES = [
   'A',
   'A#',
@@ -25,6 +26,11 @@ export const TUNING_STD = {
   3: 'D',
   4: 'A',
   5: 'E',
+}
+
+export const SCALE_PITCHES = {
+  major: [0, 2, 4, 5, 7, 9, 11],
+  minor: [0, 2, 3, 5, 7, 9, 11],
 }
 
 function slowFretPosition(fretIndex) {
@@ -56,28 +62,8 @@ function calculateNoteName(stringNumber, fretNumber) {
   return semitoneUp(stringRoot, fretNumber)
 }
 
-function slowCalculateMajorScaleNotes(scaleRoot) {
-  return [
-    scaleRoot,
-    semitoneUp(scaleRoot, 2),
-    semitoneUp(scaleRoot, 4),
-    semitoneUp(scaleRoot, 5),
-    semitoneUp(scaleRoot, 7),
-    semitoneUp(scaleRoot, 9),
-    semitoneUp(scaleRoot, 11),
-  ]
-}
-
-function slowCalculateMinorScaleNotes(scaleRoot) {
-  return [
-    scaleRoot,
-    semitoneUp(scaleRoot, 2),
-    semitoneUp(scaleRoot, 3),
-    semitoneUp(scaleRoot, 5),
-    semitoneUp(scaleRoot, 7),
-    semitoneUp(scaleRoot, 9),
-    semitoneUp(scaleRoot, 11),
-  ]
+function slowCalculateScaleNotes(scaleRoot, scaleType) {
+  return SCALE_PITCHES[scaleType].map(interval => semitoneUp(scaleRoot, interval))
 }
 
 export function initializeNoteMap() {
@@ -102,7 +88,11 @@ export function initializeNoteMap() {
   return initialNoteMap
 }
 
+function slowGenerateColorArray(length, saturation, lightness) {
+  return ' '.repeat(length).split('').map((_, i) => `hsl(${(Math.round((i / length) * 360))},${saturation},${lightness})`)
+}
+
 export const fretPosition = memoize(slowFretPosition)
 export const stringPosition = memoize(slowStringPosition)
-export const calculateMajorScaleNotes = memoize(slowCalculateMajorScaleNotes)
-export const calculateMinorScaleNotes = memoize(slowCalculateMinorScaleNotes)
+export const calculateScaleNotes = memoize(slowCalculateScaleNotes)
+export const generateColorArray = memoize(slowGenerateColorArray)

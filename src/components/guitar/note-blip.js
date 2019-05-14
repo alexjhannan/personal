@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { string, shape, number } from 'prop-types'
 import cx from 'classnames'

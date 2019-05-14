@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
-import { map2d, generateColorArray } from '~utilities'
-import { initializeNoteMap, calculateMajorScaleNotes, calculateMinorScaleNotes } from './utils'
+import { map2d } from '~utilities'
+import { initializeNoteMap, calculateScaleNotes, generateColorArray } from './utils'
 
 const initialGuitarContext = {
   scaleType: '',
@@ -33,18 +33,8 @@ function reducer(state, action) {
     case TRIGGER_SCALE:
       nextState.scaleKey = action.payload.key
       nextState.scaleType = action.payload.scale
-      switch (nextState.scaleType) {
-        case 'major':
-          nextState.scaleNotes = calculateMajorScaleNotes(nextState.scaleKey)
-          nextState.scaleColors = generateColorArray(7, '60%', '30%')
-          break
-        case 'minor':
-          nextState.scaleNotes = calculateMinorScaleNotes(nextState.scaleKey)
-          nextState.scaleColors = generateColorArray(7, '60%', '30%')
-          break
-        default:
-          throw new Error('Triggering a scale has failed - unsupported scale requested.')
-      }
+      nextState.scaleNotes = calculateScaleNotes(nextState.scaleKey, nextState.scaleType)
+      nextState.scaleColors = generateColorArray(nextState.scaleNotes.length, '60%', '37%')
       nextState.noteMap = map2d(note => ({
         ...note,
         scaleIndex: nextState.scaleNotes.indexOf(note.name),
