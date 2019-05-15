@@ -68,9 +68,9 @@ function slowCalculateScaleNotes(scaleRoot, scaleType) {
   return SCALES[scaleType].map(interval => semitoneUp(scaleRoot, interval))
 }
 
-export function initializeNoteMap() {
+export function createNoteMap() {
   // returns a 2d noteMap -- noteMap[0][2] stores the note on the second fret of the first string
-  const initialNoteMap = []
+  const noteMap = []
   let string = 0
   while (string < 6) {
     const stringArray = []
@@ -79,15 +79,14 @@ export function initializeNoteMap() {
       stringArray.push({
         string,
         fret,
-        scaleIndex: -1,
         name: calculateNoteName(string, fret),
       })
       fret += 1
     }
-    initialNoteMap.push(stringArray)
+    noteMap.push(stringArray)
     string += 1
   }
-  return initialNoteMap
+  return noteMap
 }
 
 function slowGenerateColorArray(length, saturation = '60%', lightness = '37%') {

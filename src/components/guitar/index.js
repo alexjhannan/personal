@@ -28,7 +28,6 @@ const GuitarContainer = styled.svg`
 const Guitar = () => {
   const [state, dispatch] = useGuitarReducer()
   const {
-    noteMap,
     scaleType,
     scaleKey,
     scaleNotes,
@@ -57,7 +56,7 @@ const Guitar = () => {
           Guitar Note Mapper
         </title>
         <FretsAndStrings />
-        <NoteDisplay noteMap={noteMap} />
+        <NoteDisplay />
       </GuitarContainer>
       <Legend />
       <Controls

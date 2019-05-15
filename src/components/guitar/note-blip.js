@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { string, shape, number } from 'prop-types'
+import {
+  string, shape, number, bool,
+} from 'prop-types'
 import cx from 'classnames'
 import { fretPosition, stringPosition } from './utils'
 
@@ -8,10 +10,14 @@ const G = styled.g`
   transform: translate(${props => `${props.x}px, ${props.y}`}px);
 `
 
-const NoteBlip = ({ note, fill }) => {
+const Circle = styled.circle`
+  transition: fill 0.25s ease-in;
+`
+
+const NoteBlip = ({ note, fill, hidden }) => {
   const groupClasses = cx({
-    'note-active': note.scaleIndex !== -1,
-    'note-hidden': note.scaleIndex === -1,
+    'note-active': !hidden,
+    'note-hidden': hidden,
   })
 
   return (
@@ -20,7 +26,7 @@ const NoteBlip = ({ note, fill }) => {
       fill="none"
       x={typeof note.fret === 'number' ? fretPosition(note.fret) - 24 : 0}
       y={typeof note.string === 'number' ? stringPosition(note.string) : 0}>
-      <circle
+      <Circle
         cx={0}
         cy={0}
         r="20"
@@ -68,10 +74,12 @@ NoteBlip.propTypes = {
     name: string.isRequired,
   }).isRequired,
   fill: string,
+  hidden: bool,
 }
 
 NoteBlip.defaultProps = {
   fill: 'black',
+  hidden: false,
 }
 
 export default NoteBlip

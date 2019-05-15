@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react'
 import { map2d } from '~utilities'
 import {
-  initializeNoteMap, calculateScaleNotes, generateColorArray, NOTES, SCALES,
+  createNoteMap, calculateScaleNotes, generateColorArray, NOTES, SCALES,
 } from './utils'
 
 const initialScaleKey = NOTES[3] // C
@@ -28,46 +28,26 @@ function reducer(state, action) {
     case RESET:
       nextState.scaleNotes = []
       nextState.scaleColors = []
-      nextState.noteMap = map2d(note => ({
-        ...note,
-        scaleIndex: -1,
-      }), state.noteMap)
       return nextState
     case SHOW_ALL_NOTES:
       nextState.scaleNotes = []
       nextState.scaleColors = []
-      nextState.noteMap = map2d(note => ({
-        ...note,
-        scaleIndex: 1,
-      }), state.noteMap)
       return nextState
     case TRIGGER_SCALE:
       nextState.scaleKey = action.payload.key
       nextState.scaleType = action.payload.scale
       nextState.scaleNotes = calculateScaleNotes(nextState.scaleKey, nextState.scaleType)
       nextState.scaleColors = generateColorArray(nextState.scaleNotes.length)
-      nextState.noteMap = map2d(note => ({
-        ...note,
-        scaleIndex: nextState.scaleNotes.indexOf(note.name),
-      }), state.noteMap)
       return nextState
     case SET_SCALE_TYPE:
       nextState.scaleType = action.payload
       nextState.scaleNotes = calculateScaleNotes(nextState.scaleKey, nextState.scaleType)
       nextState.scaleColors = generateColorArray(nextState.scaleNotes.length)
-      nextState.noteMap = map2d(note => ({
-        ...note,
-        scaleIndex: nextState.scaleNotes.indexOf(note.name),
-      }), state.noteMap)
       return nextState
     case SET_SCALE_KEY:
       nextState.scaleKey = action.payload
       nextState.scaleNotes = calculateScaleNotes(nextState.scaleKey, nextState.scaleType)
       nextState.scaleColors = generateColorArray(nextState.scaleNotes.length)
-      nextState.noteMap = map2d(note => ({
-        ...note,
-        scaleIndex: nextState.scaleNotes.indexOf(note.name),
-      }), state.noteMap)
       return nextState
     default:
       throw new Error()
@@ -77,7 +57,6 @@ function reducer(state, action) {
 export const useGuitarReducer = () => useReducer(
   reducer,
   {
-    noteMap: initializeNoteMap(),
     ...initialGuitarContext,
   },
 )
