@@ -4,7 +4,7 @@ export const SCALE_LENGTH = 2550
 export const FB_WIDTH = 1780
 export const FB_HEIGHT = 200
 
-export const NOTE_NAMES = [
+export const NOTES = [
   'A',
   'A#',
   'B',
@@ -28,9 +28,11 @@ export const TUNING_STD = {
   5: 'E',
 }
 
-export const SCALE_PITCHES = {
-  major: [0, 2, 4, 5, 7, 9, 11],
-  minor: [0, 2, 3, 5, 7, 9, 11],
+export const SCALES = {
+  Major: [0, 2, 4, 5, 7, 9, 11],
+  Minor: [0, 2, 3, 5, 7, 9, 11],
+  'Major Pentatonic': [0, 2, 4, 7, 9],
+  'Minor Pentatonic': [0, 3, 5, 7, 10],
 }
 
 function slowFretPosition(fretIndex) {
@@ -53,8 +55,8 @@ function slowStringPosition(stringIndex) {
 }
 
 function semitoneUp(rootNote, semitones) {
-  const rootIndex = NOTE_NAMES.indexOf(rootNote)
-  return NOTE_NAMES[(rootIndex + semitones) % 12]
+  const rootIndex = NOTES.indexOf(rootNote)
+  return NOTES[(rootIndex + semitones) % 12]
 }
 
 function calculateNoteName(stringNumber, fretNumber) {
@@ -63,7 +65,7 @@ function calculateNoteName(stringNumber, fretNumber) {
 }
 
 function slowCalculateScaleNotes(scaleRoot, scaleType) {
-  return SCALE_PITCHES[scaleType].map(interval => semitoneUp(scaleRoot, interval))
+  return SCALES[scaleType].map(interval => semitoneUp(scaleRoot, interval))
 }
 
 export function initializeNoteMap() {
@@ -88,7 +90,7 @@ export function initializeNoteMap() {
   return initialNoteMap
 }
 
-function slowGenerateColorArray(length, saturation, lightness) {
+function slowGenerateColorArray(length, saturation = '60%', lightness = '37%') {
   return ' '.repeat(length).split('').map((_, i) => `hsl(${(Math.round((i / length) * 360))},${saturation},${lightness})`)
 }
 

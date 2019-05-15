@@ -1,14 +1,17 @@
 import React from 'react'
 import { func } from 'prop-types'
 import styled from 'styled-components'
-import GooeyRadialButton from '~components/gooey-radial-button'
-import { NOTE_NAMES } from './utils'
+import { NOTES, SCALES } from './utils'
+
+const Container = styled.div`
+  margin: 40px var(--layout-gutter-width);
+`
 
 const ControlGroup = styled.div`
   display: grid;
-  grid-template: 1fr / repeat(2, 1fr);
-  grid-gap: 10px;
-  margin: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-gap: 40px;
+  margin: 40px 0;
 `
 
 const Button = styled.button`
@@ -26,45 +29,59 @@ const Button = styled.button`
     background: var(--color-primary);
     color: var(--color-iGrey0);
   }
+  &:not(:first-of-type) {
+    margin: 0 0 0 16px;
+  }
+`
+
+const LabelText = styled.span`
+  display: block;
+  font-weight: bold;
+  margin: 0 0 4px;
+  letter-spacing: 0.3px;
+`
+
+const Select = styled.select`
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
 `
 
 const Controls = ({
   addAllNotes,
   removeAllNotes,
-  triggerScaleCurry,
+  setScaleType,
+  setScaleKey,
 }) => (
-  <>
+  <Container>
     <ControlGroup>
-      <GooeyRadialButton
-        centerLabel="Major"
-        buttonDuples={
-          NOTE_NAMES.map(noteName => ({
-            label: noteName,
-            onClick: triggerScaleCurry({ key: noteName, scale: 'major' }),
-          }))
-        } />
-      <GooeyRadialButton
-        centerLabel="Minor"
-        buttonDuples={
-          NOTE_NAMES.map(noteName => ({
-            label: noteName,
-            onClick: triggerScaleCurry({ key: noteName, scale: 'minor' }),
-          }))
-        } />
+      <label htmlFor="guitar-key-select">
+        <LabelText>Key:</LabelText>
+        <Select id="guitar-key-select" onChange={e => setScaleKey(e.target.value)}>
+          {NOTES.map(note => (
+            <option key={note} value={note}>{note}</option>
+          ))}
+        </Select>
+      </label>
+      <label htmlFor="guitar-scale-select">
+        <LabelText>Scale:</LabelText>
+        <Select id="guitar-scale-select" onChange={e => setScaleType(e.target.value)}>
+          {Object.keys(SCALES).map(scale => (
+            <option key={scale} value={scale}>{scale}</option>
+          ))}
+        </Select>
+      </label>
     </ControlGroup>
-    <ControlGroup>
-      <Button onClick={addAllNotes}>Add All Notes</Button>
-      <Button onClick={removeAllNotes}>Remove All Notes</Button>
-      <div />
-    </ControlGroup>
-  </>
-
+    <Button onClick={addAllNotes}>Show All Notes</Button>
+    <Button onClick={removeAllNotes}>Hide All Notes</Button>
+  </Container>
 )
 
 Controls.propTypes = {
   addAllNotes: func.isRequired,
   removeAllNotes: func.isRequired,
-  triggerScaleCurry: func.isRequired,
+  setScaleType: func.isRequired,
+  setScaleKey: func.isRequired,
 }
 
 export default Controls
