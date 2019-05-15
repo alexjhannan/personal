@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import { shape } from 'prop-types'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
@@ -11,15 +13,15 @@ const Heading = styled.h1`
   text-align: center;
 `
 
-const FakeImg = styled.div`
-  background: var(--color-iGrey2);
-  width: 100%;
+const Image = styled(Img)`
+  border-radius: 4px;
   height: 100%;
 `
 
 const TOYS = [{
   path: '/gooey-radial-button',
   title: 'SVG Radial Button',
+  imageKey: 'radialButtonImage',
   desc: `
     The goeey SVG technique combines a blur filter and a contrast filter
     for a unique web UI effect. I used this to create a radial button
@@ -28,18 +30,20 @@ const TOYS = [{
 }, {
   path: '/explosion',
   title: 'Time-Bound Explosion',
+  imageKey: 'explosionImage',
   desc: `
     A simple SVG animation hooked up to a timeline controller.
   `,
 }, {
   path: '/web-dev-credits',
   title: 'Zoom-In Credits',
+  imageKey: 'webDevImage',
   desc: `
     Some play around the idea of animating an SVG's viewbox.
   `,
 }]
 
-const Playground = () => (
+const Playground = ({ data }) => (
   <Layout>
     <SEO title="Playground" />
     <Heading>Playground</Heading>
@@ -47,7 +51,7 @@ const Playground = () => (
       {TOYS.map(toy => (
         <Card key={toy.title}>
           <Link to={toy.path}>
-            <FakeImg />
+            <Image fluid={data[toy.imageKey].childImageSharp.fluid} />
           </Link>
           <div>
             <CardTitle>{toy.title}</CardTitle>
@@ -58,5 +62,35 @@ const Playground = () => (
     </Grid>
   </Layout>
 )
+
+Playground.propTypes = {
+  data: shape({}).isRequired,
+}
+
+export const query = graphql`
+  query {
+    webDevImage: file(relativePath: { eq: "web-dev-credits.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    radialButtonImage: file(relativePath: { eq: "radial-button.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    explosionImage: file(relativePath: { eq: "explosion.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 export default Playground
