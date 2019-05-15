@@ -21,7 +21,7 @@ const TOOLS = [{
   path: '/guitar',
   title: 'Guitar Notes',
   desc: `
-    An SVG guitar reference for visualizing guitar scales.
+    An SVG guitar reference for visualizing special scales.
   `,
 }, {
   path: '/color-palette',

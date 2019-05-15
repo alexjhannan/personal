@@ -18,6 +18,14 @@ const FakeImg = styled.div`
 `
 
 const TOYS = [{
+  path: '/gooey-radial-button',
+  title: 'SVG Radial Button',
+  desc: `
+    The goeey SVG technique combines a blur filter and a contrast filter
+    for a unique web UI effect. I used this to create a radial button
+    out of SVGs that goop into each other. Play around with it here.
+  `,
+}, {
   path: '/explosion',
   title: 'Time-Bound Explosion',
   desc: `
@@ -28,14 +36,6 @@ const TOYS = [{
   title: 'Zoom-In Credits',
   desc: `
     Some play around the idea of animating an SVG's viewbox.
-  `,
-}, {
-  path: '/gooey-radial-button',
-  title: 'SVG Radial Button',
-  desc: `
-    The goeey SVG technique combines a blur filter and a contrast filter
-    for a unique web UI effect. I used this to create a radial button
-    out of SVGs that goop into each other. Play around with it here.
   `,
 }]
 
