@@ -15,7 +15,7 @@ const Container = styled.div`
 `
 
 const Heading = styled.h4`
-  margin: 0 0 8px;
+  margin: 0 0 12px;
 `
 
 const NoteContainer = styled.div`
@@ -33,6 +33,11 @@ const NoteSVG = styled(BaseSVG)`
   height: 20px;
 `
 
+const NoteLabel = styled.span`
+  font-size: 12px;
+  font-family: var(--serif-font-stack);
+`
+
 const Legend = () => {
   const {
     scaleType, scaleKey, scaleNotes, scaleColors,
@@ -40,17 +45,21 @@ const Legend = () => {
 
   return (
     <Container>
-      <Heading>{`${scaleKey} ${scaleType}`}</Heading>
-      <div>
-        {scaleNotes.map((note, i) => (
-          <NoteContainer>
-            <NoteSVG title={note} key={note} viewBox="-20 -20 40 40" width="20" height="20" id={`note-${i}`}>
-              <NoteBlip note={{ name: note }} fill={scaleColors[scaleNotes.indexOf(note)]} />
-            </NoteSVG>
-            <span>{i + 1}</span>
-          </NoteContainer>
-        ))}
-      </div>
+      { scaleNotes.length > 0 && (
+        <>
+          <Heading>{`${scaleKey} ${scaleType}`}</Heading>
+          <div>
+            {scaleNotes.map((note, i) => (
+              <NoteContainer key={note}>
+                <NoteSVG title={note} viewBox="-20 -20 40 40" width="20" height="20" id={`note-${i}`}>
+                  <NoteBlip note={{ name: note }} fill={scaleColors[scaleNotes.indexOf(note)]} />
+                </NoteSVG>
+                <NoteLabel>{i + 1}</NoteLabel>
+              </NoteContainer>
+            ))}
+          </div>
+        </>
+      )}
     </Container>
   )
 }
