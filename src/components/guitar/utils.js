@@ -63,7 +63,7 @@ function slowFretPosition(fretIndex) {
 function slowStringPosition(stringIndex) {
   const stringOffset = 17
   const stringSpan = FB_HEIGHT - stringOffset * 2
-  return FB_HEIGHT - stringOffset - ((stringIndex) * stringSpan / 5)
+  return FB_HEIGHT - stringOffset - ((5 - stringIndex) * stringSpan / 5)
 }
 
 function semitoneUp(rootNote, semitones) {
