@@ -33,9 +33,9 @@ const RightColumn = styled(LeftColumn)`
 `
 
 const NavLink = styled(Link)`
-  margin-right: 32px;
   position: relative;
   &:not(:last-of-type) {
+    margin-right: 32px;
     &::after {
       content: '*';
       position: absolute;
