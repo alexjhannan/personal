@@ -26,17 +26,20 @@ function reducer(state, action) {
   const nextState = { ...state }
   switch (action.type) {
     case RESET:
+      nextState.scaleNotes = []
+      nextState.scaleColors = []
       nextState.noteMap = map2d(note => ({
         ...note,
         scaleIndex: -1,
       }), state.noteMap)
       return nextState
     case SHOW_ALL_NOTES:
+      nextState.scaleNotes = []
+      nextState.scaleColors = []
       nextState.noteMap = map2d(note => ({
         ...note,
         scaleIndex: 1,
       }), state.noteMap)
-      nextState.scaleColors = ['black']
       return nextState
     case TRIGGER_SCALE:
       nextState.scaleKey = action.payload.key

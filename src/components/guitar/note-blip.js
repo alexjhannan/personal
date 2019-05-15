@@ -6,7 +6,6 @@ import { fretPosition, stringPosition } from './utils'
 
 const G = styled.g`
   transform: translate(${props => `${props.x}px, ${props.y}`}px);
-  opacity: 0;
 `
 
 const NoteBlip = ({ note, fill }) => {
@@ -19,8 +18,8 @@ const NoteBlip = ({ note, fill }) => {
     <G
       className={groupClasses}
       fill="none"
-      x={fretPosition(note.fret) - 24}
-      y={stringPosition(note.string)}>
+      x={typeof note.fret === 'number' ? fretPosition(note.fret) - 24 : 0}
+      y={typeof note.string === 'number' ? stringPosition(note.string) : 0}>
       <circle
         cx={0}
         cy={0}
@@ -66,8 +65,13 @@ NoteBlip.propTypes = {
   note: shape({
     string: number,
     fret: number,
+    name: string.isRequired,
   }).isRequired,
-  fill: string.isRequired,
+  fill: string,
+}
+
+NoteBlip.defaultProps = {
+  fill: 'black',
 }
 
 export default NoteBlip

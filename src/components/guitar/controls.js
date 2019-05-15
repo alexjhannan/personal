@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { func } from 'prop-types'
 import styled from 'styled-components'
 import { NOTES, SCALES } from './utils'
+import { GuitarContext } from './state'
 
 const Container = styled.div`
   margin: 40px var(--layout-gutter-width);
@@ -52,30 +53,39 @@ const Controls = ({
   removeAllNotes,
   setScaleType,
   setScaleKey,
-}) => (
-  <Container>
-    <ControlGroup>
-      <label htmlFor="guitar-key-select">
-        <LabelText>Key:</LabelText>
-        <Select id="guitar-key-select" onChange={e => setScaleKey(e.target.value)}>
-          {NOTES.map(note => (
-            <option key={note} value={note}>{note}</option>
-          ))}
-        </Select>
-      </label>
-      <label htmlFor="guitar-scale-select">
-        <LabelText>Scale:</LabelText>
-        <Select id="guitar-scale-select" onChange={e => setScaleType(e.target.value)}>
-          {Object.keys(SCALES).map(scale => (
-            <option key={scale} value={scale}>{scale}</option>
-          ))}
-        </Select>
-      </label>
-    </ControlGroup>
-    <Button onClick={addAllNotes}>Show All Notes</Button>
-    <Button onClick={removeAllNotes}>Hide All Notes</Button>
-  </Container>
-)
+}) => {
+  const { scaleKey, scaleType } = useContext(GuitarContext)
+  return (
+    <Container>
+      <ControlGroup>
+        <label htmlFor="guitar-key-select">
+          <LabelText>Key:</LabelText>
+          <Select
+            id="guitar-key-select"
+            value={scaleKey}
+            onChange={e => setScaleKey(e.target.value)}>
+            {NOTES.map(note => (
+              <option key={note} value={note}>{note}</option>
+            ))}
+          </Select>
+        </label>
+        <label htmlFor="guitar-scale-select">
+          <LabelText>Scale:</LabelText>
+          <Select
+            value={scaleType}
+            id="guitar-scale-select"
+            onChange={e => setScaleType(e.target.value)}>
+            {Object.keys(SCALES).map(scale => (
+              <option key={scale} value={scale}>{scale}</option>
+            ))}
+          </Select>
+        </label>
+      </ControlGroup>
+      <Button onClick={addAllNotes}>Show All Notes</Button>
+      <Button onClick={removeAllNotes}>Hide All Notes</Button>
+    </Container>
+  )
+}
 
 Controls.propTypes = {
   addAllNotes: func.isRequired,

@@ -13,6 +13,7 @@ import {
 } from './state'
 import FretsAndStrings from './frets-and-strings'
 import NoteDisplay from './note-display'
+import Legend from './legend'
 import Controls from './controls'
 
 const GuitarContainer = styled.svg`
@@ -58,6 +59,7 @@ const Guitar = () => {
         <FretsAndStrings />
         <NoteDisplay noteMap={noteMap} />
       </GuitarContainer>
+      <Legend />
       <Controls
         addAllNotes={() => dispatch({ type: SHOW_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: RESET })}

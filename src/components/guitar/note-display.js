@@ -9,13 +9,13 @@ const NoteDisplay = ({ noteMap }) => {
   useEffect(() => {
     const tl = new TimelineMax({})
     tl.add('start')
-      .to('.note-hidden', 0.5, { opacity: 0 }, 'start')
-      .to('.note-active', 0.5, { opacity: 1 }, 'start')
+      .to('#note-display > .note-hidden', 0.5, { opacity: 0 }, 'start')
+      .to('#note-display > .note-active', 0.5, { opacity: 1 }, 'start')
     return () => tl.kill()
   })
 
   return (
-    <g>
+    <g id="note-display">
       {noteMap.map((string, i) => (
         <React.Fragment key={`string-${i}`}> {/* eslint-disable-line */}
           {string.map((note, j) => (
