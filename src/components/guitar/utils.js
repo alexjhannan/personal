@@ -33,6 +33,18 @@ export const SCALES = {
   Minor: [0, 2, 3, 5, 7, 9, 11],
   'Major Pentatonic': [0, 2, 4, 7, 9],
   'Minor Pentatonic': [0, 3, 5, 7, 10],
+  Arabian: [0, 2, 3, 5, 6, 8, 9, 11],
+  Persian: [0, 1, 4, 5, 6, 8, 11],
+  Byzantine: [0, 1, 4, 5, 7, 8, 11],
+  Egyptian: [0, 2, 5, 7, 10],
+  Oriental: [0, 1, 4, 5, 6, 9, 10],
+  Japanese: [0, 2, 5, 7, 8],
+  Hirajoshi: [0, 2, 3, 7, 8],
+  'Hungarian Gypsy': [0, 2, 3, 6, 7, 8, 11],
+  Romanian: [0, 2, 3, 6, 7, 9, 10],
+  Alhijaz: [0, 1, 4, 5, 7, 8, 10],
+  'Raga Asavari, ascending': [0, 1, 5, 7, 8],
+  'Raga Asavari, descending': [0, 1, 3, 5, 7, 8, 10],
 }
 
 function slowFretPosition(fretIndex) {

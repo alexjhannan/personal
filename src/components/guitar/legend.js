@@ -47,7 +47,7 @@ const Legend = () => {
     <Container>
       { scaleNotes.length > 0 && (
         <>
-          <Heading>{`${scaleKey} ${scaleType}`}</Heading>
+          <Heading>{`${scaleType}, key of ${scaleKey}`}</Heading>
           <div>
             {scaleNotes.map((note, i) => (
               <NoteContainer key={note}>

@@ -1,11 +1,10 @@
 import React, { useReducer } from 'react'
-import { map2d } from '~utilities'
 import {
-  createNoteMap, calculateScaleNotes, generateColorArray, NOTES, SCALES,
+  calculateScaleNotes, generateColorArray, NOTES, SCALES,
 } from './utils'
 
-const initialScaleKey = NOTES[3] // C
-const initialScaleType = Object.keys(SCALES)[0] // major
+const initialScaleKey = NOTES[0]
+const initialScaleType = Object.keys(SCALES)[0]
 
 const initialGuitarContext = {
   scaleType: initialScaleType,
