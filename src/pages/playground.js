@@ -1,22 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import { shape } from 'prop-types'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
-import { Grid, Card, CardTitle } from '~components/card-grid'
-
-const Heading = styled.h1`
-  margin: 24px 0;
-  text-align: center;
-`
-
-const Image = styled(Img)`
-  border-radius: 4px;
-  height: 100%;
-`
+import {
+  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+} from '~components/misc-page-comps'
 
 const TOYS = [{
   path: '/gooey-radial-button',
@@ -46,13 +36,17 @@ const TOYS = [{
 const Playground = ({ data }) => (
   <Layout>
     <SEO title="Playground" />
-    <Heading>Playground</Heading>
+    <HeadingContainer>
+      <HeadingImage fluid={data.subwaySlug.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+      <Heading>Playground</Heading>
+      <HeadingImage fluid={data.subwaySlug.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+    </HeadingContainer>
     <Grid>
       {TOYS.map(toy => (
         <Card key={toy.title}>
-          <Link to={toy.path}>
-            <Image fluid={data[toy.imageKey].childImageSharp.fluid} />
-          </Link>
+          <CardImageLink to={toy.path}>
+            <CardImage fluid={data[toy.imageKey].childImageSharp.fluid} />
+          </CardImageLink>
           <div>
             <CardTitle>{toy.title}</CardTitle>
             <p>{toy.desc}</p>
@@ -87,6 +81,13 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 500) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    subwaySlug: file(relativePath: { eq: "subway-slug.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }

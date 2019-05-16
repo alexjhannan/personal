@@ -1,28 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 import { shape } from 'prop-types'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
-import { Grid, Card, CardTitle } from '~components/card-grid'
-
-const Heading = styled.h1`
-  margin: 24px 0;
-  text-align: center;
-`
-
-const Image = styled(Img)`
-  border-radius: 4px;
-  height: 100%;
-`
-
-const FakeImg = styled.div`
-  background: var(--color-iGrey2);
-  width: 100%;
-  height: 100%;
-`
+import {
+  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+} from '~components/misc-page-comps'
 
 const TOOLS = [{
   path: '/guitar',
@@ -43,13 +27,17 @@ const TOOLS = [{
 const Tools = ({ data }) => (
   <Layout>
     <SEO title="Tools" />
-    <Heading>Tools</Heading>
+    <HeadingContainer>
+      <HeadingImage flipped fluid={data.tweetingBird.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+      <Heading>Tools</Heading>
+      <HeadingImage flipped fluid={data.tweetingBird.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+    </HeadingContainer>
     <Grid>
       {TOOLS.map(tool => (
         <Card key={tool.title}>
-          <Link to={tool.path}>
-            <Image fluid={data[tool.imageKey].childImageSharp.fluid} />
-          </Link>
+          <CardImageLink to={tool.path}>
+            <CardImage fluid={data[tool.imageKey].childImageSharp.fluid} />
+          </CardImageLink>
           <div>
             <CardTitle>{tool.title}</CardTitle>
             <p>{tool.desc}</p>
@@ -66,6 +54,13 @@ Tools.propTypes = {
 
 export const query = graphql`
   query {
+    tweetingBird: file(relativePath: { eq: "tweeting-bird.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
     guitarImage: file(relativePath: { eq: "guitar-tool.png" }) {
       childImageSharp {
         fluid(maxWidth: 500) {

@@ -2,6 +2,7 @@ html {
   --color-saturation: 53%;
   --color-lightness: 58%;
   --color-primary-hue: 0;
+  --color-primary-hue-deg: 0deg;
 
   --color-primary: hsl(
     var(--color-primary-hue),

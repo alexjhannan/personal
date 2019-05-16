@@ -7,8 +7,8 @@ import './reset.css'
 const Container = styled.div`
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 128px 1fr 128px;
-  grid-template-columns: var(--layout-gutter-width) 1fr var(--layout-gutter-width);
+  grid-template-rows: 128px 1fr;
+  grid-template-columns: 1fr;
   @media (max-width: 600px) {
     --layout-gutter-width: 24px;
   }
@@ -21,34 +21,17 @@ const Container = styled.div`
   @media (min-width: 1281px) {
     --layout-gutter-width: 256px;
   }
-  ${(props) => {
-    if (props.theme === 'fullwidth') {
-      return `
-        grid-template-areas:
-          "header header header"
-          "main main main";
-      `
-    }
-    return `
-      grid-template-areas:
-        "header header header"
-        ". main .";
-    `
-  }}
 `
 
 const GridMain = styled.main`
-  grid-area: main;
-`
-
-const GridHeader = styled(Header)`
-  grid-area: header;
+  width: 100vw;
+  ${props => (props.theme !== 'fullwidth' ? 'padding: 0 var(--layout-gutter-width);' : '')}
 `
 
 const Layout = ({ children, theme }) => (
   <Container theme={theme}>
-    <GridHeader />
-    <GridMain>
+    <Header />
+    <GridMain theme={theme}>
       {children}
     </GridMain>
   </Container>

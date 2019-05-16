@@ -1,35 +1,30 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '~components/layout'
 import SEO from '~components/seo'
-import { Grid, Card, CardTitle } from '~components/card-grid'
+import {
+  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+} from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
-
-const Heading = styled.h1`
-  margin: 24px 0;
-  text-align: center;
-`
-
-const FakeImg = styled.div`
-  background: var(--color-iGrey2);
-  width: 100%;
-  height: 100%;
-`
+import { shape } from 'prop-types'
 
 const IDEAS = []
 
-const Concepts = () => (
+const Concepts = ({ data }) => (
   <Layout>
     <SEO title="Concepts" />
-    <Heading>Concepts</Heading>
+    <HeadingContainer>
+      <HeadingImage flipped fluid={data.arthurBone.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+      <Heading>Concepts</Heading>
+      <HeadingImage flipped fluid={data.arthurBone.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+    </HeadingContainer>
     <Grid>
       {IDEAS.map(idea => (
         <Card key={idea.title}>
-          <Link to={idea.path}>
-            <FakeImg />
-          </Link>
+          <CardImageLink to={idea.path}>
+            <CardImage fluid={data[idea.imageKey].childImageSharp.fluid} />
+          </CardImageLink>
           <div>
             <CardTitle>{idea.title}</CardTitle>
             <p>{idea.desc}</p>
@@ -79,5 +74,21 @@ const Concepts = () => (
       ]} />
   </Layout>
 )
+
+Concepts.propTypes = {
+  data: shape({}).isRequired,
+}
+
+export const query = graphql`
+  query {
+    arthurBone: file(relativePath: { eq: "arthur-bone.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 200) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`
 
 export default Concepts
