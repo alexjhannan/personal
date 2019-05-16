@@ -123,10 +123,10 @@ const IndexPage = ({ data }) => (
             `}
           </p>
           <IconContainer>
-            <IconAnchor href="https://www.github.com/alexjhannan" rel="noopener noreferrer">
+            <IconAnchor href="https://www.github.com/alexjhannan" rel="noopener noreferrer" target="_blank">
               <StyledGithubIcon />
             </IconAnchor>
-            <IconAnchor href="https://www.linkedin.com/in/alexjhannan" rel="noopener noreferrer">
+            <IconAnchor href="https://www.linkedin.com/in/alexjhannan" rel="noopener noreferrer" target="_blank">
               <StyledLinkedinIcon />
             </IconAnchor>
           </IconContainer>
