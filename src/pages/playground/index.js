@@ -9,7 +9,7 @@ import {
 } from '~components/misc-page-comps'
 
 const TOYS = [{
-  path: '/gooey-radial-button',
+  path: '/playground/gooey-radial-button',
   title: 'SVG Radial Button',
   imageKey: 'radialButtonImage',
   desc: `
@@ -18,18 +18,11 @@ const TOYS = [{
     out of SVGs that goop into each other. Play around with it here.
   `,
 }, {
-  path: '/explosion',
+  path: '/playground/explosion',
   title: 'Time-Bound Explosion',
   imageKey: 'explosionImage',
   desc: `
     A simple SVG animation hooked up to a timeline controller.
-  `,
-}, {
-  path: '/web-dev-credits',
-  title: 'Zoom-In Credits',
-  imageKey: 'webDevImage',
-  desc: `
-    Some play around the idea of animating an SVG's viewbox.
   `,
 }]
 

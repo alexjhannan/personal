@@ -9,14 +9,14 @@ import {
 } from '~components/misc-page-comps'
 
 const TOOLS = [{
-  path: '/guitar',
+  path: '/tools/guitar',
   title: 'Guitar Notes',
   imageKey: 'guitarImage',
   desc: `
     An SVG guitar reference for visualizing special scales.
   `,
 }, {
-  path: '/color-palette',
+  path: '/tools/color-palette',
   title: 'Color Palette',
   imageKey: 'colorPaletteImage',
   desc: `
