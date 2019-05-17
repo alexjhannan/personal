@@ -12,6 +12,7 @@
     "gatsby-background-image": "0.6.1",
     "gatsby-image": "^2.0.34",
     "gatsby-plugin-alias-imports": "1.0.5",
+    "gatsby-plugin-layout": "1.0.15",
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-prefetch-google-fonts": "1.4.2",
@@ -25,6 +26,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-pose": "4.0.8",
     "react-redux": "7.0.2",
     "redux": "4.0.1",
     "styled-components": "4.1.3"

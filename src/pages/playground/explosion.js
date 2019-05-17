@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {
   TimelineMax, Bounce, Expo, Draggable,
 } from 'gsap/all'
-import Layout from '~components/layout'
 import BaseSVG from '~components/base-svg'
 
 const Container = styled.div`
@@ -73,7 +72,7 @@ const ExplosionPlay = () => {
   }, [])
 
   return (
-    <Layout>
+    <>
       <Container>
         <ExplosionSVG
           id="explosion"
@@ -103,7 +102,7 @@ const ExplosionPlay = () => {
           </GearWidget>
         </ExplosionSVG>
       </Container>
-    </Layout>
+    </>
   )
 }
 

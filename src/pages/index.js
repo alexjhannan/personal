@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import BgImg from 'gatsby-background-image'
 import { shape } from 'prop-types'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import UnderConstruction from '~components/graphics/under-construction'
 import GithubIcon from '~components/graphics/github-icon'
@@ -64,7 +62,7 @@ const ImageLabel = styled.span`
 const IconContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin 16px 0 0;
+  margin: 16px 0 0;
 `
 
 const IconAnchor = styled.a`
@@ -90,14 +88,14 @@ const StyledLinkedinIcon = styled(LinkedinIcon)`
 `
 
 const IndexPage = ({ data }) => (
-  <Layout theme="fullwidth">
+  <>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
     <GraphicContainer>
       <GraphicWrapper>
         <UnderConstruction />
       </GraphicWrapper>
     </GraphicContainer>
-    <BackgroundImage fluid={data.prospectPark.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }}>
+    <BackgroundImage fluid={data.prospectPark.childImageSharp.fluid}>
       <AboutContainer>
         <TextContainer>
           <AboutHeader>About Me</AboutHeader>
@@ -136,7 +134,7 @@ const IndexPage = ({ data }) => (
         Prospect Park, Brooklyn - May 2019
       </ImageLabel>
     </BackgroundImage>
-  </Layout>
+  </>
 )
 
 IndexPage.propTypes = {

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { string } from 'prop-types'
-import Layout from '~components/layout'
 
 const ParentGrid = styled.div`
   padding: 24px;
@@ -87,7 +86,7 @@ GrayScale.propTypes = {
 }
 
 const ColorPalette = () => (
-  <Layout>
+  <>
     <ParentGrid>
       <MainColors>
         <PrimarySwatch>--color-primary</PrimarySwatch>
@@ -99,7 +98,7 @@ const ColorPalette = () => (
         <GrayScale baseColor="iGrey" />
       </GrayScales>
     </ParentGrid>
-  </Layout>
+  </>
 )
 
 export default ColorPalette

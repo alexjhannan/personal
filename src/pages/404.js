@@ -1,14 +1,21 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 
+const Heading = styled.h3`
+  margin: 24px 0;
+`
+
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+    <Heading>
+      {
+        'Oh no! The page you requested doesn\'t exist.'
+      }
+    </Heading>
+  </>
 )
 
 export default NotFoundPage

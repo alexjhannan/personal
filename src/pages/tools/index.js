@@ -2,10 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { shape } from 'prop-types'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import {
-  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+  GutterWrapper,
+  Grid,
+  Card,
+  CardTitle,
+  CardImageLink,
+  CardImage,
+  Heading,
+  HeadingContainer,
+  HeadingImage,
 } from '~components/misc-page-comps'
 
 const TOOLS = [{
@@ -25,7 +32,7 @@ const TOOLS = [{
 }]
 
 const Tools = ({ data }) => (
-  <Layout>
+  <GutterWrapper>
     <SEO title="Tools" />
     <HeadingContainer>
       <HeadingImage flipped fluid={data.tweetingBird.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
@@ -45,7 +52,7 @@ const Tools = ({ data }) => (
         </Card>
       ))}
     </Grid>
-  </Layout>
+  </GutterWrapper>
 )
 
 Tools.propTypes = {

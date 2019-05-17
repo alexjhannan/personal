@@ -1,10 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import {
-  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+  GutterWrapper,
+  Grid,
+  Card,
+  CardTitle,
+  CardImageLink,
+  CardImage,
+  Heading,
+  HeadingContainer,
+  HeadingImage,
 } from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
 import { shape } from 'prop-types'
@@ -12,7 +19,7 @@ import { shape } from 'prop-types'
 const IDEAS = []
 
 const Concepts = ({ data }) => (
-  <Layout>
+  <GutterWrapper>
     <SEO title="Concepts" />
     <HeadingContainer>
       <HeadingImage flipped fluid={data.arthurBone.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
@@ -72,7 +79,7 @@ const Concepts = ({ data }) => (
           to: 'https://www.youtube.com/watch?v=irZ-159xsZY',
         },
       ]} />
-  </Layout>
+  </GutterWrapper>
 )
 
 Concepts.propTypes = {

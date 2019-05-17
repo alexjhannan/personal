@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import posed, { PoseGroup } from 'react-pose'
 import Header from './header'
 import './reset.css'
 
@@ -23,27 +24,27 @@ const Container = styled.div`
   }
 `
 
-const GridMain = styled.main`
-  width: 100vw;
-  ${props => (props.theme !== 'fullwidth' ? 'padding: 0 var(--layout-gutter-width);' : '')}
-`
+const Poser = posed.div({
+  preEnter: { filter: 'blur(10px)', opacity: 0 },
+  enter: { filter: 'blur(0px)', opacity: 1 },
+  exit: { filter: 'blur(10px)', opacity: 0 },
+})
 
-const Layout = ({ children, theme }) => (
-  <Container theme={theme}>
+const Layout = ({ children }) => (
+  <Container>
     <Header />
-    <GridMain theme={theme}>
-      {children}
-    </GridMain>
+    <PoseGroup>
+      <Poser key={children.key}>
+        <main>
+          {children}
+        </main>
+      </Poser>
+    </PoseGroup>
   </Container>
 )
 
-Layout.defaultProps = {
-  theme: 'gutters',
-}
-
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  theme: PropTypes.oneOf(['gutters', 'fullwidth']),
 }
 
 export default Layout

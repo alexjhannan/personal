@@ -2,10 +2,17 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { shape } from 'prop-types'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import {
-  Grid, Card, CardTitle, CardImageLink, CardImage, Heading, HeadingContainer, HeadingImage,
+  GutterWrapper,
+  Grid,
+  Card,
+  CardTitle,
+  CardImageLink,
+  CardImage,
+  Heading,
+  HeadingContainer,
+  HeadingImage,
 } from '~components/misc-page-comps'
 
 const TOYS = [{
@@ -27,7 +34,7 @@ const TOYS = [{
 }]
 
 const Playground = ({ data }) => (
-  <Layout>
+  <GutterWrapper>
     <SEO title="Playground" />
     <HeadingContainer>
       <HeadingImage fluid={data.subwaySlug.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
@@ -47,7 +54,7 @@ const Playground = ({ data }) => (
         </Card>
       ))}
     </Grid>
-  </Layout>
+  </GutterWrapper>
 )
 
 Playground.propTypes = {

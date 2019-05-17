@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
+export const GutterWrapper = styled.div`
+  padding: 0 var(--layout-gutter-width);
+`
+
 export const Heading = styled.h1`
   margin: 24px;
   text-align: center;
