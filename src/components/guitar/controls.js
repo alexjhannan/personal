@@ -67,6 +67,7 @@ const Controls = ({
             {NOTES.map(note => (
               <option key={note} value={note}>{note}</option>
             ))}
+            <option value="" disabled style={{ display: 'none' }} />
           </Select>
         </label>
         <label htmlFor="guitar-scale-select">
@@ -78,6 +79,7 @@ const Controls = ({
             {Object.keys(SCALES).map(scale => (
               <option key={scale} value={scale}>{scale}</option>
             ))}
+            <option value="" disabled style={{ display: 'none' }} />
           </Select>
         </label>
       </ControlGroup>

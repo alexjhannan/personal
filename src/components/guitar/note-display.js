@@ -27,7 +27,7 @@ const NoteDisplay = () => {
               <NoteBlip
                 key={`note-${j}`} // eslint-disable-line
                 note={note}
-                fill={scaleColors[scaleIndex] || 'black'}
+                fill={scaleColors[scaleIndex] || 'var(--color-iGrey4)'}
                 hidden={scaleIndex === -1} />
             )
           })}

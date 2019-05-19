@@ -7,7 +7,6 @@ import {
   GuitarContext,
   SHOW_ALL_NOTES,
   RESET,
-  TRIGGER_SCALE,
   SET_SCALE_TYPE,
   SET_SCALE_KEY,
 } from './state'
@@ -63,8 +62,7 @@ const Guitar = () => {
         addAllNotes={() => dispatch({ type: SHOW_ALL_NOTES })}
         removeAllNotes={() => dispatch({ type: RESET })}
         setScaleType={payload => dispatch({ type: SET_SCALE_TYPE, payload })}
-        setScaleKey={payload => dispatch({ type: SET_SCALE_KEY, payload })}
-        triggerScaleCurry={payload => () => dispatch({ type: TRIGGER_SCALE, payload })} />
+        setScaleKey={payload => dispatch({ type: SET_SCALE_KEY, payload })} />
     </GuitarContext.Provider>
   )
 }

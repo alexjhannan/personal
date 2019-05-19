@@ -45,14 +45,16 @@ const Legend = () => {
 
   return (
     <Container>
-      { scaleNotes.length > 0 && (
+      { scaleNotes.length > 0 && scaleType && scaleKey && (
         <>
-          <Heading>{`${scaleType}, key of ${scaleKey}`}</Heading>
+          <Heading>
+            {`${scaleType}, key of ${scaleKey}`}
+          </Heading>
           <div>
             {scaleNotes.map((note, i) => (
               <NoteContainer key={note}>
                 <NoteSVG title={note} viewBox="-20 -20 40 40" width="20" height="20" id={`note-${i}`}>
-                  <NoteBlip note={{ name: note }} fill={scaleColors[scaleNotes.indexOf(note)]} />
+                  <NoteBlip note={{ name: note }} fill={scaleColors[scaleNotes.indexOf(note)] || 'var(--color-iGrey4)'} />
                 </NoteSVG>
                 <NoteLabel>{i + 1}</NoteLabel>
               </NoteContainer>
