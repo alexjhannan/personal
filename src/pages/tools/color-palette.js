@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { string } from 'prop-types'
 
+const Wrapper = styled.div`
+  padding: 0 var(--layout-gutter-width);
+`
+
 const ParentGrid = styled.div`
   padding: 24px;
   background: black;
@@ -86,7 +90,7 @@ GrayScale.propTypes = {
 }
 
 const ColorPalette = () => (
-  <>
+  <Wrapper>
     <ParentGrid>
       <MainColors>
         <PrimarySwatch>--color-primary</PrimarySwatch>
@@ -98,7 +102,7 @@ const ColorPalette = () => (
         <GrayScale baseColor="iGrey" />
       </GrayScales>
     </ParentGrid>
-  </>
+  </Wrapper>
 )
 
 export default ColorPalette
