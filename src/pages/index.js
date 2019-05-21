@@ -106,7 +106,7 @@ const IndexPage = ({ data }) => (
               Alex applied his technical know-how as an undergraduate researcher and as a high school STEM teacher
               before turning his expertise on himself and learning the ins and outs of modern web development.
               Since then, Alex has been building cutting-edge React applications for NY-based startups,
-              contributing to the teams at Codecademy and Teachers Pay Teachers. Most recently, Alex
+              contributing to the teams at Codecademy and Teachers Pay Teachers. Recently, Alex
               rebuilt most of Getaway House's customer-facing web application, complete with
               an upgrade to Gatsby, new and improved design tooling, and several new conversion features.
             `}

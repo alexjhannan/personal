@@ -1,4 +1,9 @@
 html {
+  --display-font-stack: Dancing Script, georgia, serif;
+  --serif-font-stack: Arvo, georgia, serif;
+  --sans-font-stack: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   height: 100%;

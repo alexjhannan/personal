@@ -44,12 +44,6 @@ const GlobalStyle = createGlobalStyle`
     --color-iGrey2: #bbc5c5;
     --color-iGrey3: #91a3a3;
     --color-iGrey4: #577070;
-
-    --display-font-stack: Dancing Script, georgia, serif;
-    --serif-font-stack: Arvo, georgia, serif;
-    --sans-font-stack: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
   }
 `
 
