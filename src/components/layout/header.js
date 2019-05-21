@@ -29,6 +29,7 @@ const RightColumn = styled(LeftColumn)`
   justify-content: flex-end;
   @media (max-width: 600px) {
     align-items: flex-start;
+    flex-wrap: wrap;
   }
 `
 

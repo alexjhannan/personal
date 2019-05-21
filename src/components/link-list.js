@@ -9,7 +9,7 @@ const ListHeader = styled.h3`
 
 const List = styled.ul`
   list-style: none;
-  margin: 0;
+  margin: 16px 0;
 `
 
 const ListItem = styled.li`
