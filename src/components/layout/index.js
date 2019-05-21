@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Themer from './themer'
 import Header from './header'
 import './reset.css'
 
@@ -29,12 +30,14 @@ const Main = styled.main`
 
 
 const Layout = ({ children }) => (
-  <Container>
-    <Header />
-    <Main>
-      {children}
-    </Main>
-  </Container>
+  <Themer>
+    <Container>
+      <Header />
+      <Main>
+        {children}
+      </Main>
+    </Container>
+  </Themer>
 )
 
 Layout.propTypes = {

@@ -14,7 +14,7 @@ const ParentGrid = styled.div`
   display: grid;
   grid-template-rows: 1fr 3fr;
   grid-gap: 24px;
-  margin: 1rem 0 0;
+  margin: 1rem 0;
 
   @media (max-width: 900px) {
     height: 100vh;

@@ -18,6 +18,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-closing-bracket-location": [1, "after-props"],
+    "react/destructuring-assignment": "never",
     "jsx-a11y/label-has-for": [2, { "required": { "some": [ "nesting", "id" ] } }]
   }
 }
