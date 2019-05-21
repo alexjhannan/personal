@@ -5,6 +5,7 @@ import SEO from '~components/seo'
 
 const Heading = styled.h3`
   margin: 24px 0;
+  text-align: center;
 `
 
 const NotFoundPage = () => (
