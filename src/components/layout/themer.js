@@ -2,18 +2,21 @@ import React, { useState } from 'react'
 import { node } from 'prop-types'
 import { createGlobalStyle } from 'styled-components'
 
-const initialContextState = {
-  colorPrimaryHue: 0,
+const initialState = {
+  primaryColor: {
+    h: 0,
+    s: 0.53,
+    l: 0.58,
+  },
 }
 
 export const ThemeContext = React.createContext()
 
 const GlobalStyle = createGlobalStyle`
   html {
-    --color-saturation: 53%;
-    --color-lightness: 58%;
-    --color-primary-hue: ${props => props.colorPrimaryHue};
-    --color-primary-hue-deg: ${props => props.colorPrimaryHue}deg;
+    --color-primary-hue: ${props => props.primaryColor.h};
+    --color-saturation: ${props => props.primaryColor.s * 100}%;
+    --color-lightness: ${props => props.primaryColor.l * 100}%;
 
     --color-primary: hsl(
       var(--color-primary-hue),
@@ -48,20 +51,28 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const Themer = ({ children }) => {
-  const [contextState, setContextState] = useState(initialContextState)
+  const [state, setState] = useState(initialState)
 
-  const setPrimaryColorHue = (colorPrimaryHue) => {
-    setContextState({
-      ...contextState,
-      colorPrimaryHue,
+  const setPrimaryColor = ({ hsl }) => {
+    setState({
+      ...state,
+      primaryColor: {
+        ...hsl,
+      },
     })
   }
 
-  const context = { ...contextState, setPrimaryColorHue }
+  const resetPrimaryColor = () => {
+    setState({
+      ...state, primaryColor: initialState.primaryColor,
+    })
+  }
+
+  const context = { ...state, setPrimaryColor, resetPrimaryColor }
 
   return (
     <ThemeContext.Provider value={context}>
-      <GlobalStyle colorPrimaryHue={context.colorPrimaryHue} />
+      <GlobalStyle primaryColor={state.primaryColor} />
       {children}
     </ThemeContext.Provider>
   )

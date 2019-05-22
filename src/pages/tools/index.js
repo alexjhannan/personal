@@ -27,7 +27,7 @@ const TOOLS = [{
   title: 'Color Palette',
   imageKey: 'colorPaletteImage',
   desc: `
-    Every site needs a color palette.
+    Every site needs a color palette. This one can be played with.
   `,
 }]
 
