@@ -61,10 +61,10 @@ const Header = ({ className }) => (
         {({ location }) => (
           <>
             { location.pathname === '/' ? (
-              <DisplayText>Alex Hannan</DisplayText>
+              <DisplayText>Adasah</DisplayText>
             ) : (
               <Link to="/">
-                <DisplayText>Alex Hannan</DisplayText>
+                <DisplayText>Adasah</DisplayText>
               </Link>
             )}
           </>

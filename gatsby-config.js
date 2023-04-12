@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'AlexHannan.com',
+    title: 'Adasah Sagol\'s personal site',
     description: 'Web development, blogging, and random thoughts from a Brooklyn dev.',
-    author: '@alexjhannan',
+    author: '@dassidas',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

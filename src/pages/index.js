@@ -101,30 +101,30 @@ const IndexPage = ({ data }) => (
           <AboutHeader>About Me</AboutHeader>
           <p>
             {`
-              Alex is a web developer living in Brooklyn. Forever a student, he was first trained
+              Adasah is a senior software engineer living in Brooklyn. Forever a student, they were first trained
               as a natural scientist, graduating from Temple University with a B.S. in Physics.
-              Alex applied his technical know-how as an undergraduate researcher and as a high school STEM teacher
-              before turning his expertise on himself and learning the ins and outs of modern web development.
-              Since then, Alex has been building cutting-edge React applications for NY-based startups,
-              contributing to the teams at Codecademy and Teachers Pay Teachers. Recently, Alex
-              rebuilt most of Getaway House's customer-facing web application, complete with
-              an upgrade to Gatsby, new and improved design tooling, and several new conversion features.
+              Adasah applied their technical know-how as an undergraduate researcher and as a high school STEM teacher
+              before turning their expertise on themself and learning the ins and outs of modern web development.
+              Since then, Adasah has worked with teams ranging from tiny to huge, including at Codecademy,
+              Teachers Pay Teachers, Bonterra, Broadway.com, and others. Most recently, Adasah
+              worked at Bonterra to refresh their Agile processes, implement a system to expose tech debt concerns,
+              and bootstrap a project to rebuild their most wired-shut web forms to support better accessibility.
             `}
           </p>
           <br />
           <p>
             {`
-              Outside of his professional life, Alex is constantly expanding his interests.
-              Of late, he's been learning about self-relational psychology, the Tarot, invisible design,
-              yoga, and the creative process. A true generalist, Alex is most himself when connecting together
+              Outside of their professional life, Adasah is constantly expanding their interests.
+              Of late they've been learning about self-relational psychology, the Tarot, invisible design,
+              yoga, and songwriting. A true generalist, Adasah is most themself when connecting together
               disparate concepts into intuitive patterns.
             `}
           </p>
           <IconContainer>
-            <IconAnchor href="https://www.github.com/alexjhannan" rel="noopener noreferrer" target="_blank">
+            <IconAnchor href="https://www.github.com/dassidas" rel="noopener noreferrer" target="_blank">
               <StyledGithubIcon />
             </IconAnchor>
-            <IconAnchor href="https://www.linkedin.com/in/alexjhannan" rel="noopener noreferrer" target="_blank">
+            <IconAnchor href="https://www.linkedin.com/in/dassidas" rel="noopener noreferrer" target="_blank">
               <StyledLinkedinIcon />
             </IconAnchor>
           </IconContainer>
