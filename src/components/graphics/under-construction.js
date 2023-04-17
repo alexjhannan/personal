@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { gsap, Bounce } from 'gsap'
+import { TimelineMax, Bounce } from 'gsap'
 import styled from 'styled-components'
 import { string } from 'prop-types'
 import BaseSVG from '~components/base-svg'
@@ -42,14 +42,14 @@ const UnderConstruction = ({ width }) => {
   const [quoteCounter, setQuoteCounter] = useState(0)
 
   useEffect(() => {
-    const tl = gsap.timeline()
+    const tl = new TimelineMax()
     tl.to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 0.1)
     return () => tl.kill()
   })
 
   useEffect(() => { // eslint-disable-line
     if (quoteCounter === QUOTES.length - 1) {
-      const tl = gsap.timeline()
+      const tl = new TimelineMax()
       tl.set('#under-construction', { pointerEvents: 'none' })
         .to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
         .set('#under-construction', { pointerEvents: 'all', onComplete: () => { setQuoteCounter(0) } })
