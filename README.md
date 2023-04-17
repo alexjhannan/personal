@@ -1,46 +1,35 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's default starter
+  Adasah's personal site
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This is a frontend-only side-project built on Gatsby that I developed a while back. Most of my coding nowadays is in private repos, so I keep this around as an example of coding style and architectural leanings. I work across the stack at this point, but creating a dedicated backend to demonstrate those skills seems like a ton of work for not much of an interesting output.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+Notes about the site:
+- This is pretty old work! I was interested in the intersection of SVG and animations at the time, so I used this space to playground some approaches and see what worked well. Other than what's in the playground / tooling sections, it's a simple bio website without much going on.
+- I developed this before learning TypeScript, so I'm relying on PropTypes, instead.
+- I'm a fan of single-file components for many reasons, and I implemented that approach here by way of `styled-components`.
+- The site's theme is fully modifiable and programmatic by way of leveraging CSS variables. Check out the color palette tool to modify it yourself.
+- The two most complex mini-projects in here are:
+  - The guitar scale visualizer, which displays where notes land for a number of different guitar scales. I play guitar and this was a fun way to play with different musical styles.
+  - The gooey radial button, which is a configurable button-of-buttons UI element. This was aimed at testing the limits of interactivity in an animated SVG. It's a pretty silly design, but I learned quite a bit about the interplay of SVGs, React, and my chosen animation library `gsap` along the way.
+
+Some plans to upgrade this site:
+- It'd be nice to update everything to use TypeScript instead of PropTypes. PropTypes are just limited TypeScript with more boilerplate and fewer benefits.
+- My versions of Gatsby, React, etc are so outdated – and this is causing my build to break! Ugh.
+- I'd like to swap to NextJS to take advantage of their built-in API framework so that I can play around with Node more.
+- I'd like to adopt Chakra here, which is my component library of choice, since it starts from a far more accessible baseline and offers a variety of stock components to choose from.
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+**Currently broken due to out-of-date packages 😔**
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+This site is currently not being deployed anywhere. To run the site locally:
+1. Clone the repo
+1. `yarn` to install everything
+1. `yarn dev`; the site should pop up automatically, or navigate to `localhost:8000`
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
+<!-- AUTO-GENERATED-CONTENT:START -->
+#### (Inherited from the Gatsby starter): 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
