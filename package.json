@@ -19,7 +19,7 @@
     "gatsby-plugin-webfonts": "^2.3.2",
     "gatsby-source-filesystem": "latest",
     "gatsby-transformer-sharp": "latest",
-    "gsap": "^3.11.5",
+    "gsap": "2.1.2",
     "prop-types": "^15.7.2",
     "react": "latest",
     "react-color": "^2.19.3",

@@ -3491,7 +3491,7 @@ __metadata:
     gatsby-plugin-webfonts: ^2.3.2
     gatsby-source-filesystem: latest
     gatsby-transformer-sharp: latest
-    gsap: ^3.11.5
+    gsap: 2.1.2
     prettier: ^2.8.7
     prop-types: ^15.7.2
     react: latest
@@ -8241,10 +8241,10 @@ gatsby-transformer-sharp@latest:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.11.5":
-  version: 3.11.5
-  resolution: "gsap@npm:3.11.5"
-  checksum: 0d62c9405ed9703f8c65e6190b648d9691fa84bd03bcde0d286cd29d80c5865c22aa57a128b33299c0c15d41473e83f13be1645700325f3821dd912a3022350d
+"gsap@npm:2.1.2":
+  version: 2.1.2
+  resolution: "gsap@npm:2.1.2"
+  checksum: b3eedca8f39b6787984544a36f425e9db9c7025b5f0b190dead0fa7342ef79d282aed1a283299b855267f8890a9631a6d221873a6df8aad4f0b372865bdafe03
   languageName: node
   linkType: hard
 
