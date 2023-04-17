@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import BgImg from 'gatsby-background-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { shape } from 'prop-types'
 
 import SEO from '~components/seo'
@@ -36,7 +36,7 @@ const AboutContainer = styled.div`
   }
 `
 
-const BackgroundImage = styled(BgImg)`
+const BackgroundImage = styled(GatsbyImage)`
   filter: grayscale(0.7);
   padding: 48px var(--layout-gutter-width);
 `
@@ -95,45 +95,44 @@ const IndexPage = ({ data }) => (
         <UnderConstruction />
       </GraphicWrapper>
     </GraphicContainer>
-    <BackgroundImage fluid={data.prospectPark.childImageSharp.fluid}>
-      <AboutContainer>
-        <TextContainer>
-          <AboutHeader>About Me</AboutHeader>
-          <p>
-            {`
-              Adasah is a senior software engineer living in Brooklyn. Forever a student, they were first trained
-              as a natural scientist, graduating from Temple University with a B.S. in Physics.
-              Adasah applied their technical know-how as an undergraduate researcher and as a high school STEM teacher
-              before turning their expertise on themself and learning the ins and outs of modern web development.
-              Since then, Adasah has worked with teams ranging from tiny to huge, including at Codecademy,
-              Teachers Pay Teachers, Bonterra, Broadway.com, and others. Most recently, Adasah
-              worked at Bonterra to refresh their Agile processes, implement a system to expose tech debt concerns,
-              and bootstrap a project to rebuild their most wired-shut web forms to support better accessibility.
-            `}
-          </p>
-          <br />
-          <p>
-            {`
-              Outside of their professional life, Adasah is constantly expanding their interests.
-              Of late they've been learning about self-relational psychology, the Tarot, invisible design,
-              yoga, and songwriting. A true generalist, Adasah is most themself when connecting together
-              disparate concepts into intuitive patterns.
-            `}
-          </p>
-          <IconContainer>
-            <IconAnchor href="https://www.github.com/dassidas" rel="noopener noreferrer" target="_blank">
-              <StyledGithubIcon />
-            </IconAnchor>
-            <IconAnchor href="https://www.linkedin.com/in/dassidas" rel="noopener noreferrer" target="_blank">
-              <StyledLinkedinIcon />
-            </IconAnchor>
-          </IconContainer>
-        </TextContainer>
-      </AboutContainer>
-      <ImageLabel>
-        Prospect Park, Brooklyn - May 2019
-      </ImageLabel>
-    </BackgroundImage>
+    <BackgroundImage image={data.prospectPark.childImageSharp.fluid} />
+    <AboutContainer>
+      <TextContainer>
+        <AboutHeader>About Me</AboutHeader>
+        <p>
+          {`
+            Adasah is a senior software engineer living in Brooklyn. Forever a student, they were first trained
+            as a natural scientist, graduating from Temple University with a B.S. in Physics.
+            Adasah applied their technical know-how as an undergraduate researcher and as a high school STEM teacher
+            before turning their expertise on themself and learning the ins and outs of modern web development.
+            Since then, Adasah has worked with teams ranging from tiny to huge, including at Codecademy,
+            Teachers Pay Teachers, Bonterra, Broadway.com, and others. Most recently, Adasah
+            worked at Bonterra to refresh their Agile processes, implement a system to expose tech debt concerns,
+            and bootstrap a project to rebuild their most wired-shut web forms to support better accessibility.
+          `}
+        </p>
+        <br />
+        <p>
+          {`
+            Outside of their professional life, Adasah is constantly expanding their interests.
+            Of late they've been learning about self-relational psychology, the Tarot, invisible design,
+            yoga, and songwriting. A true generalist, Adasah is most themself when connecting together
+            disparate concepts into intuitive patterns.
+          `}
+        </p>
+        <IconContainer>
+          <IconAnchor href="https://www.github.com/dassidas" rel="noopener noreferrer" target="_blank">
+            <StyledGithubIcon />
+          </IconAnchor>
+          <IconAnchor href="https://www.linkedin.com/in/dassidas" rel="noopener noreferrer" target="_blank">
+            <StyledLinkedinIcon />
+          </IconAnchor>
+        </IconContainer>
+      </TextContainer>
+    </AboutContainer>
+    <ImageLabel>
+      Prospect Park, Brooklyn - May 2019
+    </ImageLabel>
   </>
 )
 

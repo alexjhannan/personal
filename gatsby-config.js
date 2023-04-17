@@ -14,19 +14,21 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-webfonts',
       options: {
-        fonts: [
-          {
-            family: 'Dancing Script',
-          },
-          {
-            family: 'Arvo',
-          },
-          {
-            family: 'Open Sans',
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: 'Dancing Script',
+            },
+            {
+              family: 'Arvo',
+            },
+            {
+              family: 'Open Sans',
+            },
+          ],
+        }
       },
     },
     {

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const GutterWrapper = styled.div`
   padding: 0 var(--layout-gutter-width);
@@ -17,7 +17,7 @@ export const HeadingContainer = styled.div`
   margin: 24px 0;
 `
 
-export const HeadingImage = styled(Img)`
+export const HeadingImage = styled(GatsbyImage)`
   width: 98px;
   filter: brightness(0) invert(1);
   display: inline-block;
