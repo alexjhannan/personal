@@ -1,32 +1,24 @@
-<h1 align="center">
-  Adasah's personal site
-</h1>
-
-This is a frontend-only side-project built on Gatsby that I developed a while back. Most of my coding nowadays is in private repos, so I keep this around as an example of coding style and architectural leanings. I work across the stack at this point, but creating a dedicated backend to demonstrate those skills seems like a ton of work for not much of an interesting output.
+This is a personal site built on Gatsby that I developed a while back. Most of my coding nowadays is in private repos, so I keep this around as an example of my coding style and architectural approach. As an important note, I do work across the stack at this point – so please don't over-index on this purely-frontend project!
 
 Notes about the site:
-- This is pretty old work! I was interested in the intersection of SVG and animations at the time, so I used this space to playground some approaches and see what worked well. Other than what's in the playground / tooling sections, it's a simple bio website without much going on.
-- I developed this before learning TypeScript, so I'm relying on PropTypes, instead.
+- This is fairly old work! I was interested in the intersection of SVG and animations at the time, so I used this space to playground some approaches and see what worked well. Other than what's in the playground / tooling sections, it's a simple bio website without much going on.
+- I developed this site before learning TypeScript, so I'm relying on React PropTypes, instead.
 - I'm a fan of single-file components for many reasons, and I implemented that approach here by way of `styled-components`.
-- The site's theme is fully modifiable and programmatic by way of leveraging CSS variables. Check out the color palette tool to modify it yourself.
-- The two most complex mini-projects in here are:
-  - The guitar scale visualizer, which displays where notes land for a number of different guitar scales. I play guitar and this was a fun way to play with different musical styles.
-  - The gooey radial button, which is a configurable button-of-buttons UI element. This was aimed at testing the limits of interactivity in an animated SVG. It's a pretty silly design, but I learned quite a bit about the interplay of SVGs, React, and my chosen animation library `gsap` along the way.
+- The two most complex mini-projects in here are the two tools:
+  - The Guitar Scale visualizer, which displays where notes land for a number of different musical scales. I play guitar and this was a fun way to play with different styles.
+  - The Color Palette tool, which allows for persistent (per-refresh) updating to the site's color palette. All the colors are programmatically generated from a single base color, which was a fun little challenge to figure out.
 
-Some plans to upgrade this site:
-- It'd be nice to update everything to use TypeScript instead of PropTypes. PropTypes are just limited TypeScript with more boilerplate and fewer benefits.
-- My versions of Gatsby, React, etc are so outdated – and this is causing my build to break! Ugh.
-- I'd like to swap to NextJS to take advantage of their built-in API framework so that I can play around with Node more.
-- I'd like to adopt Chakra here, which is my component library of choice, since it starts from a far more accessible baseline and offers a variety of stock components to choose from.
+Some upgrade plans:
+- It'd be nice to update everything to use TypeScript instead of PropTypes. PropTypes are really just limited TypeScript with more boilerplate and fewer benefits.
+- I'd like to swap to NextJS to take advantage of their built-in API framework so that I can play around with Node more. (Also, Gatsby really can be a pain sometimes!)
+- I could possibly adopt ChakraUI here, which is my component library of choice, since it starts from a far more accessible baseline and offers a variety of stock components to choose from. I'd also take advantage of Chakra's theme and see if I could get the user-editing tool to operate on top of that.
 
 ## 🚀 Quick start
-
-**Currently broken due to out-of-date packages 😔**
 
 This site is currently not being deployed anywhere. To run the site locally:
 1. Clone the repo
 1. `yarn` to install everything
-1. `yarn dev`; the site should pop up automatically, or navigate to `localhost:8000`
+1. `yarn dev` to expose the app at `localhost:8000`
 
 <!-- AUTO-GENERATED-CONTENT:START -->
 #### (Inherited from the Gatsby starter): 🧐 What's inside?
