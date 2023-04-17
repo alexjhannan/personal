@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { string } from 'prop-types'
-import Layout from '~components/layout'
 import { ThemeContext } from '~components/layout/themer'
 import { SliderPicker } from 'react-color'
 
@@ -113,15 +112,7 @@ GrayScale.propTypes = {
   baseColor: string.isRequired,
 }
 
-// ColorPaletteInnards needs to access the context generated in Layout, hence the extra wrapper here.
-// (Why is this needed? The original Gatsby@2.x version of this page had Layout wrapping the exported page component by default.)
-const ColorPalettePage =() => (
-  <Layout>
-    <ColorPaletteInnards />
-  </Layout>
-)
-
-const ColorPaletteInnards = () => {
+const ColorPalette = () => {
   const { primaryColor, setPrimaryColor, resetPrimaryColor } = useContext(ThemeContext)
   return (
     <Wrapper>
@@ -170,8 +161,8 @@ const ColorPaletteInnards = () => {
           `}
         </SmallP>
       </ParentGrid>
-      </Wrapper>
+    </Wrapper>
   )
 }
 
-export default ColorPalettePage
+export default ColorPalette

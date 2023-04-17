@@ -1,7 +1,8 @@
 import React from 'react'
+// import { graphql } from 'gatsby'
+import { shape } from 'prop-types'
 
 import { StaticImage } from 'gatsby-plugin-image'
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import {
   GutterWrapper,
@@ -36,51 +37,86 @@ import {
 
 
 const Playground = () => (
-  <Layout>
-    <GutterWrapper>
-      <SEO title="Playground" />
-      <HeadingContainer>
-        <Heading>Playground</Heading>
-      </HeadingContainer>
-      <Grid>
-        <Card>
-          <CardImageLink to='/playground/gooey-radial-button'>
-            <StaticImage src="../../images/radial-button.png" alt="A screenshot of the SVG Radial Button" />
+  <GutterWrapper>
+    <SEO title="Playground" />
+    <HeadingContainer>
+      <Heading>Playground</Heading>
+    </HeadingContainer>
+    <Grid>
+      <Card>
+        <CardImageLink to='/playground/gooey-radial-button'>
+          <StaticImage src="../../images/radial-button.png" alt="A screenshot of the SVG Radial Button" />
+        </CardImageLink>
+        <div>
+          <CardTitle>SVG Radial Button</CardTitle>
+          <p>
+            The goeey SVG technique combines a blur filter and a contrast filter
+            for a unique web UI effect. I used this to create a radial button
+            out of SVGs that goop into each other. Play around with it here.
+          </p>
+        </div>
+      </Card>
+      <Card>
+        <CardImageLink to='/playground/explosion'>
+          <StaticImage src="../../images/explosion.png" alt="A screenshot of the Time-Bound Explosion" />
+        </CardImageLink>
+        <div>
+          <CardTitle>Time-Bound Explosion</CardTitle>
+          <p>
+            A simple SVG animation hooked up to a timeline controller.
+          </p>
+        </div>
+      </Card>
+      {/* {TOYS.map(toy => (
+        <Card key={toy.title}>
+          <CardImageLink to={toy.path}>
+            <GatsbyImage src={`../../images/${toy.imagePath}.png`} alt={`A screenshot of the ${toy.title}`} />
           </CardImageLink>
           <div>
-            <CardTitle>SVG Radial Button</CardTitle>
-            <p>
-              The goeey SVG technique combines a blur filter and a contrast filter
-              for a unique web UI effect. I used this to create a radial button
-              out of SVGs that goop into each other. Play around with it here.
-            </p>
+            <CardTitle>{toy.title}</CardTitle>
+            <p>{toy.desc}</p>
           </div>
         </Card>
-        <Card>
-          <CardImageLink to='/playground/explosion'>
-            <StaticImage src="../../images/explosion.png" alt="A screenshot of the Time-Bound Explosion" />
-          </CardImageLink>
-          <div>
-            <CardTitle>Time-Bound Explosion</CardTitle>
-            <p>
-              A simple SVG animation hooked up to a timeline controller.
-            </p>
-          </div>
-        </Card>
-        {/* {TOYS.map(toy => (
-          <Card key={toy.title}>
-            <CardImageLink to={toy.path}>
-              <GatsbyImage src={`../../images/${toy.imagePath}.png`} alt={`A screenshot of the ${toy.title}`} />
-            </CardImageLink>
-            <div>
-              <CardTitle>{toy.title}</CardTitle>
-              <p>{toy.desc}</p>
-            </div>
-          </Card>
-        ))} */}
-      </Grid>
-    </GutterWrapper>
-  </Layout>
+      ))} */}
+    </Grid>
+  </GutterWrapper>
 )
+
+Playground.propTypes = {
+  data: shape({}).isRequired,
+}
+
+// export const query = graphql`
+//   query {
+//     webDevImage: file(relativePath: { eq: "web-dev-credits.png" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 500) {
+//           ...GatsbyImageSharpFluid
+//         }
+//       }
+//     }
+//     radialButtonImage: file(relativePath: { eq: "radial-button.png" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 500) {
+//           ...GatsbyImageSharpFluid
+//         }
+//       }
+//     }
+//     explosionImage: file(relativePath: { eq: "explosion.png" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 500) {
+//           ...GatsbyImageSharpFluid
+//         }
+//       }
+//     }
+//     subwaySlug: file(relativePath: { eq: "subway-slug.png" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 200) {
+//           ...GatsbyImageSharpFluid_tracedSVG
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Playground

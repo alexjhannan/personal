@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { reduceFraction } from '~utilities'
-import Layout from '~components/layout'
 import GooeyRadialButton from '~components/gooey-radial-button'
 
 const ControlContainer = styled.div`
@@ -29,7 +28,7 @@ const GooeyRadialPage = () => {
   const [numer, denom] = reduceFraction([initialAngleConstant, 12])
   const initialAngleDisplay = `${numer}${denom > 1 ? `/${denom}` : ''}${numer > 0 ? 'π' : ''} radians`
   return (
-    <Layout>
+    <>
       <GooeyRadialButton
         centerLabel="Boop"
         buttonDuples={
@@ -65,7 +64,7 @@ const GooeyRadialPage = () => {
           </LabelText>
         </Label>
       </ControlContainer>
-    </Layout>
+    </>
   )
 }
 

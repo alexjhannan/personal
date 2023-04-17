@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
 
-import Layout from '~components/layout'
 import SEO from '~components/seo'
 import UnderConstruction from '~components/graphics/under-construction'
 import GithubIcon from '~components/graphics/github-icon'
@@ -87,7 +86,7 @@ const StyledLinkedinIcon = styled(LinkedinIcon)`
   pointer-events: all;
 `
 const IndexPage = () => (
-  <Layout homePage>
+  <>
     <SEO title="Home" keywords={['react', 'developer', 'brooklyn']} />
     <GraphicContainer>
       <GraphicWrapper>
@@ -139,7 +138,7 @@ const IndexPage = () => (
         Prospect Park, Brooklyn - May 2019
       </ImageLabel>
     </BodyContainer>
-  </Layout>
+  </>
 )
 
 export default IndexPage
