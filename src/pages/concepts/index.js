@@ -5,7 +5,6 @@ import {
   GutterWrapper,
   Heading,
   HeadingContainer,
-  HeadingImage,
 } from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
 
@@ -14,9 +13,7 @@ const Concepts = () => (
     <GutterWrapper>
       <SEO title="Concepts" />
       <HeadingContainer>
-        <HeadingImage src={`../../images/arthur-bone.png`} imgStyle={{ objectFit: 'contain' }} alt="a dog staring at a bone" />
         <Heading>Concepts</Heading>
-        <HeadingImage src={`../../images/arthur-bone.png`} imgStyle={{ objectFit: 'contain' }} alt="a dog staring at a bone" />
       </HeadingContainer>
       <LinkList
         header="Some Inspirations"

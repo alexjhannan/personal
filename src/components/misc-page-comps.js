@@ -16,23 +16,6 @@ export const HeadingContainer = styled.div`
   justify-content: center;
   margin: 24px 0;
 `
-
-export const HeadingImage = styled(StaticImage)`
-  width: 98px;
-  filter: brightness(0) invert(1);
-  display: inline-block;
-  ${props => `
-    &:not(:${props.flipped ? 'last-of-type' : 'first-of-type'}) {
-      transform: rotateY(180deg);
-    }
-  `}
-  @media (max-width: 600px) {
-    &:first-of-type {
-      display: none;
-    }
-  }
-`
-
 export const Grid = styled.div`
   display: grid;
   grid-auto-rows: minmax(150px, 1fr);

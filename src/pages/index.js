@@ -41,11 +41,6 @@ const AboutContainer = styled.div`
   }
 `
 
-const BackgroundImage = styled(StaticImage)`
-  filter: grayscale(0.7);
-  padding: 48px var(--layout-gutter-width);
-`
-
 const TextContainer = styled.div`
   background-color: hsla(0,0%,5%,0.8);
   padding: 24px;
