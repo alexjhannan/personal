@@ -3483,7 +3483,6 @@ __metadata:
     gatsby-image: ^3.11.0
     gatsby-plugin-alias-imports: 1.0.5
     gatsby-plugin-image: latest
-    gatsby-plugin-layout: ^4.8.0
     gatsby-plugin-manifest: ^5.8.0
     gatsby-plugin-offline: ^6.8.0
     gatsby-plugin-react-helmet: ^6.8.0
@@ -7434,7 +7433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-image@npm:latest":
+gatsby-plugin-image@latest:
   version: 3.8.0
   resolution: "gatsby-plugin-image@npm:3.8.0"
   dependencies:
@@ -7465,17 +7464,6 @@ __metadata:
     gatsby-source-filesystem:
       optional: true
   checksum: b53fba822c14e8fd3da4cd4801d315039c4ec0aabd058c4eaeec663c46ce2e2867fb0f4ed2e5042c863a28c45b8cbb6def0e9f883ba3e9b09539e5a542455aab
-  languageName: node
-  linkType: hard
-
-"gatsby-plugin-layout@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "gatsby-plugin-layout@npm:4.8.0"
-  dependencies:
-    "@babel/runtime": ^7.20.13
-  peerDependencies:
-    gatsby: ^5.0.0-next
-  checksum: f222bbbfb8ee9d7d6f6f6d6e6cc7cfdb1a20932ea2795a93020304d32705b6624c5ffac8820b93b6f57266d41938d06210b032d2eff210739c7e040892f66644
   languageName: node
   linkType: hard
 
@@ -7547,7 +7535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:latest":
+gatsby-plugin-sharp@latest:
   version: 5.8.1
   resolution: "gatsby-plugin-sharp@npm:5.8.1"
   dependencies:
@@ -7672,7 +7660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-filesystem@npm:latest":
+gatsby-source-filesystem@latest:
   version: 5.8.0
   resolution: "gatsby-source-filesystem@npm:5.8.0"
   dependencies:
@@ -7711,7 +7699,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-transformer-sharp@npm:latest":
+gatsby-transformer-sharp@latest:
   version: 5.8.0
   resolution: "gatsby-transformer-sharp@npm:5.8.0"
   dependencies:
@@ -12020,7 +12008,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:latest":
+react@latest:
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:

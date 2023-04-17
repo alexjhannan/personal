@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import { Location } from '@reach/router'
 import './reset.css'
-import { string } from 'prop-types'
+import { string, bool } from 'prop-types'
 
 const StyledHeader = styled.header`
   background: var(--color-inverse);
@@ -54,22 +53,16 @@ const DisplayText = styled.h1`
   font-family: var(--display-font-stack);
 `
 
-const Header = ({ className }) => (
+const Header = ({ className, homePage }) => (
   <StyledHeader className={className}>
     <LeftColumn>
-      <Location>
-        {({ location }) => (
-          <>
-            { location.pathname === '/' ? (
-              <DisplayText>Adasah</DisplayText>
-            ) : (
-              <Link to="/">
-                <DisplayText>Adasah</DisplayText>
-              </Link>
-            )}
-          </>
-        )}
-      </Location>
+      { homePage ? (
+        <DisplayText>Adasah</DisplayText>
+      ) : (
+        <Link to="/">
+          <DisplayText>Adasah</DisplayText>
+        </Link>
+      )}
     </LeftColumn>
     <RightColumn>
       <NavLink to="/tools">
@@ -87,6 +80,7 @@ const Header = ({ className }) => (
 
 Header.propTypes = {
   className: string,
+  homePage: bool.isRequired,
 }
 
 Header.defaultProps = {

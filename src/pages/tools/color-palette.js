@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { string } from 'prop-types'
+import Layout from '~components/layout'
 import { ThemeContext } from '~components/layout/themer'
 import { SliderPicker } from 'react-color'
 
@@ -115,53 +116,55 @@ GrayScale.propTypes = {
 const ColorPalette = () => {
   const { primaryColor, setPrimaryColor, resetPrimaryColor } = useContext(ThemeContext)
   return (
-    <Wrapper>
-      <ParentGrid>
-        <PrimaryContainer>
-          <PrimarySwatch>--color-primary</PrimarySwatch>
-          <div>
-            <SliderPicker onChangeComplete={setPrimaryColor} color={primaryColor} />
-            <Button type="button" onClick={resetPrimaryColor}>Reset</Button>
-          </div>
+    <Layout>
+      <Wrapper>
+        <ParentGrid>
+          <PrimaryContainer>
+            <PrimarySwatch>--color-primary</PrimarySwatch>
+            <div>
+              <SliderPicker onChangeComplete={setPrimaryColor} color={primaryColor} />
+              <Button type="button" onClick={resetPrimaryColor}>Reset</Button>
+            </div>
+            <BigP>
+              {`
+                The colors on this site all depend upon a single CSS variable. Go ahead and change it
+                (by clicking on that color slider) and everything will respond to the change immediately.
+              `}
+            </BigP>
+          </PrimaryContainer>
+          <SecondaryColors>
+            <HighlightSwatch>--color-highlight</HighlightSwatch>
+            <InverseSwatch>--color-inverse</InverseSwatch>
+            <BigP>
+              {`
+                The highlight color is a 50 degree turn on the color wheel from the primary color, while the inverse color
+                is an exact complement (180 degrees on the wheel), but shifted down in lightness by 18%. This gives the palette
+                a distinctive highlight and a dark contrast given a vibrant primary color.
+              `}
+            </BigP>
+          </SecondaryColors>
+          <GrayScales>
+            <GrayScale baseColor="pGrey" />
+            <GrayScale baseColor="iGrey" />
+          </GrayScales>
           <BigP>
             {`
-              The colors on this site all depend upon a single CSS variable. Go ahead and change it
-              (by clicking on that color slider) and everything will respond to the change immediately.
+              These grayscales will adapt, as well. Systemizing colors and calculating out the palette, rather than
+              hardcoding everything as a hexcode, makes sweeping design changes much, much easier. A little restriction
+              in the right places can go a long way towards bringing a project together. So much tooling exists
+              to make a React project beautiful – why not use it?
             `}
           </BigP>
-        </PrimaryContainer>
-        <SecondaryColors>
-          <HighlightSwatch>--color-highlight</HighlightSwatch>
-          <InverseSwatch>--color-inverse</InverseSwatch>
-          <BigP>
+          <SmallP>
             {`
-              The highlight color is a 50 degree turn on the color wheel from the primary color, while the inverse color
-              is an exact complement (180 degrees on the wheel), but shifted down in lightness by 18%. This gives the palette
-              a distinctive highlight and a dark contrast given a vibrant primary color.
+              This site was built using styled-components and CSS variables. Most of my experience is in working with SASS,
+              so having dynamically-accessible styles after the build process is pretty great. If you're a developer, inspect around
+              and you'll see all of the CSS variables on this document's HTML element.
             `}
-          </BigP>
-        </SecondaryColors>
-        <GrayScales>
-          <GrayScale baseColor="pGrey" />
-          <GrayScale baseColor="iGrey" />
-        </GrayScales>
-        <BigP>
-          {`
-            These grayscales will adapt, as well. Systemizing colors and calculating out the palette, rather than
-            hardcoding everything as a hexcode, makes sweeping design changes much, much easier. A little restriction
-            in the right places can go a long way towards bringing a project together. So much tooling exists
-            to make a React project beautiful – why not use it?
-          `}
-        </BigP>
-        <SmallP>
-          {`
-            This site was built using styled-components and CSS variables. Most of my experience is in working with SASS,
-            so having dynamically-accessible styles after the build process is pretty great. If you're a developer, inspect around
-            and you'll see all of the CSS variables on this document's HTML element.
-          `}
-        </SmallP>
-      </ParentGrid>
-    </Wrapper>
+          </SmallP>
+        </ParentGrid>
+      </Wrapper>
+    </Layout>
   )
 }
 

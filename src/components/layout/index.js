@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { bool, node } from 'prop-types'
 import styled from 'styled-components'
 import Themer from './themer'
 import Header from './header'
@@ -28,11 +28,10 @@ const Main = styled.main`
   width: 100vw;
 `
 
-
-const Layout = ({ children }) => (
+const Layout = ({ children, homePage }) => (
   <Themer>
     <Container>
-      <Header />
+      <Header homePage={homePage} />
       <Main>
         {children}
       </Main>
@@ -41,7 +40,12 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: node.isRequired,
+  homePage: bool,
+}
+
+Layout.defaultProps = {
+  homePage: false,
 }
 
 export default Layout
