@@ -52,7 +52,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'ajh-personal',
+        name: 'adasah-personal',
         short_name: 'personal',
         start_url: '/',
         background_color: '#222',
