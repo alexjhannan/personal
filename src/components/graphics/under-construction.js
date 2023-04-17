@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TimelineMax, Bounce } from 'gsap'
+import { gsap, Bounce } from 'gsap'
 import styled from 'styled-components'
 import { string } from 'prop-types'
 import BaseSVG from '~components/base-svg'
@@ -13,11 +13,9 @@ const SVG = styled(BaseSVG)`
 `
 
 const Circle = styled.circle`
-  transition: r 0.3s ease-in;
-  cx: 50;
-  cy: 50;
-  r: 50;
+  transition: scale 0.15s ease-in;
   fill: var(--color-inverse);
+  transform-origin: 50% 50%;
 `
 
 const Group = styled.g`
@@ -25,7 +23,7 @@ const Group = styled.g`
   cursor: pointer;
   &:hover {
     ${Circle} {
-      r: 55;
+      scale: .98;
     }
   }
 `
@@ -44,14 +42,14 @@ const UnderConstruction = ({ width }) => {
   const [quoteCounter, setQuoteCounter] = useState(0)
 
   useEffect(() => {
-    const tl = new TimelineMax()
+    const tl = gsap.timeline()
     tl.to('#uc--mask-circle', 1, { attr: { r: 50 }, ease: Bounce.easeOut }, 0.1)
     return () => tl.kill()
   })
 
   useEffect(() => { // eslint-disable-line
     if (quoteCounter === QUOTES.length - 1) {
-      const tl = new TimelineMax()
+      const tl = gsap.timeline()
       tl.set('#under-construction', { pointerEvents: 'none' })
         .to('#uc--mask-circle', 1, { attr: { r: 0 }, ease: Bounce.easeOut }, 0.5)
         .set('#under-construction', { pointerEvents: 'all', onComplete: () => { setQuoteCounter(0) } })
@@ -77,7 +75,7 @@ const UnderConstruction = ({ width }) => {
             setQuoteCounter((quoteCounter + 1))
           }
         }}>
-        <Circle />
+        <Circle cx={50} cy={50} r={50} />
         <text x="50" y="40" fontSize="10">
           <tspan>UNDER</tspan>
           <tspan x="50" dy="10">CONSTRUCTION</tspan>
