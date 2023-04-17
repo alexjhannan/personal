@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+// import { graphql } from 'gatsby'
 
 import SEO from '~components/seo'
 import {
@@ -14,24 +14,24 @@ import {
   HeadingImage,
 } from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
-import { shape } from 'prop-types'
+// import { shape } from 'prop-types'
 
 const IDEAS = []
 
-const Concepts = ({ data }) => (
+const Concepts = () => (
   <GutterWrapper>
     <SEO title="Concepts" />
     <HeadingContainer>
-      <HeadingImage flipped fluid={data.arthurBone.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+      <HeadingImage src={`../../images/arthur-bone.png`} imgStyle={{ objectFit: 'contain' }} alt="a dog staring at a bone" />
       <Heading>Concepts</Heading>
-      <HeadingImage flipped fluid={data.arthurBone.childImageSharp.fluid} imgStyle={{ objectFit: 'contain' }} />
+      <HeadingImage src={`../../images/arthur-bone.png`} imgStyle={{ objectFit: 'contain' }} alt="a dog staring at a bone" />
     </HeadingContainer>
     <Grid>
       {IDEAS.map(idea => (
         <Card key={idea.title}>
-          <CardImageLink to={idea.path}>
-            <CardImage fluid={data[idea.imageKey].childImageSharp.fluid} />
-          </CardImageLink>
+          {/* <CardImageLink to={idea.path}>
+            <CardImage srcfluid={data[idea.imageKey].childImageSharp.fluid} />
+          </CardImageLink> */}
           <div>
             <CardTitle>{idea.title}</CardTitle>
             <p>{idea.desc}</p>
@@ -82,20 +82,20 @@ const Concepts = ({ data }) => (
   </GutterWrapper>
 )
 
-Concepts.propTypes = {
-  data: shape({}).isRequired,
-}
+// Concepts.propTypes = {
+//   data: shape({}).isRequired,
+// }
 
-export const query = graphql`
-  query {
-    arthurBone: file(relativePath: { eq: "arthur-bone.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 200) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query {
+//     arthurBone: file(relativePath: { eq: "arthur-bone.png" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 200) {
+//           ...GatsbyImageSharpFluid_tracedSVG
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Concepts

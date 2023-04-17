@@ -3482,16 +3482,16 @@ __metadata:
     gatsby: ^5.8.1
     gatsby-image: ^3.11.0
     gatsby-plugin-alias-imports: 1.0.5
-    gatsby-plugin-image: ^3.8.0
+    gatsby-plugin-image: latest
     gatsby-plugin-layout: ^4.8.0
     gatsby-plugin-manifest: ^5.8.0
     gatsby-plugin-offline: ^6.8.0
     gatsby-plugin-react-helmet: ^6.8.0
-    gatsby-plugin-sharp: ^5.8.1
+    gatsby-plugin-sharp: latest
     gatsby-plugin-styled-components: ^6.8.0
     gatsby-plugin-webfonts: ^2.3.2
-    gatsby-source-filesystem: ^5.8.0
-    gatsby-transformer-sharp: ^5.8.0
+    gatsby-source-filesystem: latest
+    gatsby-transformer-sharp: latest
     gsap: ^3.11.5
     prettier: ^2.8.7
     prop-types: ^15.7.2
@@ -7434,7 +7434,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-image@npm:^3.8.0":
+"gatsby-plugin-image@npm:latest":
   version: 3.8.0
   resolution: "gatsby-plugin-image@npm:3.8.0"
   dependencies:
@@ -7547,7 +7547,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-sharp@npm:^5.8.1":
+"gatsby-plugin-sharp@npm:latest":
   version: 5.8.1
   resolution: "gatsby-plugin-sharp@npm:5.8.1"
   dependencies:
@@ -7672,7 +7672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-source-filesystem@npm:^5.8.0":
+"gatsby-source-filesystem@npm:latest":
   version: 5.8.0
   resolution: "gatsby-source-filesystem@npm:5.8.0"
   dependencies:
@@ -7711,7 +7711,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-transformer-sharp@npm:^5.8.0":
+"gatsby-transformer-sharp@npm:latest":
   version: 5.8.0
   resolution: "gatsby-transformer-sharp@npm:5.8.0"
   dependencies:
