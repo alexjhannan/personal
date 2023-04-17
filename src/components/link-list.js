@@ -8,12 +8,15 @@ const ListHeader = styled.h3`
 `
 
 const List = styled.ul`
-  list-style: none;
-  margin: 16px 0;
+  margin: 16px 16px;
 `
 
 const ListItem = styled.li`
   margin: 0;
+  width: fit-content;
+  &:hover {
+    color: var(--color-highlight);
+  }
 `
 
 const LinkList = ({ header, links }) => (

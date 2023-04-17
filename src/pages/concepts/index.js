@@ -3,18 +3,11 @@ import Layout from '~components/layout'
 import SEO from '~components/seo'
 import {
   GutterWrapper,
-  Grid,
-  Card,
-  CardTitle,
-  CardImageLink,
-  CardImage,
   Heading,
   HeadingContainer,
   HeadingImage,
 } from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
-
-const IDEAS = []
 
 const Concepts = () => (
   <Layout>
@@ -25,19 +18,6 @@ const Concepts = () => (
         <Heading>Concepts</Heading>
         <HeadingImage src={`../../images/arthur-bone.png`} imgStyle={{ objectFit: 'contain' }} alt="a dog staring at a bone" />
       </HeadingContainer>
-      <Grid>
-        {IDEAS.map(idea => (
-          <Card key={idea.title}>
-            {/* <CardImageLink to={idea.path}>
-              <CardImage srcfluid={data[idea.imageKey].childImageSharp.fluid} />
-            </CardImageLink> */}
-            <div>
-              <CardTitle>{idea.title}</CardTitle>
-              <p>{idea.desc}</p>
-            </div>
-          </Card>
-        ))}
-      </Grid>
       <LinkList
         header="Some Inspirations"
         links={[
@@ -66,7 +46,7 @@ const Concepts = () => (
             to: 'https://www.brainpickings.org/2014/01/29/carol-dweck-mindset/',
           },
           {
-            title: 'Frontend Masters - JS Workshops',
+            title: 'Frontend Masters: Modern JavaScript Workshops',
             to: 'https://www.frontendmasters.com',
           },
           {

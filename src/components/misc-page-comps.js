@@ -71,6 +71,6 @@ export const CardImageLink = styled(Link)`
   display: block;
 `
 
-export const CardImage = styled(Img)`
+export const CardImage = styled(StaticImage)`
   border-radius: 4px;
 `
