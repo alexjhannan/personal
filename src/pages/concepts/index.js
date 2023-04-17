@@ -1,5 +1,4 @@
 import React from 'react'
-// import { graphql } from 'gatsby'
 
 import SEO from '~components/seo'
 import {
@@ -14,7 +13,6 @@ import {
   HeadingImage,
 } from '~components/misc-page-comps'
 import LinkList from '~components/link-list'
-// import { shape } from 'prop-types'
 
 const IDEAS = []
 
@@ -81,21 +79,5 @@ const Concepts = () => (
       ]} />
   </GutterWrapper>
 )
-
-// Concepts.propTypes = {
-//   data: shape({}).isRequired,
-// }
-
-// export const query = graphql`
-//   query {
-//     arthurBone: file(relativePath: { eq: "arthur-bone.png" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 200) {
-//           ...GatsbyImageSharpFluid_tracedSVG
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default Concepts

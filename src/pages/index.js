@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import { graphql } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import { shape } from 'prop-types'
 
 import SEO from '~components/seo'
 import UnderConstruction from '~components/graphics/under-construction'
@@ -147,21 +145,5 @@ const IndexPage = () => (
     </BodyContainer>
   </>
 )
-
-// IndexPage.propTypes = {
-//   data: shape({}).isRequired,
-// }
-
-// export const query = graphql`
-//   query {
-//     prospectPark: file(relativePath: { eq: "prospect-park.jpg" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 2000) {
-//           ...GatsbyImageSharpFluid
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default IndexPage

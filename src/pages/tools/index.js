@@ -1,6 +1,4 @@
 import React from 'react'
-// import { graphql } from 'gatsby'
-import { shape } from 'prop-types'
 
 import SEO from '~components/seo'
 import {
@@ -54,35 +52,5 @@ const Tools = () => (
     </Grid>
   </GutterWrapper>
 )
-
-// Tools.propTypes = {
-//   data: shape({}).isRequired,
-// }
-
-// export const query = graphql`
-//   query {
-//     tweetingBird: file(relativePath: { eq: "tweeting-bird.png" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 200) {
-//           ...GatsbyImageSharpFluid_tracedSVG
-//         }
-//       }
-//     }
-//     guitarImage: file(relativePath: { eq: "guitar-tool.png" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 500) {
-//           ...GatsbyImageSharpFluid
-//         }
-//       }
-//     }
-//     colorPaletteImage: file(relativePath: { eq: "color-palette.png" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 500) {
-//           ...GatsbyImageSharpFluid
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default Tools
